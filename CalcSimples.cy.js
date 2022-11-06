@@ -53,4 +53,3 @@ context('testesCalcSimples', () => {
     }
   });
 });
-C:\Users\ITX-GAMER\Documents\1..DEVinHouse\anotaçãoAulas\M3S08 Cypress\A2_Cypress\cypress\e2e\TesteCalc\cypress\e2e\CalcSimples.cy.js
