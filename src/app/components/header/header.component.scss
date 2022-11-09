@@ -1,0 +1,16 @@
+@import '/src/styles.scss';
+
+
+.logo{
+    width: 8rem;
+}
+
+ul li a{
+    font-family: 'Poppins', sans-serif;
+    color: $NDD-roxo;
+}
+
+.active{
+    background-color: $NDD-roxo!important;
+}
+
