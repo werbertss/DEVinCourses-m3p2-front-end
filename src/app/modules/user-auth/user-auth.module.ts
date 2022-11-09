@@ -4,10 +4,9 @@ import { CommonModule } from '@angular/common';
 import { UserAuthRoutingModule } from './user-auth-routing.module';
 import { UserAuthComponent } from './user-auth.component';
 
-
 @NgModule({
   declarations: [
-    UserAuthComponent
+    UserAuthComponent,
   ],
   imports: [
     CommonModule,
