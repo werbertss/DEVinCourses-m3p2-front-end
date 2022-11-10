@@ -8,6 +8,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ItemTrainingComponent } from './components/item-training/item-training.component';
 import { HomeComponent } from './pages/home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TrainingComponent } from './pages/training/training.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HeaderComponent,
     ItemTrainingComponent,
     HomeComponent,
+    TrainingComponent,
   ],
   imports: [
     BrowserModule,
