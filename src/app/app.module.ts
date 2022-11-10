@@ -9,6 +9,7 @@ import { ItemTrainingComponent } from './components/item-training/item-training.
 import { HomeComponent } from './pages/home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TrainingComponent } from './pages/training/training.component';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { TrainingComponent } from './pages/training/training.component';
     ItemTrainingComponent,
     HomeComponent,
     TrainingComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
