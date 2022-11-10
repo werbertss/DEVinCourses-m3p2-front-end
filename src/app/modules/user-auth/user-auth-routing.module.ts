@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { PageNotFoundComponent } from 'src/app/pages/page-not-found/page-not-found.component';
 import { UserAuthComponent } from './user-auth.component';
 
 const routes: Routes = [
@@ -9,6 +10,10 @@ const routes: Routes = [
     children: [
       // Lugar para rotas internas do módulo
     ]
+  },
+  {
+    path: '**',
+    component: PageNotFoundComponent,
   }
 ];
 
