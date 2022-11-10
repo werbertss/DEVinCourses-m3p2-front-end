@@ -1,0 +1,24 @@
+.logo{
+    width: 8rem;
+}
+
+.Painel{
+    height: 20rem;
+}
+
+.descricaoCurso{
+    font-size: 12px;
+}
+
+.imgCard{
+    max-width: 5rem;
+}
+.linkCard{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+.cardTraining{
+    cursor: pointer;
+}
