@@ -1,0 +1,23 @@
+
+
+
+
+<div class="row home">
+  <div class="col-1"></div>
+  <div class="container col-10 mt-4 mb-2">
+    <h4>Meus Cursos</h4>
+  </div>
+</div>
+<div class="row home">
+  <div class="col-1"></div>
+  <div class="container col-10 mt-4 mb-2 d-flex">
+         <form >
+          <input [(ngModel)]="status" type="radio" name="status" class="btn-check"  id="todos" autocomplete="off" value="todos" checked>
+          <label class="btn btn-outline-primary me-2" for="todos">Todos</label>
+          <input [(ngModel)]="status" type="radio" name="status" class="btn-check" id="andamento" autocomplete="off" value="andamento">
+          <label class="btn btn-outline-primary me-2" for="andamento">Andamento</label>
+          <input [(ngModel)]="status" type="radio" name="status" class="btn-check" id="finalizado" autocomplete="off" value="finalizado">
+          <label class="btn btn-outline-primary me-2" for="finalizado">Finalizado</label>
+        </form>
+      </div>
+    </div>
