@@ -1,21 +1,14 @@
-<pro-header></pro-header>
-
-<div class="row mt-2 home">
-    <div class="col-1"></div>
-    <div class="col-10 p-4 user">
-      <div class="d-flex justify-content-between">
-        <div>
-          <h4>Olá {{users[0].name}}</h4>
-        </div>
-        <div>
-          <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
-        </div>
-      </div>
-    </div>
+<div class="container">
+  <nav aria-label="breadcrumb">
+      <p class="text-end"><a href="">&#171; voltar</a></p>
+      <ol class="breadcrumb w-100">
+        <li class="breadcrumb-item active" aria-current="page">Home</li>
+      </ol>
+  </nav>
 </div>
 <div class="row home">
   <div class="col-1"></div>
-  <div class="container col-10 mt-4 mb-2 d-flex">
+  <div class="container col-10 mt-4 mb-2 d-flex home">
     <form (change)="filtrar()">
       <input [(ngModel)]="category" type="radio" name="categoria" class="btn-check"  id="todos" autocomplete="off" value="todos" checked>
       <label class="btn btn-outline-primary me-2" for="todos">Todos</label>
@@ -34,7 +27,7 @@
     </form>
   </div>
 </div>
-<div class="row">
+<div class="row home">
   <div class="col-1"></div>
   <div class="col-10">
     <div class="d-flex flex-wrap justify-content-center">
