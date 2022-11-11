@@ -1,0 +1,70 @@
+@import '/src/styles.scss';
+
+@mixin displayFlex($direction, $alignContent, $justify, $alignItems) {
+  display: flex;
+  flex-direction: $direction;
+  align-content: $alignContent;
+  justify-content: $justify;
+  align-items: $alignItems;
+}
+
+.container {
+  width: 100%;
+
+  .form-container {
+    width: 508px;
+    height: 662px;
+
+    background-color: #FFF;
+
+    border-radius: 15px;
+  }
+}
+
+.input-container {
+  font-family: 'Poppins', sans-serif;
+
+  h1 {
+    font-size: 40px;
+    font-weight: 700;
+    text-align: center;
+
+    color: $azul-escuro;
+    margin-bottom: 8px;
+
+  }
+
+  .teste {
+    button {
+      appearance: auto;
+
+
+    }
+  }
+
+  label {
+    font-size: 20px;
+    font-weight: 700;
+
+    color: $azul-escuro;
+    margin-bottom: 8px;
+  }
+
+  input {
+    font-family: inherit;
+    width: 92%;
+
+    font-size: 18px;
+
+    padding: 8px 0 15px 10px;
+
+    border: 2px solid $azul-escuro;
+    border-radius: 5px;
+
+    &::placeholder {
+      font-weight: 800;
+      color: $azul-escuro;
+      opacity: 0.2;
+    }
+  }
+}
