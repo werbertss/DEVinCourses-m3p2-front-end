@@ -16,7 +16,7 @@
 <div class="row home">
   <!-- <div class="col-1"></div> -->
   <div class="container col-10 mt-4 mb-2 d-flex">
-         <form >
+    <form (change)="filtrar()">
           <input [(ngModel)]="status" type="radio" name="status" class="btn-check"  id="todos" autocomplete="off" value="todos" checked>
           <label class="btn btn-outline-primary me-2" for="todos">Todos</label>
           <input [(ngModel)]="status" type="radio" name="status" class="btn-check" id="andamento" autocomplete="off" value="andamento">
@@ -26,3 +26,12 @@
         </form>
       </div>
     </div>
+    <div class="row home">
+      <div class="col-1"></div>
+      <div class="col-10">
+        <div class="d-flex flex-wrap justify-content-center">
+          <pro-item-training [item]="training" class="col-2 container card shadow m-1 p-1 " *ngFor="let training of filters"></pro-item-training>
+        </div>
+      </div>
+    </div>
+

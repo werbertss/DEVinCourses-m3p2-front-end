@@ -8,6 +8,7 @@ import { ItemTrainingComponent } from './components/item-training/item-training.
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from 'src/app/components/header/header.component';
+import { TrainingComponent } from './components/training/training.component';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { HeaderComponent } from 'src/app/components/header/header.component';
     HomeComponent,
     ItemTrainingComponent,
     HeaderComponent,
+    TrainingComponent
   ],
   imports: [
     CommonModule,
