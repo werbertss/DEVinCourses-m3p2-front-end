@@ -9,6 +9,11 @@ const routes: Routes = [
       import('./modules/user-auth/user-auth.module').then((m) => m.UserAuthModule),
   },
   {
+    path: 'main',
+    loadChildren: () => 
+      import('./modules/main/main.module').then((m) => m.MainModule),
+  },
+  {
     path: '**',
     component: PageNotFoundComponent,
   }
