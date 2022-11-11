@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'pro-login-form',
@@ -8,29 +8,26 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 })
 export class LoginFormComponent implements OnInit {
 
+  regexPassword: RegExp = /[^!@#$ %^&*()_+\-=\[\]{};':"\\|,.<>\/?]$/;
+
   form = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.pattern('^[@!#$%-^&*A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ/s ]*$')]),
-    password: new FormControl('', [Validators.required, Validators.minLength(8), Validators.pattern('^[0-9a-zA-Z]{8,}$')]),
-  });
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required, Validators.pattern(this.regexPassword)]),
+
+  })
 
   submitted = false;
-
-  notEmail: boolean = false;
-  notPassword: boolean = false;
-  regexEmail: RegExp = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
-  regexPassword: RegExp = /[0-9a-zA-Z]{8,}$/;
-
-  email: string = "email@teste.com";
-  password: string = "12345678";
+  // Mock
+  // email: string = "email@teste.com";
+  // password: string = "12345678";
 
   constructor() {
 
   }
 
   ngOnInit(): void {
-
+    console.log(this.form);
   }
-
 
   submitLogin() {
     this.submitted = true;
@@ -41,23 +38,4 @@ export class LoginFormComponent implements OnInit {
     alert('Sucesso')
 
   }
-
-  validateEmail() {
-    if (!this.regexEmail.test(this.email)) {
-      this.notEmail = true;
-    } else {
-      this.notEmail = false;
-    }
-
-  }
-
-  validatePassword() {
-    if (!this.regexPassword.test(this.password)) {
-      this.notPassword = true;
-    } else {
-      this.notPassword = false;
-    }
-  }
-
-
 }
