@@ -13,6 +13,7 @@
     <button type="button" class="btn btn-success" (click)="c('Save click')">Quero fazer este curso</button>
   </div>
 </ng-template>
+
 <div class="container">
   <div class="row">
     <div class="col-1"></div>
@@ -26,10 +27,11 @@
     </div>
   </div>
 </div>
+
 <div class="container">
   <div class="row">
     <div class="col-1"></div>
-    <div class="col-10 mt-4 mb-2 d-flex home">
+    <div class="col-10 d-flex home">
       <form (change)="filtrar()">
         <input [(ngModel)]="category" type="radio" name="categoria" class="btn-check"  id="todos" autocomplete="off" value="todos" checked>
         <label class="btn btn-outline-primary m-1 " for="todos">Todos</label>
