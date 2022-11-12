@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
 
 @Component({
   selector: 'pro-login-form',
@@ -16,26 +18,23 @@ export class LoginFormComponent implements OnInit {
 
   })
 
-  submitted = false;
-  // Mock
-  // email: string = "email@teste.com";
-  // password: string = "12345678";
+  constructor(private authService: AuthenticationService, private route: Router) {}
 
-  constructor() {
-
-  }
-
-  ngOnInit(): void {
-    console.log(this.form);
-  }
+  ngOnInit(): void {}
 
   submitLogin() {
-    this.submitted = true;
     if (this.form.invalid) {
       return;
 
     }
-    alert('Sucesso')
 
+    let email = this.form.controls['email'].value;
+    let password = this.form.controls['password'].value;
+
+    if (this.authService.verifyLogin(email, password)){
+      this.route.navigateByUrl('home');
+    } else {
+      this.authService.isLoggedIn = false;
+    }
   }
 }
