@@ -2,7 +2,7 @@
   <div class="col-1"></div>
   <div class="container-fluid">
   <!-- ICONE NDD -->
-  <a class="navbar-brand" href="#">
+  <a class="navbar-brand" routerLink="/main" >
     <img class="logo" src="https://ndd.tech/wp-content/uploads/2021/01/Logo-NDD-Padrao-1-1024x512.png" alt="">
   </a>   
   <!-- BOTAO DE MENU -->
@@ -12,17 +12,17 @@
     <!-- BOTOES NAVEGACAO -->
   <div class="collapse navbar-collapse" id="menu">
     <ul class="navbar-nav me-auto">
-      <li [routerLinkActive]="'active'" class="nav-item">
-        <a class="nav-link" routerLink="/main" aria-current="page">Inicio</a>
+      <li  class="nav-item">
+        <a class="nav-link d-inline-block" routerLink="/main" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" aria-current="page">Inicio</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/main/trainings" >Meus Cursos</a>
+        <a class="nav-link d-inline-block" routerLink="/main/trainings" routerLinkActive="active" >Meus Cursos</a>
       </li>
     </ul>
 
    <!--Botão Perfil -->
-   <div ngbDropdown class="d-inline-block ">
-      <span>Rodrigo Rosa</span>
+   <div ngbDropdown class="d-inline-block">
+      <span>{{users[0].name}}</span>
       <button type="button" class="btn" id="dropdownBasic1" ngbDropdownToggle>
         <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
       </button>
