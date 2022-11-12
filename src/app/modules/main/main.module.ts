@@ -9,6 +9,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from 'src/app/components/header/header.component';
 import { TrainingComponent } from './components/training/training.component';
+import { TrainingVideoComponent } from './components/training-video/training-video.component';
+
 
 
 @NgModule({
@@ -17,8 +19,10 @@ import { TrainingComponent } from './components/training/training.component';
     HomeComponent,
     ItemTrainingComponent,
     HeaderComponent,
-    TrainingComponent
+    TrainingComponent,   
+    TrainingVideoComponent
   ],
+
   imports: [
     CommonModule,
     MainRoutingModule,
