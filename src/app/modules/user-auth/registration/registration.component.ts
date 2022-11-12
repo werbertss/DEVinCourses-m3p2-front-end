@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {  Observable, Subscriber } from 'rxjs';
+import { Observable, Subscriber } from 'rxjs';
 import { IUser } from 'src/app/models/IUser';
 //import { HttpClient } from '@angular/common/http';
-
 
 @Component({
   selector: 'pro-registration',
   templateUrl: './registration.component.html',
-  styleUrls: ['./registration.component.scss']
+  styleUrls: ['./registration.component.scss'],
 })
 export class RegistrationComponent implements OnInit {
   image!: any;
@@ -15,13 +14,11 @@ export class RegistrationComponent implements OnInit {
   User!: IUser;
   default: any;
   selectedFile: any;
-  constructor() { }
+  constructor() {}
 
+  myimage: any;
 
-  myimage:any;
-
-    ngOnInit(): void {
-    }
+  ngOnInit(): void {}
 
   onChange($event: any) {
     const file = $event.target.files[0];
@@ -33,17 +30,10 @@ export class RegistrationComponent implements OnInit {
     const observable = new Observable((subscriber: Subscriber<any>) => {
       this.readFile(file, subscriber);
     });
-      observable.subscribe((d) => {
-
-        console.log(d);
-        this.myimage = observable;
-
+    observable.subscribe((d) => {
+      console.log(d);
+      this.myimage = observable;
     });
-
-
-
-
-
   }
 
   readFile(file: File, subscriber: Subscriber<any>) {
@@ -60,69 +50,6 @@ export class RegistrationComponent implements OnInit {
     };
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   // selecionaimagen(event: any) {
   //   if (event.target.files && event.target.files[0]) {
   //     this.image = event.target.files[0];
@@ -134,12 +61,8 @@ export class RegistrationComponent implements OnInit {
 
   //     // this.http.post('http://localhost:8080/fotos', formData)
   //     //   .subscribe(resposta => console.log('Upload ok.'));
-
   //   }
-
   // }
-
-
 
   // getBase64(file: File) {
   //   var reader = new FileReader();
@@ -150,50 +73,15 @@ export class RegistrationComponent implements OnInit {
   //     console.log("erro", this.error);
   //   }
 
-
   // }
-
-
-
-
-
-
-
-
-
 }
 
-
-
-
 //   send() {
-
 //     this.getBase64(this.image);
 //     console.log(this.image);
-
-
 //   }
 //   selecionaimagen(event: any) {
 //     this.selectedFile = event.target.file[0];
-
 //     this.User.image = this.image;
-
 //   }
-
 // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
