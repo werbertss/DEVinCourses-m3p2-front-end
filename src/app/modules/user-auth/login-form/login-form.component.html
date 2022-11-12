@@ -1,12 +1,12 @@
-<div class="input-container">
-  <h1>Login</h1>
+<div class="input-container p-5">
+  <h1 class="mb-5">Login</h1>
   <form [formGroup]="form">
     <div class="form-group">
       <label for="email">Email</label>
       <input
         type="email"
         id="email"
-        class="form-control"
+        class="form-control mb-2"
         formControlName="email"
         required
       />
@@ -15,7 +15,7 @@
         *ngIf="form.controls['email'].dirty && form.controls['email'].invalid"
         class="alert alert-danger"
       >
-        Email is required
+        Email obrigatório.
       </div>
       <label for="password">Senha</label>
       <input
@@ -32,16 +32,19 @@
         "
         class="alert alert-danger"
       >
-        Password is required and must be at least 8 characters
+        Senha obrigatória, somente letras e/ou números. Mínimo 8 caracteres.
       </div>
-      <p>Não possui o cadastro?</p>
-      <a [routerLink]="['/cadastro']">Cadastre-se aqui!</a>
+      <br />
+      <p class="text-center">
+        Não possui o cadastro?
+        <a [routerLink]="['/cadastro']" class="text-dark" href="">Cadastre-se aqui!</a>
+      </p>
 
-      <div class="container">
+      <div class="container text-center mb-4">
         <!-- Vertically centered scrollable modal -->
         <a
           href=""
-          class="teste"
+          class="text-dark"
           type="button"
           data-bs-toggle="modal"
           data-bs-target="#exampleModal"
@@ -58,56 +61,54 @@
         >
           <div class="modal-dialog">
             <div class="modal-content">
-              <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">
-                  Digite seu email
+              <div class="text-center mt-3">
+                <h1 class="modal-title fs-3" id="exampleModalLabel">
+                  Esqueci minha senha
                 </h1>
-                <button
-                  type="button"
-                  class="btn-close"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
-                ></button>
               </div>
-              <div class="modal-body">
+              <div class="modal-body text-start">
                 <form>
                   <p>
                     Será enviado um token para redefinição de senha para o email
-                    digitado abaixo
+                    digitado abaixo.
                   </p>
-                  <div class="mb-3">
+                  <div class="mb-1">
                     <label for="forgetEmail" class="col-form-label"
-                      >Digite seu email:</label
+                      >Digite seu email</label
                     >
                     <input type="email" class="form-control" id="forgetEmail" />
                   </div>
                 </form>
               </div>
-              <div class="modal-footer">
-                <button
-                  type="button"
-                  class="btn btn-danger"
-                  data-bs-dismiss="modal"
-                >
-                  Cancelar
-                </button>
-                <button type="button" class="btn btn-primary">
-                  Enviar token
-                </button>
+              <div class="row text-end p-3">
+                <div class="col">
+                  <button
+                    type="button"
+                    class="btn button-cancel-modal mx-3"
+                    data-bs-dismiss="modal"
+                  >
+                    Cancelar
+                  </button>
+                  <button type="button" class="btn button-send-modal">
+                    Enviar token
+                  </button>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <button
-        class="btn btn-primary"
-        (click)="submitLogin()"
-        [disabled]="!form.valid"
-        type="submit"
-      >
-        Entrar
-      </button>
+      <div>
+        <button
+          class="btn button-send form-control"
+          (click)="submitLogin()"
+          [disabled]="!form.valid"
+          type="submit"
+        >
+          Entrar
+        </button>
+      </div>
     </div>
   </form>
 </div>
