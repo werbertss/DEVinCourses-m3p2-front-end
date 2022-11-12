@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, Subscriber } from 'rxjs';
-import { IUser } from 'src/app/models/IUser';
+import { IUser } from 'src/app/models/user';
 //import { HttpClient } from '@angular/common/http';
 
 @Component({

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { iif, Observable, of } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import SERVER_ROUTE from 'src/app/constants/server';
-import { ILogin } from '../../models/ILogin';
+import { ILogin } from '../../models/login';
 
 @Injectable({
   providedIn: 'root'
