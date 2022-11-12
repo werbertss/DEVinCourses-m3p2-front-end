@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    // Rota provisória para visualização de componentes do módulo
     path: '',
     loadChildren: () =>
       import('./modules/user-auth/user-auth.module').then((m) => m.UserAuthModule),
