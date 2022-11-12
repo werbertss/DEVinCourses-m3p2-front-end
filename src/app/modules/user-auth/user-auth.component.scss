@@ -63,16 +63,16 @@ main {
     font-weight: 700;
 
     color: $azul-escuro;
-    margin-bottom: 8px;
+    margin-bottom: 2px; //era 8px
   }
 
   input {
     font-family: inherit;
-    width: 92%;
+    width: 100%;
 
     font-size: 18px;
 
-    padding: 8px 0 15px 10px;
+    padding: 8px 0 5px 10px; //era 8 0 15 10
 
     border: 2px solid $azul-escuro;
     border-radius: 5px;

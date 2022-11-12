@@ -31,13 +31,10 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss",
+              "src/styles.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css"
-
             ],
-            "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.js"
-            ]
+            "scripts": ["node_modules/bootstrap/dist/js/bootstrap.js"]
           },
           "configurations": {
             "production": {
@@ -111,5 +108,8 @@
       }
     }
   },
-  "defaultProject": "projeto"
+  "defaultProject": "projeto",
+  "cli": {
+    "analytics": false
+  }
 }
