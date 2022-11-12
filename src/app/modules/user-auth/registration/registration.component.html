@@ -1,56 +1,44 @@
-<div class="container p-5">
+<div class="container p-5 input-container">
 
-  <div class="row mb-4 p-1" >
+  <form form="registrationForm">
+      <div class="row mb-4 p-1"><h1 class="text-center title">Cadastro</h1></div>
 
-
-
-        <div class="col-8">
-            <h1 class="text-center title">Cadastro</h1>
+      <div class="row">
+        <div class="col text-start p-0">
+          <label for="name">Nome Completo</label><br><input minlenght="3" required="true" type="text" class="form-control mb-2" id="name" placeholder="Seu nome">
         </div>
+      </div>
 
+      <div class="row">
+        <div class="col text-start p-0">
+          <label for="email">Email</label><input required="true" type="email" class="form-control mb-2" id="email" placeholder="Seu email">
+        </div>
+      </div>
 
+      <div class="row gap-3">
+        <div class="col-sm text-start p-0">
+          <label for="age">Idade</label><input required="true" type="number" class="form-control mb-2" id="age" placeholder="Sua idade">
+        </div>
+        <div class="col-sm text-start p-0">
+          <label for="cpf">CPF</label><br><input required="true" type="text" class="form-control mb-2" id="cpf" placeholder="Seu CPF">
+        </div>
+      </div>
 
-  </div>
-
-  <div class="row">
-    <div class="col text-start input-container2 p-0">
-      <label for="name">Nome Completo</label><br><input type="text" class="form-control mb-2" id="name" placeholder="Seu nome">
-    </div>
-  </div>
-
-  <div class="row input-container">
-    <div class="col text-start input-container2 p-0">
-      <label for="email">Email</label><input type="email" class="form-control mb-2" id="email" placeholder="Seu email">
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-sm text-start p-0 input-container">
-      <label for="age">Idade</label><input type="number" class="form-control mb-2" id="age" placeholder="Sua idade" min="1" max="5">
-    </div>
-    <div class="col-sm text-start p-0 input-container2">
-      <label for="cpf">CPF</label><br><input type="text" class="form-control mb-2" id="cpf" placeholder="Seu CPF">
-    </div>
-  </div>
-
-  <div class="row ">
-    <div class="col-sm p-0 input-container">
-      <label for="password">Senha</label><br><input type="password" class="form-control mb-3" id="password" placeholder="Sua senha">
-    </div>
-    <div class="col-sm p-0 input-container2">
-      <label for="confirm">Confirmar senha</label><br><input type="password" class="form-control mb-3" id="confirm-password" placeholder="Confirme a senha">
-    </div>
-  </div>
+      <div class="row gap-3">
+        <div class="col-sm p-0">
+          <label for="password">Senha</label><br><input minlength="8" required="true" type="password" class="form-control mb-3" id="password" placeholder="Sua senha">
+        </div>
+        <div class="col-sm p-0">
+          <label for="confirm">Confirmar senha</label><br><input minlenght="8" required="true" type="password" class="form-control mb-3" id="confirm-password" placeholder="Confirme a senha">
+        </div>
+      </div>
 
   <div class="mb-3 d-lg-flex justify-content-between ">
 
     <input type="file" (change)="onChange($event)" />
-
-
-       <a class="navbar-brand"  *ngIf="myimage" >
+         <a class="navbar-brand"  *ngIf="myimage" >
              <img [src]="myimage | async" width="50px" height="50px" style="border-radius: 40%; " alt="" />
          </a>
-
     <!-- <input class="form-control" accept="image/png" type="file" (change)="selecionaimagen($event)"> -->
 
   </div>
@@ -59,8 +47,9 @@
   <div class="row button-confirm">
     <p class="text-center mt-3">Já possui cadastro ?
       <a href="https://grid.malven.co/" class="href">Entre aqui !</a>
-    </p><br>
+    </p>
+    <br>
     <button class="submit bg-success form-control" type="submit" ><label for="botao">Confirmar</label></button>
-  </div>
-
 </div>
+
+
