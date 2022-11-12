@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { TRAINING_MOCK } from 'src/app/mocks/training_mock';
 import { USER_MOCK } from 'src/app/mocks/user_mock';
 import { ITraining } from 'src/app/models/training';
@@ -19,7 +20,23 @@ export class HomeComponent implements OnInit {
   category: string = 'todos';
   filters!: ITraining[];
 
-  constructor() {}
+  constructor(
+    private config: NgbModalConfig, 
+    private modalService: NgbModal) {
+    // customize default values of modals used by this component tree
+    config.backdrop = 'static';
+    config.keyboard = false;
+  }
+
+  openXl(content: any, training:ITraining) {
+    this.trainingModel = training;
+    this.modalService.open(content, {
+      size: 'lg',
+      centered: true,
+      scrollable: true,
+    });
+  }
+
 
   ngOnInit(): void {
     this.filtrar();

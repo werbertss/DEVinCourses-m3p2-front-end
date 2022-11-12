@@ -4,9 +4,9 @@ export const TRAINING_MOCK: ITraining[] = [
   {
     id: 1,
     url: 'https://certificadocursosonline.com/wp-content/uploads/2018/07/Curso-de-Manutenc%CC%A7a%CC%83o-de-Computadores.jpg',
-    title: 'Curso de Manutenção de Computadores',
+    title: 'Manutenção de Computadores',
     description:
-      'Architecto eaque consectetur nostrum impedit earum at harum. Reiciendis suscipit soluta, ab, repellat ad',
+      'Architecto eaque consectetur nostrum impedit earum at harum. Reiciendis suscipit soluta, ab, repellat ad, Architecto eaque consectetur nostrum impedit earum at harum. Architecto eaque consectetur nostrum impedit earum at harum., Architecto eaque consectetur nostrum impedit earum at harum.',
     teacher: 'Carlos Silva',
     duration: 20,
     status: 'disponivel',
@@ -28,7 +28,7 @@ export const TRAINING_MOCK: ITraining[] = [
     url: 'https://certificadocursosonline.com/wp-content/uploads/2019/10/entrepreneur-1340649_640.jpg',
     title: 'Planos de Negocios',
     description:
-      'Neste curso, os alunos irão obter um conhecimento aprofundado sobre os recursos disponíveis sobre Animation.',
+      'Neste curso, os alunos irão obter um conhecimento aprofundado sobre os recursos disponíveis sobre Animation,Neste curso, os alunos irão obter um conhecimento aprofundado sobre os recursos disponíveis sobre Animation, Neste curso, os alunos irão obter um conhecimento aprofundado sobre os recursos disponíveis sobre Animation',
     teacher: 'Ana Petra',
     duration: 80,
     status: 'disponivel',
