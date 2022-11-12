@@ -23,6 +23,11 @@ const routes: Routes = [
         component: RegistrationComponent,
       }
     ]
+  },
+  {
+    path: 'home',
+    // loadchildren import main module
+    // canactivate login guard
   }
 ];
 
