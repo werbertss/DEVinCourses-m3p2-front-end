@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { TRAININGBYUSER_MOCK } from 'src/app/mocks/trainingsByUser_mock';
 import { TRAINING_MOCK } from 'src/app/mocks/training_mock';
 import { USER_MOCK } from 'src/app/mocks/user_mock';
 import { ITraining } from 'src/app/models/training';
@@ -49,5 +50,16 @@ export class HomeComponent implements OnInit {
     else{
       this.filters =  this.trainings.filter( item => item.category == this.category)
     }
+  }
+
+  estaMatriculado(idDoCursoClicado:number):void {
+    
+    //cursos do usuário estático, id : 1
+    var usuario = TRAININGBYUSER_MOCK.find(x => x.userId == 1);
+    
+    if(usuario?.id == idDoCursoClicado){
+      window.alert("Você já está matriculado neste curso.");
+    }
+    
   }
 }
