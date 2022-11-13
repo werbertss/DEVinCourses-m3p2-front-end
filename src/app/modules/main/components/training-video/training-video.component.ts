@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+const YTPlayer = require('yt-player')
 @Component({
   selector: 'pro-training-video',
   templateUrl: './training-video.component.html',
@@ -19,32 +19,64 @@ export class TrainingVideoComponent implements OnInit {
     category: 'tecnologia',
     modules:[
       {
+        moduleId: '1',
         titleModule:'Módulo 1',
-        link: 'https://www.youtube.com/embed/vbs7jKRMuiA',
+        link: 'vbs7jKRMuiA',
         img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjOUpolyASUyrLMSV2vqIvQQZ8_--ddMSsJF_xvxZ3tEwPPtZrc57tShVksL8y8JZ8QIk&usqp=CAU',
         descriptionModule: 'Lorem ipsum dolor sit amet consectetur.',
         statusModule: 'andamento'
       },
       {
+        moduleId: '2',
         titleModule:'Módulo 2',
-        link: 'https://www.youtube.com/embed/vbs7jKRMuiA',
+        link: '3CC_YtyD7Po',
         img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjOUpolyASUyrLMSV2vqIvQQZ8_--ddMSsJF_xvxZ3tEwPPtZrc57tShVksL8y8JZ8QIk&usqp=CAU',
         descriptionModule: 'Incidunt reiciendis vel asperiores.',
         statusModule: 'disponivel'
       },
       {
+        moduleId: '3',
         titleModule:'Módulo 3',
-        link: 'https://www.youtube.com/embed/vbs7jKRMuiA',
+        link: 'vbs7jKRMuiA',
         img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjOUpolyASUyrLMSV2vqIvQQZ8_--ddMSsJF_xvxZ3tEwPPtZrc57tShVksL8y8JZ8QIk&usqp=CAU',
         descriptionModule: 'Ullam, quisquam? Culpa doloremque.',
         statusModule: 'disponivel'
       },
     ]
   }
+
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.training.modules[0].link)
+    this.chamarVideo();
+  }
+
+  
+
+  chamarVideo(){
+    const player = new YTPlayer('#player', {
+      timeupdateFrequency: 10000
+    })
+
+    player.load(this.training.modules[1].link) // https://youtube.com/embed/
+    player.setVolume(10)
+
+
+    player.on('timeupdate', () => {
+      let progressBar:any = document.getElementById("progressBar")
+      let totalPorcent = 100;
+      let totalVideo = Math.round(player.getDuration());
+      let tempoAtual = Math.round(player.getCurrentTime())
+      let porcent = Math.round((totalPorcent* tempoAtual) / totalVideo)
+      console.log(porcent)
+      progressBar.style.width = `${porcent}%`;
+      
+    })
+
+    player.on('ended', () => {
+      console.log("o video acabou")
+    })
+    
   }
 
 }
