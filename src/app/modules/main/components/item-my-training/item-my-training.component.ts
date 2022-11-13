@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ITraining } from 'src/app/models/training';
+import { AlertService } from '../../services/alert.service';
 
 @Component({
   selector: 'pro-item-my-training',
@@ -20,9 +21,13 @@ export class ItemMyTrainingComponent implements OnInit {
     category: '',
   };
   
-  constructor() { }
+  constructor(private alertService:AlertService) { }
 
   ngOnInit(): void {
+  }
+
+  removeTraining(){
+    this.alertService.alertDeleteTraining();
   }
 
 }
