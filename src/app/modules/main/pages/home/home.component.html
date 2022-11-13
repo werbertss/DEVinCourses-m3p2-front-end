@@ -1,16 +1,29 @@
-<ng-template (ngModel)="trainingModel" #content let-c="close" let-d="dismiss">
+<ng-template (ngModel)="(trainingModel)" #content let-c="close" let-d="dismiss">
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title"> {{ trainingModel.title }}</h4>
-    <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+    <h4 class="modal-title" id="modal-basic-title">
+      {{ trainingModel.title }}
+    </h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="d('Cross click')"
+    ></button>
   </div>
   <div class="modal-body">
     <div class="text-center">
-      <img class="imgfluid imgCard" src="{{ trainingModel.url }}" alt="">
+      <img class="imgfluid imgCard" src="{{ trainingModel.url }}" alt="" />
       <p>{{ trainingModel.description }}</p>
     </div>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-success" (click)="c('Save click')">Quero fazer este curso</button>
+    <button
+      type="button"
+      class="btn btn-success"
+      (click)="estaMatriculado(trainingModel.id)"
+    >
+      Quero fazer este curso
+    </button>
   </div>
 </ng-template>
 <div class="container">
@@ -22,7 +35,7 @@
         <ol class="breadcrumb w-100">
           <li class="breadcrumb-item active" aria-current="page">Home</li>
         </ol>
-    </nav>
+      </nav>
     </div>
   </div>
 </div>
@@ -31,20 +44,67 @@
     <div class="col-1"></div>
     <div class="col-10 mt-4 mb-2 d-flex home">
       <form (change)="filtrar()">
-        <input [(ngModel)]="category" type="radio" name="categoria" class="btn-check"  id="todos" autocomplete="off" value="todos" checked>
-        <label class="btn btn-outline-primary m-1 " for="todos">Todos</label>
-  
-        <input [(ngModel)]="category" type="radio" name="categoria" class="btn-check" id="tecnologia" autocomplete="off" value="tecnologia">
-        <label class="btn btn-outline-primary m-1" for="tecnologia">Tecnologia</label>
-  
-        <input [(ngModel)]="category" type="radio" name="categoria" class="btn-check" id="financas" autocomplete="off" value="financas">
-        <label class="btn btn-outline-primary m-1 " for="financas">Finanças</label>
-        
-        <input [(ngModel)]="category" type="radio" name="categoria" class="btn-check" id="idioma" autocomplete="off" value="idioma">
+        <input
+          [(ngModel)]="category"
+          type="radio"
+          name="categoria"
+          class="btn-check"
+          id="todos"
+          autocomplete="off"
+          value="todos"
+          checked
+        />
+        <label class="btn btn-outline-primary m-1" for="todos">Todos</label>
+
+        <input
+          [(ngModel)]="category"
+          type="radio"
+          name="categoria"
+          class="btn-check"
+          id="tecnologia"
+          autocomplete="off"
+          value="tecnologia"
+        />
+        <label class="btn btn-outline-primary m-1" for="tecnologia"
+          >Tecnologia</label
+        >
+
+        <input
+          [(ngModel)]="category"
+          type="radio"
+          name="categoria"
+          class="btn-check"
+          id="financas"
+          autocomplete="off"
+          value="financas"
+        />
+        <label class="btn btn-outline-primary m-1" for="financas"
+          >Finanças</label
+        >
+
+        <input
+          [(ngModel)]="category"
+          type="radio"
+          name="categoria"
+          class="btn-check"
+          id="idioma"
+          autocomplete="off"
+          value="idioma"
+        />
         <label class="btn btn-outline-primary m-1" for="idioma">Idioma</label>
-  
-        <input [(ngModel)]="category" type="radio" name="categoria" class="btn-check" id="marketing" autocomplete="off" value="marketing">
-        <label class="btn btn-outline-primary m-1" for="marketing">Marketing</label>
+
+        <input
+          [(ngModel)]="category"
+          type="radio"
+          name="categoria"
+          class="btn-check"
+          id="marketing"
+          autocomplete="off"
+          value="marketing"
+        />
+        <label class="btn btn-outline-primary m-1" for="marketing"
+          >Marketing</label
+        >
       </form>
     </div>
   </div>
@@ -54,9 +114,13 @@
     <div class="col-1"></div>
     <div class="col-10">
       <div class="d-flex flex-wrap justify-content-center">
-        <pro-item-training [item]="training" class="col-md-2 m-2 mt-4" *ngFor="let training of filters" (click)="openXl(content, training)"></pro-item-training>
+        <pro-item-training
+          [item]="training"
+          class="col-md-2 m-2 mt-4"
+          *ngFor="let training of filters"
+          (click)="openXl(content, training)"
+        ></pro-item-training>
       </div>
     </div>
   </div>
 </div>
-
