@@ -37,7 +37,7 @@ export const TRAININGBYUSER_MOCK: ITraningByUser[] = [
           'Neste curso, os alunos irão obter um conhecimento aprofundado sobre os recursos disponíveis sobre Coaching.',
         teacher: 'Jair souza',
         duration: 16,
-        status: 'andamento',
+        status: 'finalizado',
         category: 'psicologia',
         },
 {
