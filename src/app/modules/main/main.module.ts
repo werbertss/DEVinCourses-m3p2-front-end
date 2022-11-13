@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from 'src/app/components/header/header.component';
 import { TrainingComponent } from './components/training/training.component';
 import { TrainingVideoComponent } from './components/training-video/training-video.component';
+import { ItemMyTrainingComponent } from './components/item-my-training/item-my-training.component';
 
 
 
@@ -20,7 +21,7 @@ import { TrainingVideoComponent } from './components/training-video/training-vid
     ItemTrainingComponent,
     HeaderComponent,
     TrainingComponent,   
-    TrainingVideoComponent
+    TrainingVideoComponent, ItemMyTrainingComponent
   ],
 
   imports: [
