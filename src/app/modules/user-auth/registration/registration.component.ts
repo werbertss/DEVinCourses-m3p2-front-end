@@ -10,40 +10,35 @@ import { IUser } from 'src/app/models/IUser';
   styleUrls: ['./registration.component.scss']
 })
 export class RegistrationComponent implements OnInit {
-  image!: any;
-  image64: FileReader = new FileReader();
   User!: IUser;
-  default: any;
   selectedFile: any;
-  constructor() { }
-
-
   myimage:any;
 
-    ngOnInit(): void {
-    }
+  constructor() { }
+  ngOnInit(): void {
+  }
 
   onChange($event: any) {
-    const file = $event.target.files[0];
-    this.convertToBase64(file);
-    console.log(this.myimage);
+    if ($event.target.files[0].size >= 10240000) {
+      window.alert("tamanho não é permitido");
+      $event.target.value = null;
+
+    } else {
+      const file = $event.target.files[0];
+      this.convertToBase64(file);
+      //console.log(this.myimage);
+    }
+
   }
 
   convertToBase64(file: File) {
-    const observable = new Observable((subscriber: Subscriber<any>) => {
+    const imageTrasfer = new Observable((subscriber: Subscriber<any>) => {
       this.readFile(file, subscriber);
     });
-      observable.subscribe((d) => {
-
+    imageTrasfer.subscribe((d) => {
         console.log(d);
-        this.myimage = observable;
-
+      this.myimage = imageTrasfer;
     });
-
-
-
-
-
   }
 
   readFile(file: File, subscriber: Subscriber<any>) {

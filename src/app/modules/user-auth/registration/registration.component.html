@@ -73,13 +73,12 @@
       </div>
     </div>
 
-    <div class="mb-3 d-lg-flex justify-content-between">
-      <input type="file" (change)="onChange($event)" />
+    <div class="col-sm p-0 d-flex justify-content-center button-photo">
+      <input class="form-control " accept="image/PNG, image/JPG, image/JPEG" type="file"  (change)="onChange($event)" />
 
-      <!-- <input class="form-control" accept="image/png" type="file" (change)="selecionaimagen($event)"> -->
     </div>
 
- 
+
     <div class="row">
       <p class="text-center mt-3">
         Já possui cadastro ?
