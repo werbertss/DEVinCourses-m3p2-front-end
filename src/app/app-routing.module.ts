@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ForbiddenComponent } from './pages/forbidden/forbidden.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 
 const routes: Routes = [
@@ -9,9 +10,13 @@ const routes: Routes = [
       import('./modules/user-auth/user-auth.module').then((m) => m.UserAuthModule),
   },
   {
+    path: 'desautorizado',
+    component: ForbiddenComponent,
+  },
+  {
     path: '**',
     component: PageNotFoundComponent,
-  }
+  },
 ];
 
 @NgModule({
