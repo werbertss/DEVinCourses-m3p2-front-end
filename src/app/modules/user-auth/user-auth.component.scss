@@ -1,0 +1,86 @@
+@import '/src/styles.scss';
+
+@mixin displayFlex($direction, $alignContent, $justify, $alignItems) {
+  display: flex;
+  flex-direction: $direction;
+  align-content: $alignContent;
+  justify-content: $justify;
+  align-items: $alignItems;
+}
+
+main {
+  height: 100vh;
+  background-color: $azul-claro;
+  @include displayFlex(row, space-around, space-between, center);
+
+
+  .logo-container {
+    @include displayFlex(column, normal, normal, center);
+
+    max-width: 60vw;
+    min-width: 50%;
+    overflow: hidden;
+
+    img {
+      max-width: 65%;
+    }
+
+    .separator {
+      width: 468px;
+      border-top: 1px solid #000;
+    }
+
+    p {
+      font-family: 'Inter', sans-serif;
+      font-size: 29px;
+      text-align: center;
+
+      width: 418px;
+    }
+  }
+
+  .container {
+    width: 100%;
+
+    .form-container {
+      width: 508px;
+      height: 662px;
+
+      background-color: #FFF;
+
+      border-radius: 15px;
+    }
+  }
+}
+
+// ESTILOS PARA INPUTS
+// EMMET: .input-container>(label+input)
+.input-container {
+  font-family: 'Poppins', sans-serif;
+
+  label {
+    font-size: 20px;
+    font-weight: 700;
+
+    color: $azul-escuro;
+    margin-bottom: 2px; //era 8px
+  }
+
+  input {
+    font-family: inherit;
+    width: 100%;
+
+    font-size: 18px;
+
+    padding: 8px 0 5px 10px; //era 8 0 15 10
+
+    border: 2px solid $azul-escuro;
+    border-radius: 5px;
+
+    &::placeholder {
+      font-weight: 800;
+      color: $azul-escuro;
+      opacity: 0.2;
+    }
+  }
+}
