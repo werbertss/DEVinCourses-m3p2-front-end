@@ -30,11 +30,13 @@ export class LoginFormComponent implements OnInit {
 
     let email = this.form.controls['email'].value;
     let password = this.form.controls['password'].value;
-
+    /*
+    TODO: FIX AUTHENTICATION SERVICE
     if (this.authService.verifyLogin(email, password)){
       this.route.navigateByUrl('home');
     } else {
       this.authService.isLoggedIn = false;
     }
+    */
   }
 }
