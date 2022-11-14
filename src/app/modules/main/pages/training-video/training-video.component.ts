@@ -55,22 +55,36 @@ export class TrainingVideoComponent implements OnInit {
 
   chamarVideo(){
     const player = new YTPlayer('#player', {
-      timeupdateFrequency: 10000
+      timeupdateFrequency: 5000
     })
 
     player.load(this.training.modules[1].link) // https://youtube.com/embed/
     player.setVolume(10)
 
-
+    let progressBar:any
+    let totalPorcent:number;
+    let totalVideo:number;
+    let tempoAtual:number;
+    let porcent:number;
+    let varAux:number;
+    
     player.on('timeupdate', () => {
-      let progressBar:any = document.getElementById(`${this.training.modules[1].moduleId}`)
-      let totalPorcent = 100;
-      let totalVideo = Math.round(player.getDuration());
-      let tempoAtual = Math.round(player.getCurrentTime())
-      let porcent = Math.round((totalPorcent* tempoAtual) / totalVideo)
-      console.log(porcent)
-      progressBar.style.width = `${porcent}%`;
+      progressBar = document.getElementById(this.training.modules[1].moduleId);
       
+      totalPorcent = 100;
+      totalVideo = Math.round(player.getDuration());
+      tempoAtual = Math.round(player.getCurrentTime());
+      porcent = Math.round((totalPorcent* tempoAtual) / totalVideo);
+
+      varAux = progressBar.style.width.slice(0, progressBar.style.width.length -1);
+
+      console.log(varAux)
+      console.log(porcent)
+      
+      if(varAux <= porcent && porcent <= 100){
+        progressBar.style.width = `${porcent}%`;
+      }
+
     })
 
     player.on('ended', () => {
