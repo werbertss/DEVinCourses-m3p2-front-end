@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LoginGuard } from 'src/app/guards/login.guard';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { UserAuthComponent } from './user-auth.component';
@@ -23,6 +24,12 @@ const routes: Routes = [
         component: RegistrationComponent,
       }
     ]
+  },
+  {
+    path: 'home',
+    loadChildren: () =>
+      import('../main/main.module').then((m) => m.MainModule),
+    // canActivate:[LoginGuard]
   }
 ];
 

@@ -1,41 +1,40 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
 
 @Component({
   selector: 'pro-login-form',
   templateUrl: './login-form.component.html',
-  styleUrls: ['./login-form.component.scss']
+  styleUrls: ['./login-form.component.scss'],
 })
-export class LoginFormComponent implements OnInit {
-
+export class LoginFormComponent {
   regexPassword: RegExp = /[^!@#$ %^&*()_+\-=\[\]{};':"\\|,.<>\/?]$/;
 
   form = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required, Validators.pattern(this.regexPassword)]),
+  });
 
-  })
-
-  submitted = false;
-  // Mock
-  // email: string = "email@teste.com";
-  // password: string = "12345678";
-
-  constructor() {
-
-  }
-
-  ngOnInit(): void {
-    console.log(this.form);
-  }
+  constructor(private authService: AuthenticationService,private route: Router) {}
 
   submitLogin() {
-    this.submitted = true;
     if (this.form.invalid) {
       return;
-
     }
-    alert('Sucesso')
 
+    let email = this.form.controls['email'].value;
+    let password = this.form.controls['password'].value;
+
+    this.authService.verifyLogin(email, password).subscribe({
+      next: (token) => {
+        localStorage.setItem('token', token);
+        this.authService.userAuthorized = true;
+        this.route.navigateByUrl('home');
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
   }
 }
