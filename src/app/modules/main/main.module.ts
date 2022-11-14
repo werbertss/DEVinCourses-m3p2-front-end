@@ -8,11 +8,9 @@ import { ItemTrainingComponent } from './components/item-training/item-training.
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from 'src/app/components/header/header.component';
-import { TrainingComponent } from './components/training/training.component';
-import { TrainingVideoComponent } from './components/training-video/training-video.component';
+import { TrainingComponent } from './pages/training/training.component';
+import { TrainingVideoComponent } from './pages/training-video/training-video.component';
 import { ItemMyTrainingComponent } from './components/item-my-training/item-my-training.component';
-
-
 
 @NgModule({
   declarations: [
@@ -20,8 +18,9 @@ import { ItemMyTrainingComponent } from './components/item-my-training/item-my-t
     HomeComponent,
     ItemTrainingComponent,
     HeaderComponent,
-    TrainingComponent,   
-    TrainingVideoComponent, ItemMyTrainingComponent
+    TrainingComponent,
+    TrainingVideoComponent,
+    ItemMyTrainingComponent,
   ],
 
   imports: [
@@ -30,6 +29,6 @@ import { ItemMyTrainingComponent } from './components/item-my-training/item-my-t
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
-  ]
+  ],
 })
-export class MainModule { }
+export class MainModule {}

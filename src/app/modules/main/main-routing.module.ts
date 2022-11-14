@@ -1,8 +1,8 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { TrainingVideoComponent } from './components/training-video/training-video.component';
+import { TrainingVideoComponent } from './pages/training-video/training-video.component';
 
-import { TrainingComponent } from './components/training/training.component';
+import { TrainingComponent } from './pages/training/training.component';
 import { MainComponent } from './main.component';
 import { HomeComponent } from './pages/home/home.component';
 
@@ -13,23 +13,23 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component:HomeComponent,
+        component: HomeComponent,
       },
       {
         path: 'trainings',
-        component: TrainingComponent
+        component: TrainingComponent,
       },
       {
         path: 'video',
-        component: TrainingVideoComponent
-      } 
+        component: TrainingVideoComponent,
+      },
       // Lugar para rotas internas do módulo
-    ]
-  }
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class MainRoutingModule { }
+export class MainRoutingModule {}
