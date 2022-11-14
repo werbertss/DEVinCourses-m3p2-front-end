@@ -30,10 +30,9 @@
             <div class="container">
                 <h6>Módulos: {{ training.modules.length }}</h6>
                 <div class="list-group container">
-                    <a href="#" class="list-group-item list-group-item-action bg-secondary">
-                        <div *ngFor="let module of training.modules" class="card m-2">
+                    <a class="list-group-item list-group-item-action bg-secondary">
+                        <div *ngFor="let module of training.modules" class="card m-2 card-video" (click)="chamarVideo(module)">
                             <div class="row g-0">
-                             
                                 <div class="col-md-4">
                                    
                                     <img src="{{ module.img }}" class="img-fluid rounded py-2 ms-1" alt="...">
