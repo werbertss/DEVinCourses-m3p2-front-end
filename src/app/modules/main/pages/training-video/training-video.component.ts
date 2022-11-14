@@ -6,6 +6,8 @@ const YTPlayer = require('yt-player')
   styleUrls: ['./training-video.component.scss']
 })
 export class TrainingVideoComponent implements OnInit {
+  player:any;
+
   training:any =
   {
     id: 1,
@@ -19,7 +21,7 @@ export class TrainingVideoComponent implements OnInit {
     category: 'tecnologia',
     modules:[
       {
-        moduleId: '1',
+        moduleId: 1,
         titleModule:'Módulo 1',
         link: 'vbs7jKRMuiA',
         img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjOUpolyASUyrLMSV2vqIvQQZ8_--ddMSsJF_xvxZ3tEwPPtZrc57tShVksL8y8JZ8QIk&usqp=CAU',
@@ -27,7 +29,7 @@ export class TrainingVideoComponent implements OnInit {
         statusModule: 'finalizado'
       },
       {
-        moduleId: '2',
+        moduleId: 2,
         titleModule:'Módulo 2',
         link: '3CC_YtyD7Po',
         img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjOUpolyASUyrLMSV2vqIvQQZ8_--ddMSsJF_xvxZ3tEwPPtZrc57tShVksL8y8JZ8QIk&usqp=CAU',
@@ -35,9 +37,9 @@ export class TrainingVideoComponent implements OnInit {
         statusModule: 'disponivel'
       },
       {
-        moduleId: '3',
+        moduleId: 3,
         titleModule:'Módulo 3',
-        link: 'vbs7jKRMuiA',
+        link: 'TxxkFWty09g',
         img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjOUpolyASUyrLMSV2vqIvQQZ8_--ddMSsJF_xvxZ3tEwPPtZrc57tShVksL8y8JZ8QIk&usqp=CAU',
         descriptionModule: 'Ullam, quisquam? Culpa doloremque.',
         statusModule: 'disponivel'
@@ -48,18 +50,20 @@ export class TrainingVideoComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.chamarVideo();
+    this.chamarVideo(this.training.modules[0]);
   }
 
-  
+  chamarVideo(module:any){
+    if(this.player){
+      this.player.destroy();
+    }
 
-  chamarVideo(){
-    const player = new YTPlayer('#player', {
+    this.player = new YTPlayer('#player', {
       timeupdateFrequency: 5000
     })
 
-    player.load(this.training.modules[1].link) // https://youtube.com/embed/
-    player.setVolume(10)
+    this.player.load(module.link) // https://youtube.com/embed/
+    this.player.setVolume(10)
 
     let progressBar:any
     let totalPorcent:number;
@@ -69,33 +73,27 @@ export class TrainingVideoComponent implements OnInit {
     let varAux:number;
     let idDinamico:any;
     
-    player.on('timeupdate', () => {
-      progressBar = document.getElementById(this.training.modules[1].moduleId);
-      idDinamico = document.getElementById(this.training.modules[1].link)
+    this.player.on('timeupdate', () => {
+      progressBar = document.getElementById(module.moduleId);
+      idDinamico = document.getElementById(module.link)
       totalPorcent = 100;
-      totalVideo = Math.round(player.getDuration());
-      tempoAtual = Math.round(player.getCurrentTime());
+      totalVideo = Math.round(this.player.getDuration());
+      tempoAtual = Math.round(this.player.getCurrentTime());
       porcent = Math.round((totalPorcent* tempoAtual) / totalVideo);
 
       varAux = progressBar.style.width.slice(0, progressBar.style.width.length -1);
-
-      console.log(varAux)
-      console.log(porcent)
       
       if(varAux <= porcent && porcent <= 100){
         progressBar.style.width = `${porcent}%`;
       }
 
       if(porcent>95){
-
        idDinamico.style.visibility= 'hidden'
-        
-        
       }
     })
 
-    player.on('ended', () => {
-      this.training.modules[1].statusModule = 'finalizado'
+    this.player.on('ended', () => {
+      module.statusModule = 'finalizado'
     })
     
   }
