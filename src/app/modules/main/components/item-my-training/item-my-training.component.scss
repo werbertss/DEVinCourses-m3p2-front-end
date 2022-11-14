@@ -3,8 +3,9 @@
 }
 
 .descricaoCurso{
+    margin-top: 1.5rem;
     font-size: 12px;
-    height: 8rem;
+    height: 7rem;
 }
 
 .cargaHoraria{
@@ -22,4 +23,9 @@
     width: 12rem;
 }
 
+#imgFinalizado{
+    position: absolute;
+    left: 72%;
+    top: 30%;
 
+}
