@@ -63,7 +63,7 @@ export class TrainingVideoComponent implements OnInit {
 
 
     player.on('timeupdate', () => {
-      let progressBar:any = document.getElementById("progressBar")
+      let progressBar:any = document.getElementById(`${this.training.modules[1].moduleId}`)
       let totalPorcent = 100;
       let totalVideo = Math.round(player.getDuration());
       let tempoAtual = Math.round(player.getCurrentTime())
