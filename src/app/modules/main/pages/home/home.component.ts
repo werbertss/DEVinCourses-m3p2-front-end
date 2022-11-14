@@ -21,6 +21,9 @@ export class HomeComponent implements OnInit {
   category: string = 'todos';
   filters!: ITraining[];
 
+  page = 1;
+  pageSize = 20;
+
   constructor(
     private config: NgbModalConfig, 
     private modalService: NgbModal) {
@@ -48,7 +51,7 @@ export class HomeComponent implements OnInit {
       this.filters = this.trainings;
     }
     else{
-      this.filters =  this.trainings.filter( item => item.category == this.category)
+      this.filters =  this.trainings.filter(item => item.category == this.category)
     }
   }
 
