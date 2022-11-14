@@ -1,14 +1,25 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { Observable, Subscriber } from 'rxjs';
+import { IUser } from 'src/app/models/user';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  ValidatorFn,
+  Validators
+} from '@angular/forms';
 
 @Component({
   selector: 'pro-registration',
   templateUrl: './registration.component.html',
-  styleUrls: ['./registration.component.scss']
+  styleUrls: ['./registration.component.scss'],
 })
 
 export class RegistrationComponent implements OnInit {
-  constructor(private formBuilder: FormBuilder) { }
+  User!: IUser;
+  selectedFile: any;
+  myimage: any;
   title='project'
   confirmPassword: any = true;
   formRegistration = new FormGroup(
@@ -21,6 +32,9 @@ export class RegistrationComponent implements OnInit {
     }
   );
   submitted = false;
+
+  constructor(private formBuilder: FormBuilder) { }
+
   ngOnInit(): void {
     this.formRegistration = this.formBuilder.group(
       {
@@ -36,9 +50,8 @@ export class RegistrationComponent implements OnInit {
       }
     )
   }
-  checkMatch(controlName: string, checkControlName: string): ValidatorFn {
-    console.log('zero')
 
+  checkMatch(controlName: string, checkControlName: string): ValidatorFn {
     return (controls: AbstractControl) => {
       const control = controls.get(controlName);
       const checkControl = controls.get(checkControlName);
@@ -54,9 +67,11 @@ export class RegistrationComponent implements OnInit {
       }
     };
   }
+
   get f(): { [key: string]: AbstractControl } {
     return this.formRegistration.controls;
   }
+
   onSubmit(): void {
     this.submitted = true;
 
@@ -64,12 +79,14 @@ export class RegistrationComponent implements OnInit {
       return;
     }
 
-    console.log(JSON.stringify(this.formRegistration.value, null, 2));
+    // POST USER
   }
+
   onReset(): void {
     this.submitted = false;
     this.formRegistration.reset();
   }
+
   checkNumbers(dataForm: FormControl) {
     const inputValue = dataForm.value;
     const regex = /[0-9]/;
@@ -78,6 +95,7 @@ export class RegistrationComponent implements OnInit {
     }
     return null;
   }
+
   checkPassword(dataForm: FormControl) {
     const inputPassword = dataForm.get('passwordInput');
     const inputConfirm = dataForm.get('confirmInput');
@@ -86,6 +104,7 @@ export class RegistrationComponent implements OnInit {
     }
     return null;
   }
+
   checkCPF(dataForm: FormControl) {
     var Sum;
     var Remainder;
@@ -107,5 +126,42 @@ export class RegistrationComponent implements OnInit {
       if ((Remainder == 10) || (Remainder == 11))  Remainder = 0;
       if (Remainder != parseInt(stringCPF.substring(10, 11) ) ) return { cpfInvald: true, actual: stringCPF };
       return null;
+  }
+
+  onChange($event: any) {
+    if ($event.target.files[0].size >= 10240000) {
+      window.alert("tamanho não é permitido");
+      $event.target.value = null;
+
+    } else {
+      const file = $event.target.files[0];
+      this.convertToBase64(file);
+      //console.log(this.myimage);
+    }
+
+  }
+
+  convertToBase64(file: File) {
+    const imageTrasfer = new Observable((subscriber: Subscriber<any>) => {
+      this.readFile(file, subscriber);
+    });
+    imageTrasfer.subscribe((d) => {
+      console.log(d);
+      this.myimage = imageTrasfer;
+    });
+  }
+
+  readFile(file: File, subscriber: Subscriber<any>) {
+    const filereader = new FileReader();
+    filereader.readAsDataURL(file);
+
+    filereader.onload = () => {
+      subscriber.next(filereader.result);
+      subscriber.complete();
+    };
+    filereader.onerror = (error) => {
+      subscriber.error(error);
+      subscriber.complete();
+    };
   }
 }

@@ -3,20 +3,28 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/header/header.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ForbiddenComponent } from './pages/forbidden/forbidden.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    PageNotFoundComponent,
+    ForbiddenComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

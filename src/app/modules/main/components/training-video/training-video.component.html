@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="mt-4 mb-2">
+        <nav aria-label="breadcrumb">
+            <p class="text-end"><a href="">&#171; voltar</a></p>
+            <ol class="breadcrumb w-100">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="#">Meus Cursos</a></li>
+              <li class="breadcrumb-item active" aria-current="page">{{ training.title }}</li>
+            </ol>
+        </nav>
+    </div>
+    <h4>{{ training.title }}</h4>
+    <div class="row mt-4 mb-2">
+        <div class="col-7 py-4 bg-info bg-opacity-50 rounded">
+            <div class="container text-center">
+                <iframe width="520" height="350" src="https://www.youtube.com/embed/vbs7jKRMuiA" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+        <div class="container col-4">
+            <h6>Módulos: {{ training.modules.length }}</h6>
+            <div class="list-group container">
+                <a href="#" class="list-group-item list-group-item-action">
+                    <div *ngFor="let module of training.modules" class="card" style="max-width: 540px;">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="{{ module.img }}" class="img-fluid rounded py-2 ms-1" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body p-2">
+                                    <span class="card-title">{{ module.titleModule }}</span><br>
+                                    <p class="card-text fs-6">{{ module.descriptionModule }}</p>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 25%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
