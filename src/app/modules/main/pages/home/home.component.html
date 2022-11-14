@@ -119,10 +119,17 @@
         <pro-item-training
           [item]="training"
           class="col-md-2 m-2 mt-4"
-          *ngFor="let training of filters"
+          *ngFor="let training of filters | slice:(page-1) * pageSize : page * pageSize"
           (click)="openXl(content, training)"
         ></pro-item-training>
       </div>
     </div>
   </div>
 </div>
+
+<ngb-pagination *ngIf="filters.length > 20"
+  class="d-flex justify-content-center"
+  [(page)]="page"
+  [pageSize]="pageSize"
+  [collectionSize]="filters.length">
+</ngb-pagination>
