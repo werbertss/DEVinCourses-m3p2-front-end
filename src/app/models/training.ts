@@ -7,4 +7,5 @@ export interface ITraining{
     duration:number;
     status:string;
     category:string;
+    date:Date;
 }

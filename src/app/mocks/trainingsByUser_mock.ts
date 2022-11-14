@@ -12,7 +12,8 @@ export const TRAININGBYUSER_MOCK: ITraningByUser[] = [
       teacher: 'Rodrigo Rosa',
       duration: 70,
       status: 'andamento',
-      category: 'idioma'
+      category: 'idioma',
+      date:new Date(),
     },
 
 {
@@ -26,6 +27,7 @@ export const TRAININGBYUSER_MOCK: ITraningByUser[] = [
         duration: 20,
         status: 'matriculado',
         category: 'tecnologia',
+        date:new Date(),
 },
 
   {
@@ -39,6 +41,7 @@ export const TRAININGBYUSER_MOCK: ITraningByUser[] = [
         duration: 16,
         status: 'andamento',
         category: 'psicologia',
+        date:new Date(),
         },
 {
         userId: 5,
@@ -51,6 +54,7 @@ export const TRAININGBYUSER_MOCK: ITraningByUser[] = [
         duration: 18,
         status: 'finalizado',
         category: 'educacao',
+        date:new Date(),
 },
 
 ];
