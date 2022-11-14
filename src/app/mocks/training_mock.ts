@@ -11,6 +11,7 @@ export const TRAINING_MOCK: ITraining[] = [
     duration: 20,
     status: 'disponivel',
     category: 'tecnologia',
+    date:new Date(),
   },
   {
     id: 2,
@@ -22,6 +23,7 @@ export const TRAINING_MOCK: ITraining[] = [
     duration: 70,
     status: 'disponivel',
     category: 'idioma',
+    date:new Date(),
   },
   {
     id: 3,
@@ -33,6 +35,7 @@ export const TRAINING_MOCK: ITraining[] = [
     duration: 80,
     status: 'disponivel',
     category: 'financas',
+    date:new Date(),
   },
   {
     id: 4,
@@ -44,6 +47,7 @@ export const TRAINING_MOCK: ITraining[] = [
     duration: 10,
     status: 'disponivel',
     category: 'marketing',
+    date:new Date(),
   },
   {
     id: 5,
@@ -55,6 +59,7 @@ export const TRAINING_MOCK: ITraining[] = [
     duration: 80,
     status: 'disponivel',
     category: 'financas',
+    date:new Date(),
   },
   {
     id: 6,
@@ -66,6 +71,7 @@ export const TRAINING_MOCK: ITraining[] = [
     duration: 10,
     status: 'disponivel',
     category: 'tecnologia',
+    date:new Date(),
   },
   {
     id: 7,
@@ -77,6 +83,7 @@ export const TRAINING_MOCK: ITraining[] = [
     duration: 80,
     status: 'disponivel',
     category: 'tecnologia',
+    date:new Date(),
   },
   {
     id: 8,
@@ -88,6 +95,7 @@ export const TRAINING_MOCK: ITraining[] = [
     duration: 58,
     status: 'disponivel',
     category: 'tecnologia',
+    date:new Date(),
   },
   {
     id: 9,
@@ -99,6 +107,7 @@ export const TRAINING_MOCK: ITraining[] = [
     duration: 14,
     status: 'disponivel',
     category: 'tecnologia',
+    date:new Date(),
   },
   {
     id: 10,
@@ -110,6 +119,7 @@ export const TRAINING_MOCK: ITraining[] = [
     duration: 80,
     status: 'disponivel',
     category: 'tecnologia',
+    date:new Date(),
   },
   {
     id: 11,
@@ -121,6 +131,7 @@ export const TRAINING_MOCK: ITraining[] = [
     duration: 55,
     status: 'disponivel',
     category: 'tecnologia',
+    date:new Date(),
   },
   {
     id: 12,
@@ -132,6 +143,7 @@ export const TRAINING_MOCK: ITraining[] = [
     duration: 90,
     status: 'disponivel',
     category: 'tecnologia',
+    date:new Date(),
   },
   {
     id: 13,
@@ -143,6 +155,7 @@ export const TRAINING_MOCK: ITraining[] = [
     duration: 80,
     status: 'disponivel',
     category: 'tecnologia',
+    date:new Date(),
   },
   {
     id: 14,
@@ -154,6 +167,7 @@ export const TRAINING_MOCK: ITraining[] = [
     duration: 16,
     status: 'disponivel',
     category: 'tecnologia',
+    date:new Date(),
   },
   {
     id: 15,
@@ -165,6 +179,7 @@ export const TRAINING_MOCK: ITraining[] = [
     duration: 40,
     status: 'disponivel',
     category: 'direito',
+    date:new Date(),
   },
   {
     id: 16,
@@ -176,6 +191,7 @@ export const TRAINING_MOCK: ITraining[] = [
     duration: 16,
     status: 'disponivel',
     category: 'psicologia',
+    date:new Date(),
   },
   {
     id: 17,
@@ -187,6 +203,7 @@ export const TRAINING_MOCK: ITraining[] = [
     duration: 80,
     status: 'disponivel',
     category: 'marketing',
+    date:new Date(),
   },
   {
     id: 18,
@@ -198,6 +215,7 @@ export const TRAINING_MOCK: ITraining[] = [
     duration: 18,
     status: 'disponivel',
     category: 'educacao',
+    date:new Date(),
   },
   {
     id: 19,
@@ -209,6 +227,7 @@ export const TRAINING_MOCK: ITraining[] = [
     duration: 80,
     status: 'disponivel',
     category: ' nutricao',
+    date:new Date(),
   },
   {
     id: 20,
@@ -220,6 +239,7 @@ export const TRAINING_MOCK: ITraining[] = [
     duration: 36,
     status: 'disponivel',
     category: 'tecnologia',
+    date:new Date(),
   },
   {
     id: 21,
@@ -231,6 +251,7 @@ export const TRAINING_MOCK: ITraining[] = [
     duration: 80,
     status: 'disponivel',
     category: 'tecnologia',
+    date:new Date(),
   },
   {
     id: 22,
@@ -242,5 +263,6 @@ export const TRAINING_MOCK: ITraining[] = [
     duration: 16,
     status: 'disponivel',
     category: 'tecnologia',
+    date:new Date(),
   },
 ];

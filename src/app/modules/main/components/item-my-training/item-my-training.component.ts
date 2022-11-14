@@ -8,7 +8,7 @@ import { AlertService } from '../../services/alert.service';
   styleUrls: ['./item-my-training.component.scss']
 })
 export class ItemMyTrainingComponent implements OnInit {
- 
+
   @Input()
   item: ITraining = {
     id: 0,
@@ -19,8 +19,9 @@ export class ItemMyTrainingComponent implements OnInit {
     duration: 0,
     status: '',
     category: '',
+    date:new Date(),
   };
-  
+
   constructor(private alertService:AlertService) { }
 
   ngOnInit(): void {
