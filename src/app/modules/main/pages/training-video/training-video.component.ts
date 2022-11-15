@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ITraining } from 'src/app/models/training';
+import { TrainingService } from '../../services/training/training.service';
 const YTPlayer = require('yt-player')
 @Component({
   selector: 'pro-training-video',
@@ -8,8 +10,8 @@ const YTPlayer = require('yt-player')
 export class TrainingVideoComponent implements OnInit {
   player:any;
 
-  training:any =
-  {
+  /*training:ITraining = 
+   {
     id: 1,
     url: 'https://certificadocursosonline.com/wp-content/uploads/2018/07/Curso-de-Manutenc%CC%A7a%CC%83o-de-Computadores.jpg',
     title: 'Curso de Manutenção de Computadores',
@@ -45,15 +47,16 @@ export class TrainingVideoComponent implements OnInit {
         statusModule: 'disponivel'
       },
     ]
-  }
+  } */
 
-  constructor() { }
-
+  constructor(private trainingService:TrainingService) { }
+  training!:ITraining;
   ngOnInit(): void {
-    this.chamarVideo(this.training.modules[0]);
+    this.training =  this.trainingService.returnTraining();
+    this.callVideo(this.training.modules[0])
   }
 
-  chamarVideo(module:any){
+  callVideo(module:any){
     if(this.player){
       this.player.destroy();
     }
