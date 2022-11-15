@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { TRAININGBYUSER_MOCK } from 'src/app/mocks/trainingsByUser_mock';
 import { TRAINING_MOCK } from 'src/app/mocks/training_mock';
 import { USER_MOCK } from 'src/app/mocks/user_mock';
 import { ITraining } from 'src/app/models/training';
@@ -19,7 +21,26 @@ export class HomeComponent implements OnInit {
   category: string = 'todos';
   filters!: ITraining[];
 
-  constructor() {}
+  page = 1;
+  pageSize = 20;
+
+  constructor(
+    private config: NgbModalConfig, 
+    private modalService: NgbModal) {
+    // customize default values of modals used by this component tree
+    config.backdrop = 'static';
+    config.keyboard = false;
+  }
+
+  openXl(content: any, training:ITraining) {
+    this.trainingModel = training;
+    this.modalService.open(content, {
+      size: 'lg',
+      centered: true,
+      scrollable: true,
+    });
+  }
+
 
   ngOnInit(): void {
     this.filtrar();
@@ -30,7 +51,18 @@ export class HomeComponent implements OnInit {
       this.filters = this.trainings;
     }
     else{
-      this.filters =  this.trainings.filter( item => item.category == this.category)
+      this.filters =  this.trainings.filter(item => item.category == this.category)
     }
+  }
+
+  estaMatriculado(idDoCursoClicado:number):void {
+    
+    //cursos do usuário estático, id : 1
+    var usuario = TRAININGBYUSER_MOCK.find(x => x.userId == 1);
+    
+    if(usuario?.id == idDoCursoClicado){
+      window.alert("Você já está matriculado neste curso.");
+    }
+    
   }
 }

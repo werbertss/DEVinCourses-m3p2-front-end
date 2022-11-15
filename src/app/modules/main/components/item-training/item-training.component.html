@@ -1,8 +1,10 @@
-<div class="cardTraining">
-    <a class="linkCard text-decoration-none text-dark">
-      <h6 class="p-1">{{ item.title }}</h6>
-      <img class="imgCard" src="{{ item.url }}" alt="">
-      <p class="overflow-auto p-1 descricaoCurso">{{ item.description }}</p>  
-      <p class="overflow-auto p-1 descricaoCurso">Carga Horária: {{ item.duration }} horas</p>  
-    </a>
+<div class="card shadow cardTraining">
+  <img src="{{ item.url }}" class="card-img-top imgCard" alt="..." >
+  <div class="card-body ">
+    <h6 class="card-title">{{ item.title }}</h6>
+    <p class="card-text descricaoCurso overflow-hidden">{{ item.description }}</p>
+  </div>
+  <div class="text-center cardBottom">
+    <p class="cargaHoraria ">Carga Horária: {{ item.duration }} horas</p>   
+  </div>
 </div>

@@ -1,0 +1,16 @@
+.progress{
+    height: 0.5rem;
+}
+.modules{
+    overflow: scroll;
+    max-height: 50vh;
+}
+#tag{
+    float: right;
+    img{
+        height: 2em;
+    }
+}
+.card-video{
+    cursor: pointer;
+}

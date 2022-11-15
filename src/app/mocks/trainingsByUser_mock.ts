@@ -12,20 +12,74 @@ export const TRAININGBYUSER_MOCK: ITraningByUser[] = [
       teacher: 'Rodrigo Rosa',
       duration: 70,
       status: 'andamento',
-      category: 'idioma'
+      category: 'idioma',
+      date:new Date(),
+      modules:[
+        {
+          moduleId: 1,
+          titleModule:'Módulo 1',
+          link: 'vbs7jKRMuiA',
+          img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjOUpolyASUyrLMSV2vqIvQQZ8_--ddMSsJF_xvxZ3tEwPPtZrc57tShVksL8y8JZ8QIk&usqp=CAU',
+          descriptionModule: 'Lorem ipsum dolor sit amet consectetur.',
+          statusModule: 'finalizado'
+        },
+        {
+          moduleId: 2,
+          titleModule:'Módulo 2',
+          link: '3CC_YtyD7Po',
+          img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjOUpolyASUyrLMSV2vqIvQQZ8_--ddMSsJF_xvxZ3tEwPPtZrc57tShVksL8y8JZ8QIk&usqp=CAU',
+          descriptionModule: 'Incidunt reiciendis vel asperiores.',
+          statusModule: 'disponivel'
+        },
+        {
+          moduleId: 3,
+          titleModule:'Módulo 3',
+          link: 'TxxkFWty09g',
+          img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjOUpolyASUyrLMSV2vqIvQQZ8_--ddMSsJF_xvxZ3tEwPPtZrc57tShVksL8y8JZ8QIk&usqp=CAU',
+          descriptionModule: 'Ullam, quisquam? Culpa doloremque.',
+          statusModule: 'disponivel'
+        },
+      ]
     },
-
+  
 {
         userId: 2,
         id: 1,
         url: 'https://certificadocursosonline.com/wp-content/uploads/2018/07/Curso-de-Manutenc%CC%A7a%CC%83o-de-Computadores.jpg',
-        title: 'Curso de Manutenção de Computadores',
+        title: 'Manutenção de Computadores',
         description:
-          'Architecto eaque consectetur nostrum impedit earum at harum. Reiciendis suscipit soluta, ab, repellat ad',
+          'Architecto eaque consectetur nostrum impedit earum at harum. Reiciendis suscipit soluta, ab, repellat ad, Reiciendis suscipit soluta, ab, repellat ad',
         teacher: 'Carlos Silva',
         duration: 20,
         status: 'matriculado',
         category: 'tecnologia',
+        date:new Date(),
+        modules:[
+          {
+            moduleId: 1,
+            titleModule:'Módulo 1',
+            link: 'vbs7jKRMuiA',
+            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjOUpolyASUyrLMSV2vqIvQQZ8_--ddMSsJF_xvxZ3tEwPPtZrc57tShVksL8y8JZ8QIk&usqp=CAU',
+            descriptionModule: 'Lorem ipsum dolor sit amet consectetur.',
+            statusModule: 'finalizado'
+          },
+          {
+            moduleId: 2,
+            titleModule:'Módulo 2',
+            link: '3CC_YtyD7Po',
+            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjOUpolyASUyrLMSV2vqIvQQZ8_--ddMSsJF_xvxZ3tEwPPtZrc57tShVksL8y8JZ8QIk&usqp=CAU',
+            descriptionModule: 'Incidunt reiciendis vel asperiores.',
+            statusModule: 'disponivel'
+          },
+          {
+            moduleId: 3,
+            titleModule:'Módulo 3',
+            link: 'TxxkFWty09g',
+            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjOUpolyASUyrLMSV2vqIvQQZ8_--ddMSsJF_xvxZ3tEwPPtZrc57tShVksL8y8JZ8QIk&usqp=CAU',
+            descriptionModule: 'Ullam, quisquam? Culpa doloremque.',
+            statusModule: 'disponivel'
+          },
+        ]
 },
 
   {
@@ -37,8 +91,35 @@ export const TRAININGBYUSER_MOCK: ITraningByUser[] = [
           'Neste curso, os alunos irão obter um conhecimento aprofundado sobre os recursos disponíveis sobre Coaching.',
         teacher: 'Jair souza',
         duration: 16,
-        status: 'andamento',
+        status: 'finalizado',
         category: 'psicologia',
+        date:new Date(),
+        modules:[
+          {
+            moduleId: 1,
+            titleModule:'Módulo 1',
+            link: 'vbs7jKRMuiA',
+            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjOUpolyASUyrLMSV2vqIvQQZ8_--ddMSsJF_xvxZ3tEwPPtZrc57tShVksL8y8JZ8QIk&usqp=CAU',
+            descriptionModule: 'Lorem ipsum dolor sit amet consectetur.',
+            statusModule: 'finalizado'
+          },
+          {
+            moduleId: 2,
+            titleModule:'Módulo 2',
+            link: '3CC_YtyD7Po',
+            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjOUpolyASUyrLMSV2vqIvQQZ8_--ddMSsJF_xvxZ3tEwPPtZrc57tShVksL8y8JZ8QIk&usqp=CAU',
+            descriptionModule: 'Incidunt reiciendis vel asperiores.',
+            statusModule: 'disponivel'
+          },
+          {
+            moduleId: 3,
+            titleModule:'Módulo 3',
+            link: 'TxxkFWty09g',
+            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjOUpolyASUyrLMSV2vqIvQQZ8_--ddMSsJF_xvxZ3tEwPPtZrc57tShVksL8y8JZ8QIk&usqp=CAU',
+            descriptionModule: 'Ullam, quisquam? Culpa doloremque.',
+            statusModule: 'disponivel'
+          },
+        ]
         },
 {
         userId: 5,
@@ -51,6 +132,33 @@ export const TRAININGBYUSER_MOCK: ITraningByUser[] = [
         duration: 18,
         status: 'finalizado',
         category: 'educacao',
-},
+        date:new Date(),
+        modules:[
+          {
+            moduleId: 1,
+            titleModule:'Módulo 1',
+            link: 'vbs7jKRMuiA',
+            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjOUpolyASUyrLMSV2vqIvQQZ8_--ddMSsJF_xvxZ3tEwPPtZrc57tShVksL8y8JZ8QIk&usqp=CAU',
+            descriptionModule: 'Lorem ipsum dolor sit amet consectetur.',
+            statusModule: 'finalizado'
+          },
+          {
+            moduleId: 2,
+            titleModule:'Módulo 2',
+            link: '3CC_YtyD7Po',
+            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjOUpolyASUyrLMSV2vqIvQQZ8_--ddMSsJF_xvxZ3tEwPPtZrc57tShVksL8y8JZ8QIk&usqp=CAU',
+            descriptionModule: 'Incidunt reiciendis vel asperiores.',
+            statusModule: 'disponivel'
+          },
+          {
+            moduleId: 3,
+            titleModule:'Módulo 3',
+            link: 'TxxkFWty09g',
+            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjOUpolyASUyrLMSV2vqIvQQZ8_--ddMSsJF_xvxZ3tEwPPtZrc57tShVksL8y8JZ8QIk&usqp=CAU',
+            descriptionModule: 'Ullam, quisquam? Culpa doloremque.',
+            statusModule: 'disponivel'
+          },
+        ]
+}
 
 ];

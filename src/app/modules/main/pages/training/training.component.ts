@@ -17,6 +17,9 @@ export class TrainingComponent implements OnInit {
   status: string = 'todos';
   filters!: ITraningByUser[];
 
+  page = 1;
+  pageSize = 20;
+
   constructor() {}
   
   ngOnInit(): void {
