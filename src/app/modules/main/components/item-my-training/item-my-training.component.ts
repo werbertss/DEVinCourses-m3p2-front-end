@@ -1,14 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ITraining } from 'src/app/models/training';
-import { AlertService } from '../../services/alert.service';
+import { AlertService } from '../../services/alert/alert.service';
 
 @Component({
   selector: 'pro-item-my-training',
   templateUrl: './item-my-training.component.html',
-  styleUrls: ['./item-my-training.component.scss']
+  styleUrls: ['./item-my-training.component.scss'],
 })
 export class ItemMyTrainingComponent implements OnInit {
-
   @Input()
   item: ITraining = {
     id: 0,
@@ -19,16 +18,15 @@ export class ItemMyTrainingComponent implements OnInit {
     duration: 0,
     status: '',
     category: '',
-    date:new Date(),
+    date: new Date(),
+    modules:[]
   };
 
-  constructor(private alertService:AlertService) { }
+  constructor(private alertService: AlertService) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  removeTraining(){
+  removeTraining() {
     this.alertService.alertDeleteTraining();
   }
-
 }
