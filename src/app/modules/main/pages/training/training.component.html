@@ -78,6 +78,7 @@
           [item]="training"
           class="col-md-2 m-2 mt-4"
           *ngFor="let training of filters | slice:(page-1) * pageSize : page * pageSize"
+          (click)="selectTraining(training)"
         ></pro-item-my-training>
       </div>
     </div>

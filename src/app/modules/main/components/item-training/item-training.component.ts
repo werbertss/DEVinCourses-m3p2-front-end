@@ -18,7 +18,8 @@ export class ItemTrainingComponent implements OnInit {
     duration: 0,
     status: '',
     category: '',
-    date: new Date()
+    date: new Date(),
+    modules:[]
   };
 
   constructor() {}

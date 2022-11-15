@@ -14,8 +14,34 @@ export const TRAININGBYUSER_MOCK: ITraningByUser[] = [
       status: 'andamento',
       category: 'idioma',
       date:new Date(),
+      modules:[
+        {
+          moduleId: 1,
+          titleModule:'Módulo 1',
+          link: 'vbs7jKRMuiA',
+          img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjOUpolyASUyrLMSV2vqIvQQZ8_--ddMSsJF_xvxZ3tEwPPtZrc57tShVksL8y8JZ8QIk&usqp=CAU',
+          descriptionModule: 'Lorem ipsum dolor sit amet consectetur.',
+          statusModule: 'finalizado'
+        },
+        {
+          moduleId: 2,
+          titleModule:'Módulo 2',
+          link: '3CC_YtyD7Po',
+          img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjOUpolyASUyrLMSV2vqIvQQZ8_--ddMSsJF_xvxZ3tEwPPtZrc57tShVksL8y8JZ8QIk&usqp=CAU',
+          descriptionModule: 'Incidunt reiciendis vel asperiores.',
+          statusModule: 'disponivel'
+        },
+        {
+          moduleId: 3,
+          titleModule:'Módulo 3',
+          link: 'TxxkFWty09g',
+          img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjOUpolyASUyrLMSV2vqIvQQZ8_--ddMSsJF_xvxZ3tEwPPtZrc57tShVksL8y8JZ8QIk&usqp=CAU',
+          descriptionModule: 'Ullam, quisquam? Culpa doloremque.',
+          statusModule: 'disponivel'
+        },
+      ]
     },
-
+  
 {
         userId: 2,
         id: 1,
@@ -28,6 +54,32 @@ export const TRAININGBYUSER_MOCK: ITraningByUser[] = [
         status: 'matriculado',
         category: 'tecnologia',
         date:new Date(),
+        modules:[
+          {
+            moduleId: 1,
+            titleModule:'Módulo 1',
+            link: 'vbs7jKRMuiA',
+            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjOUpolyASUyrLMSV2vqIvQQZ8_--ddMSsJF_xvxZ3tEwPPtZrc57tShVksL8y8JZ8QIk&usqp=CAU',
+            descriptionModule: 'Lorem ipsum dolor sit amet consectetur.',
+            statusModule: 'finalizado'
+          },
+          {
+            moduleId: 2,
+            titleModule:'Módulo 2',
+            link: '3CC_YtyD7Po',
+            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjOUpolyASUyrLMSV2vqIvQQZ8_--ddMSsJF_xvxZ3tEwPPtZrc57tShVksL8y8JZ8QIk&usqp=CAU',
+            descriptionModule: 'Incidunt reiciendis vel asperiores.',
+            statusModule: 'disponivel'
+          },
+          {
+            moduleId: 3,
+            titleModule:'Módulo 3',
+            link: 'TxxkFWty09g',
+            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjOUpolyASUyrLMSV2vqIvQQZ8_--ddMSsJF_xvxZ3tEwPPtZrc57tShVksL8y8JZ8QIk&usqp=CAU',
+            descriptionModule: 'Ullam, quisquam? Culpa doloremque.',
+            statusModule: 'disponivel'
+          },
+        ]
 },
 
   {
@@ -42,6 +94,32 @@ export const TRAININGBYUSER_MOCK: ITraningByUser[] = [
         status: 'finalizado',
         category: 'psicologia',
         date:new Date(),
+        modules:[
+          {
+            moduleId: 1,
+            titleModule:'Módulo 1',
+            link: 'vbs7jKRMuiA',
+            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjOUpolyASUyrLMSV2vqIvQQZ8_--ddMSsJF_xvxZ3tEwPPtZrc57tShVksL8y8JZ8QIk&usqp=CAU',
+            descriptionModule: 'Lorem ipsum dolor sit amet consectetur.',
+            statusModule: 'finalizado'
+          },
+          {
+            moduleId: 2,
+            titleModule:'Módulo 2',
+            link: '3CC_YtyD7Po',
+            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjOUpolyASUyrLMSV2vqIvQQZ8_--ddMSsJF_xvxZ3tEwPPtZrc57tShVksL8y8JZ8QIk&usqp=CAU',
+            descriptionModule: 'Incidunt reiciendis vel asperiores.',
+            statusModule: 'disponivel'
+          },
+          {
+            moduleId: 3,
+            titleModule:'Módulo 3',
+            link: 'TxxkFWty09g',
+            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjOUpolyASUyrLMSV2vqIvQQZ8_--ddMSsJF_xvxZ3tEwPPtZrc57tShVksL8y8JZ8QIk&usqp=CAU',
+            descriptionModule: 'Ullam, quisquam? Culpa doloremque.',
+            statusModule: 'disponivel'
+          },
+        ]
         },
 {
         userId: 5,
@@ -55,6 +133,32 @@ export const TRAININGBYUSER_MOCK: ITraningByUser[] = [
         status: 'finalizado',
         category: 'educacao',
         date:new Date(),
-},
+        modules:[
+          {
+            moduleId: 1,
+            titleModule:'Módulo 1',
+            link: 'vbs7jKRMuiA',
+            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjOUpolyASUyrLMSV2vqIvQQZ8_--ddMSsJF_xvxZ3tEwPPtZrc57tShVksL8y8JZ8QIk&usqp=CAU',
+            descriptionModule: 'Lorem ipsum dolor sit amet consectetur.',
+            statusModule: 'finalizado'
+          },
+          {
+            moduleId: 2,
+            titleModule:'Módulo 2',
+            link: '3CC_YtyD7Po',
+            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjOUpolyASUyrLMSV2vqIvQQZ8_--ddMSsJF_xvxZ3tEwPPtZrc57tShVksL8y8JZ8QIk&usqp=CAU',
+            descriptionModule: 'Incidunt reiciendis vel asperiores.',
+            statusModule: 'disponivel'
+          },
+          {
+            moduleId: 3,
+            titleModule:'Módulo 3',
+            link: 'TxxkFWty09g',
+            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjOUpolyASUyrLMSV2vqIvQQZ8_--ddMSsJF_xvxZ3tEwPPtZrc57tShVksL8y8JZ8QIk&usqp=CAU',
+            descriptionModule: 'Ullam, quisquam? Culpa doloremque.',
+            statusModule: 'disponivel'
+          },
+        ]
+}
 
 ];
