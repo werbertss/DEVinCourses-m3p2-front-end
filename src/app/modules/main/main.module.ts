@@ -11,6 +11,7 @@ import { HeaderComponent } from 'src/app/components/header/header.component';
 import { TrainingComponent } from './pages/training/training.component';
 import { TrainingVideoComponent } from './pages/training-video/training-video.component';
 import { ItemMyTrainingComponent } from './components/item-my-training/item-my-training.component';
+import { FooterComponent } from 'src/app/components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { ItemMyTrainingComponent } from './components/item-my-training/item-my-t
     TrainingComponent,
     TrainingVideoComponent,
     ItemMyTrainingComponent,
+    FooterComponent,
   ],
 
   imports: [
