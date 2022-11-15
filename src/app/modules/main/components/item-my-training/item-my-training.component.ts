@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ITraining } from 'src/app/models/training';
 import { AlertService } from '../../services/alert/alert.service';
+import { TrainingService } from '../../services/training/training.service';
 
 @Component({
   selector: 'pro-item-my-training',
@@ -22,11 +24,18 @@ export class ItemMyTrainingComponent implements OnInit {
     modules:[]
   };
 
-  constructor(private alertService: AlertService) {}
+  constructor(private alertService: AlertService,
+    private trainingService:TrainingService,
+    private router:Router,) {}
 
   ngOnInit(): void {}
 
   removeTraining() {
     this.alertService.alertDeleteTraining();
+  }
+
+  selectTraining(training:ITraining){
+    this.trainingService.training = training;
+    this.router.navigate(['main/video']);
   }
 }
