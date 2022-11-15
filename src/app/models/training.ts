@@ -1,3 +1,5 @@
+import { IModules } from 'src/app/models/modules'
+
 export interface ITraining{
     id:number;
     url:string;
@@ -8,4 +10,5 @@ export interface ITraining{
     status:string;
     category:string;
     date:Date;
+    modules:IModules[]
 }
