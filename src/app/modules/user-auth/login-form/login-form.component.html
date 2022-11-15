@@ -2,49 +2,53 @@
   <h1 class="mb-5">Login</h1>
   <form [formGroup]="form">
     <div class="form-group">
-      <label for="email">Email</label>
-      <input
-        type="email"
-        id="email"
-        class="form-control mb-2"
-        formControlName="email"
-        required
-      />
-
-      <div
-        *ngIf="form.controls['email'].dirty && form.controls['email'].invalid"
-        class="alert alert-danger"
-      >
-        Email obrigatório.
+      <div class="container-anchor">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          class="form-control mb-2"
+          formControlName="email"
+          required
+        />
+        <div class="container-absolute">
+          <div
+            *ngIf="form.controls['email'].dirty && form.controls['email'].invalid"
+            class="alert alert-danger"
+          >
+            Email obrigatório.
+          </div>
+        </div>
       </div>
-      <label for="password">Senha</label>
-      <input
-        type="password"
-        id="password"
-        class="form-control"
-        formControlName="password"
-        minlength="8"
-        required
-      />
-      <div
-        *ngIf="
-          form.controls['password'].dirty && form.controls['password'].invalid
-        "
-        class="alert alert-danger"
-      >
-        Senha obrigatória, somente letras e/ou números. Mínimo 8 caracteres.
+      <div class="container-anchor">
+        <label for="password">Senha</label>
+        <input
+          type="password"
+          id="password"
+          class="form-control"
+          formControlName="password"
+          minlength="8"
+          required
+        />
+        <div class="container-absolute">
+          <div
+            *ngIf="form.controls['password'].dirty && form.controls['password'].invalid"
+            class="alert alert-danger"
+          >
+            Senha obrigatória, somente letras e/ou números. Mínimo 8 caracteres.
+          </div>
+        </div>
       </div>
       <br />
       <p class="text-center">
         Não possui o cadastro?
-        <a [routerLink]="['/cadastro']" class="text-dark" href="">Cadastre-se aqui!</a>
+        <a [routerLink]="['/cadastro']" class="href">Cadastre-se aqui!</a>
       </p>
 
       <div class="container text-center mb-4">
         <!-- Vertically centered scrollable modal -->
         <a
-          href=""
-          class="text-dark"
+          class="href"
           type="button"
           data-bs-toggle="modal"
           data-bs-target="#exampleModal"
