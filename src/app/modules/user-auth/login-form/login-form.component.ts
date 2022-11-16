@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'pro-login-form',
@@ -20,7 +21,7 @@ export class LoginFormComponent {
     ResetEmail: new FormControl('',[Validators.required,Validators.email])
     });
 
-  constructor(private authService: AuthenticationService,private route: Router) {}
+  constructor(private authService: AuthenticationService,private route: Router, private userService:  UserService) {}
 
   submitLogin() {
     if (this.form.invalid) {
@@ -44,11 +45,13 @@ export class LoginFormComponent {
 
   submitToken() {
     if (!this.userEmails.valid) {
-      console.log(!this.userEmails.valid)
       return;
-
     }
-    console.log(this.userEmails)
+    
+    let ResetEmail = this.userEmails.controls['ResetEmail'].value;
+
+    this.userService.sendEmail(ResetEmail)
+
     this.userEmails.reset();
     alert('Token Enviado')
 
