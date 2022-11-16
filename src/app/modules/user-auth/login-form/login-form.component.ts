@@ -19,7 +19,7 @@ export class LoginFormComponent {
 
   userEmails = new FormGroup({
     ResetEmail: new FormControl('',[Validators.required,Validators.email])
-    });
+  });
 
   constructor(private authService: AuthenticationService,private route: Router, private userService:  UserService) {}
 
