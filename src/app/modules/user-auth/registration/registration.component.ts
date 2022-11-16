@@ -18,7 +18,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./registration.component.scss'],
 })
 export class RegistrationComponent implements OnInit {
-  @Input() isEditingUser: boolean = true;
+  @Input() isEditingUser: boolean = false;
   User!: IUser;
   selectedFile: any;
   myImage: any;
