@@ -23,6 +23,6 @@ export class UserService {
   }
 
   sendEmail(email: string): Observable<string>{
-     return this.http.post<string>(SERVER_ROUTE,email);
+     return this.http.post<string>(SERVER_ROUTE, email);
   }
 }
