@@ -16,6 +16,10 @@ export class LoginFormComponent {
     password: new FormControl('', [Validators.required, Validators.pattern(this.regexPassword)]),
   });
 
+  userEmails = new FormGroup({
+    ResetEmail: new FormControl('',[Validators.required,Validators.email])
+    });
+
   constructor(private authService: AuthenticationService,private route: Router) {}
 
   submitLogin() {
@@ -36,5 +40,17 @@ export class LoginFormComponent {
         console.log(err);
       },
     });
+  }
+
+  submitToken() {
+    if (!this.userEmails.valid) {
+      console.log(!this.userEmails.valid)
+      return;
+
+    }
+    console.log(this.userEmails)
+    this.userEmails.reset();
+    alert('Token Enviado')
+
   }
 }
