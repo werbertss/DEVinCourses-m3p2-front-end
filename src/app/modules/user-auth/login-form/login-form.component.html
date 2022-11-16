@@ -99,14 +99,14 @@
                 <div class="col">
                   <button
                     type="button"
-                    class="btn button-cancel-modal mx-3"
+                    class="button button-cancel-modal mx-3"
                     data-bs-dismiss="modal"
                   >
                     Cancelar
                   </button>
                   <button
                     type="submit"
-                    class="btn button-send-modal"
+                    class="button button-send-modal"
                     [disabled]="!userEmails.valid"
                     (click)="submitToken()"
                     data-bs-dismiss="modal"
@@ -122,7 +122,7 @@
 
       <div>
         <button
-          class="btn button-send form-control"
+          class="button button-send form-control"
           (click)="submitLogin()"
           [disabled]="!form.valid"
           type="submit"
