@@ -1,51 +1,55 @@
-@import '../user-auth.component.scss';
+@import "../user-auth.component.scss";
 
 h1 {
   color: $azul-escuro;
   font-weight: bold;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   text-align: center;
 }
 
-.button-send-modal {
+.button {
   font-size: 16px;
-  font-family: 'Poppins', sans-serif;
-  font-weight: bold;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
   padding: 6px 12px;
-  background-color: $azul-escuro;
-  color: white;
   border-radius: 5px;
+  border: none;
+  color: white;
 
+  animation: 1s linear 30ms 1;
+
+  &:hover {
+    animation: 500ms linear 30ms 1;
+    transition: filter 500ms;
+    filter: brightness(90%);
+  }
+
+  &[disabled] {
+    cursor: not-allowed;
+    opacity: 0.4;
+  }
+}
+
+.button-send-modal {
+  background-color: $azul-escuro;
 }
 
 .button-cancel-modal {
   width: 120px;
-  font-size: 16px;
-  font-family: 'Poppins', sans-serif;
-  font-weight: bold;
-  padding: 6px 12px;
-  background-color: #BA4040;
-  color: white;
+
+  background-color: $vermelho;
+
   border-radius: 5px;
+}
+
+.button-send {
+  font-size: 20px;
+  border: none;
+  background-color: $azul-escuro;
+
+  cursor: pointer;
+
+  &[disabled] {
+    background-color: $azul-escuro;
   }
-
-.button-send[disabled]{
-  font-size: 20px;
-  font-weight: 700;
-  border: 2px solid $azul-escuro;
-  background-color: $azul-escuro;
-  color: white;
 }
-
-.button-send:enabled{
-  font-size: 20px;
-  font-weight: 700;
-  border: 2px solid $azul-escuro;
-  background-color: $azul-escuro;
-  color: white;
-
-}
-
-
-
-
