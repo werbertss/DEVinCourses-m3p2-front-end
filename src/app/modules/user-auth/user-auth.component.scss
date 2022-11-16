@@ -43,8 +43,8 @@ main {
     width: 100%;
 
     .form-container {
-      width: 508px;
-      height: 662px;
+      max-width: 508px;
+      max-height: 662px;
 
       background-color: #FFF;
 
