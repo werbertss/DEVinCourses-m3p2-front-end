@@ -20,7 +20,7 @@ import { Router } from '@angular/router';
 export class RegistrationComponent implements OnInit {
   User!: IUser;
   selectedFile: any;
-  myimage: any;
+  myImage: any;
   title = 'project';
   confirmPassword: any = true;
   formRegistration = new FormGroup({
@@ -84,6 +84,7 @@ export class RegistrationComponent implements OnInit {
       email: this.formRegistration.controls['emailInput'].value,
       name: this.formRegistration.controls['nameInput'].value,
       password: this.formRegistration.controls['passwordInput'].value,
+      image: this.myImage,
     }
 
     this.userService.addUser(formValue);
@@ -159,7 +160,7 @@ export class RegistrationComponent implements OnInit {
     });
     imageTrasfer.subscribe((d) => {
       console.log(d);
-      this.myimage = imageTrasfer;
+      this.myImage = imageTrasfer;
     });
   }
 
