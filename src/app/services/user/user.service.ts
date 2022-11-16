@@ -21,4 +21,8 @@ export class UserService {
   editUser(id: string, user: IUser): Observable<IUser> {
     return this.http.put<IUser>(SERVER_ROUTE + id, user)
   }
+
+  sendEmail(email: string): Observable<string>{
+    return this.http.post<string>(SERVER_ROUTE,email);
+  }
 }
