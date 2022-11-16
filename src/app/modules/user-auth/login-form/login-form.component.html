@@ -71,7 +71,7 @@
                 </h1>
               </div>
               <div class="modal-body text-start">
-                <form>
+                <form [formGroup]="userEmails">
                   <p>
                     Será enviado um token para redefinição de senha para o email
                     digitado abaixo.
@@ -80,8 +80,20 @@
                     <label for="forgetEmail" class="col-form-label"
                       >Digite seu email</label
                     >
-                    <input type="email" class="form-control" id="forgetEmail" />
+                    <input 
+                      type="email" 
+                      class="form-control" 
+                      id="forgetEmail" 
+                      formControlName="ResetEmail" 
+                      required
+                      />
                   </div>
+                  <div
+                      *ngIf="userEmails.controls['ResetEmail'].dirty && userEmails.controls['ResetEmail'].invalid"
+                      class="alert alert-danger"
+                    >
+                      Email obrigatório.
+                    </div>
                 </form>
               </div>
               <div class="row text-end p-3">
@@ -93,7 +105,12 @@
                   >
                     Cancelar
                   </button>
-                  <button type="button" class="btn button-send-modal">
+                  <button 
+                    type="submit" 
+                    class="btn button-send-modal" 
+                    [disabled]="!userEmails.valid" 
+                    (click)="submitToken()" 
+                    data-bs-dismiss="modal">
                     Enviar token
                   </button>
                 </div>
