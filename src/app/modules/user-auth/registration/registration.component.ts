@@ -18,29 +18,42 @@ import { Router } from '@angular/router';
   styleUrls: ['./registration.component.scss'],
 })
 export class RegistrationComponent implements OnInit {
+  @Input() isEditingUser: boolean = true;
   User!: IUser;
   selectedFile: any;
   myImage: any;
   title = 'project';
   confirmPassword: any = true;
-  formRegistration = new FormGroup({
-    nameInput: new FormControl(''),
-    emailInput: new FormControl(''),
-    ageInput: new FormControl(''),
-    cpfInput: new FormControl(''),
-    passowerInput: new FormControl(''),
-  });
+  formRegistration!: FormGroup;
   submitted = false;
 
-  constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router) {}
+  constructor(private fb: FormBuilder, private userService: UserService, private router: Router) {}
 
-  ngOnInit(): void {
-    this.formRegistration = this.formBuilder.group(
+
+    ngOnInit(): void {
+      this.createFormValidation();
+      if (this.isEditingUser)
+        this.getUserForm(this.User);
+  }
+
+  createForm(User: IUser) {
+    this.formRegistration = new FormGroup({
+      nameInput: new FormControl(User.name),
+      emailInput: new FormControl(User.email),
+      ageInput: new FormControl(User.age),
+      cpfInput: new FormControl(User.cpf),
+      passwordInput: new FormControl(''),
+      confirmInput: new FormControl(''),
+    });
+  }
+
+  createFormValidation() {
+    this.formRegistration = this.fb.group(
       {
-        nameInput: ['',[Validators.required, Validators.minLength(3), this.checkNumbers],],
-        emailInput: ['', [Validators.required, Validators.email]],
-        ageInput: ['',[Validators.required, Validators.min(18), Validators.max(110)],],
-        cpfInput: ['', [Validators.required, this.checkCPF]],
+        nameInput: ['', [Validators.required, Validators.minLength(3), this.checkNumbers],],
+        emailInput: [{ value: '', disabled: this.isEditingUser }, [Validators.required, Validators.email]],
+        ageInput: ['', [Validators.required, Validators.min(18), Validators.max(110)],],
+        cpfInput: [{ value: '', disabled: this.isEditingUser }, [Validators.required, this.checkCPF]],
         passwordInput: ['', [Validators.required, Validators.minLength(8)]],
         confirmInput: ['', [Validators.required]],
       },
@@ -176,5 +189,14 @@ export class RegistrationComponent implements OnInit {
       subscriber.error(error);
       subscriber.complete();
     };
+  }
+
+  getUserForm(User: IUser) {
+
+    this.userService.getUserById(User.id as number)
+      .subscribe(r => {
+        this.User = r;
+        this.createForm(this.User);
+      });
   }
 }
