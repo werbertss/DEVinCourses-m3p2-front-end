@@ -9,6 +9,8 @@ import {
   ValidatorFn,
   Validators,
 } from '@angular/forms';
+import { UserService } from 'src/app/services/user/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'pro-registration',
@@ -30,7 +32,7 @@ export class RegistrationComponent implements OnInit {
   });
   submitted = false;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router) {}
 
   ngOnInit(): void {
     this.formRegistration = this.formBuilder.group(
@@ -76,7 +78,16 @@ export class RegistrationComponent implements OnInit {
       return;
     }
 
-    // POST USER
+    let formValue: IUser = {
+      age: this.formRegistration.controls['ageInput'].value,
+      cpf: this.formRegistration.controls['cpfInput'].value,
+      email: this.formRegistration.controls['emailInput'].value,
+      name: this.formRegistration.controls['nameInput'].value,
+      password: this.formRegistration.controls['passwordInput'].value,
+    }
+
+    this.userService.addUser(formValue);
+    this.router.navigateByUrl('');
   }
 
   onReset(): void {
@@ -139,7 +150,6 @@ export class RegistrationComponent implements OnInit {
     } else {
       const file = $event.target.files[0];
       this.convertToBase64(file);
-      //console.log(this.myimage);
     }
   }
 
