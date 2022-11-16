@@ -47,13 +47,13 @@ export class LoginFormComponent {
     if (!this.userEmails.valid) {
       return;
     }
-    
+
     let ResetEmail = this.userEmails.controls['ResetEmail'].value;
 
-    this.userService.sendEmail(ResetEmail)
+    this.userService.sendEmail(ResetEmail);
 
     this.userEmails.reset();
-    alert('Token Enviado')
+    alert('Token Enviado');
 
   }
 }
