@@ -16,12 +16,12 @@ import { TrainingService } from 'src/app/services/training/training.service';
 export class HomeComponent implements OnInit {
   users: IUser[] = USER_MOCK;
 
-  trainings!: Observable<ITraining[]>; //TRAINING_MOCK;
+  trainings!: ITraining[]; //TRAINING_MOCK;
 
   trainingModel!: ITraining;
 
   category: string = 'todos';
-  filters!: Observable<ITraining[]>;
+  filters!: ITraining[];
 
   page = 1;
   pageSize = 20;
@@ -50,7 +50,10 @@ export class HomeComponent implements OnInit {
   }
 
   getTrainings(){
-    this.trainings = this.trainingService.getAllTrainings();
+    this.trainingService.getAllTrainings()
+      .subscribe((result:ITraining[]) => {
+        this.trainings = result
+      })
   }
 
   filtrar(){
@@ -58,7 +61,10 @@ export class HomeComponent implements OnInit {
       this.filters = this.trainings;
     }
     else{
-      this.filters = this.trainingService.getByCategory(this.category);
+      this.trainingService.getByCategory(this.category)
+      .subscribe((result:ITraining[]) => {
+        this.filters = result;
+      });
       /* this.filters =  this.trainings.filter(item => item.category == this.category) */
     }
   }
