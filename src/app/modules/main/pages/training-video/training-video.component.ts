@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ITraining } from 'src/app/models/training';
-import { TrainingService } from '../../services/training/training.service';
+import { TrainingService } from '../../../../services/training/training.service';
 const YTPlayer = require('yt-player')
 @Component({
   selector: 'pro-training-video',
@@ -50,7 +50,9 @@ export class TrainingVideoComponent implements OnInit {
   } */
 
   constructor(private trainingService:TrainingService) { }
+
   training!:ITraining;
+  
   ngOnInit(): void {
     this.training =  this.trainingService.returnTraining();
     this.callVideo(this.training.modules[0])

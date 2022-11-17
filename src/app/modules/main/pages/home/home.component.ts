@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Observable } from 'rxjs/internal/Observable';
 import { TRAININGBYUSER_MOCK } from 'src/app/mocks/trainingsByUser_mock';
 import { TRAINING_MOCK } from 'src/app/mocks/training_mock';
 import { USER_MOCK } from 'src/app/mocks/user_mock';
 import { ITraining } from 'src/app/models/training';
 import { IUser } from 'src/app/models/user';
+import { TrainingService } from 'src/app/services/training/training.service';
 
 @Component({
   selector: 'pro-home',
@@ -14,19 +16,20 @@ import { IUser } from 'src/app/models/user';
 export class HomeComponent implements OnInit {
   users: IUser[] = USER_MOCK;
 
-  trainings: ITraining[] = TRAINING_MOCK;
+  trainings!: Observable<ITraining[]>; //TRAINING_MOCK;
 
   trainingModel!: ITraining;
 
   category: string = 'todos';
-  filters!: ITraining[];
+  filters!: Observable<ITraining[]>;
 
   page = 1;
   pageSize = 20;
 
   constructor(
     private config: NgbModalConfig, 
-    private modalService: NgbModal) {
+    private modalService: NgbModal,
+    private trainingService:TrainingService) {
     // customize default values of modals used by this component tree
     config.backdrop = 'static';
     config.keyboard = false;
@@ -46,12 +49,17 @@ export class HomeComponent implements OnInit {
     this.filtrar();
   }
 
+  getTrainings(){
+    this.trainings = this.trainingService.getAllTrainings();
+  }
+
   filtrar(){
     if(this.category == 'todos'){
       this.filters = this.trainings;
     }
     else{
-      this.filters =  this.trainings.filter(item => item.category == this.category)
+      this.filters = this.trainingService.getByCategory(this.category);
+      /* this.filters =  this.trainings.filter(item => item.category == this.category) */
     }
   }
 
