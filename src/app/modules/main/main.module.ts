@@ -12,6 +12,8 @@ import { TrainingComponent } from './pages/training/training.component';
 import { TrainingVideoComponent } from './pages/training-video/training-video.component';
 import { ItemMyTrainingComponent } from './components/item-my-training/item-my-training.component';
 import { FooterComponent } from 'src/app/components/footer/footer.component';
+import { ItemRegisterTrainingComponent } from './components/item-register-training/item-register-training.component';
+import { RegisterTrainingComponent } from './pages/register-training/register-training.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import { FooterComponent } from 'src/app/components/footer/footer.component';
     TrainingVideoComponent,
     ItemMyTrainingComponent,
     FooterComponent,
+    RegisterTrainingComponent,
+    ItemRegisterTrainingComponent,
   ],
 
   imports: [
