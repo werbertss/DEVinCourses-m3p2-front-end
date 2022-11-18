@@ -14,6 +14,7 @@ import { ItemMyTrainingComponent } from './components/item-my-training/item-my-t
 import { FooterComponent } from 'src/app/components/footer/footer.component';
 import { ItemRegisterTrainingComponent } from './components/item-register-training/item-register-training.component';
 import { RegisterTrainingComponent } from './pages/register-training/register-training.component';
+import { ItemRegisterModuleComponent } from './components/item-register-module/item-register-module.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { RegisterTrainingComponent } from './pages/register-training/register-tr
     FooterComponent,
     RegisterTrainingComponent,
     ItemRegisterTrainingComponent,
+    ItemRegisterModuleComponent,
   ],
 
   imports: [
