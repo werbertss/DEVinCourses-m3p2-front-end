@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient } from '@angular/common/http';
 import SERVER_ROUTE from '../../constants/server';
-import { Observable } from 'rxjs';
+import { Observable, take } from 'rxjs';
 import { IUser } from 'src/app/models/user';
+import { url } from 'inspector';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
-  constructor(private http: HttpClient) { }
+  private url = 'http://localhost:3000/users';
+  constructor(private http: HttpClient) {}
 
   getUserById(id: number): Observable<IUser> {
     return this.http.get<IUser>(SERVER_ROUTE + id);
@@ -19,10 +21,14 @@ export class UserService {
   }
 
   editUser(id: string, user: IUser): Observable<IUser> {
-    return this.http.put<IUser>(SERVER_ROUTE + id, user)
+    return this.http.put<IUser>(SERVER_ROUTE + id, user);
   }
 
-  sendEmail(email: string): Observable<string>{
-     return this.http.post<string>(SERVER_ROUTE, email);
+  sendEmail(email: string): Observable<string> {
+    return this.http.post<string>(SERVER_ROUTE, email);
+  }
+
+  registroTest(user: IUser) {
+    return this.http.post(this.url, user).pipe(take(1));
   }
 }
