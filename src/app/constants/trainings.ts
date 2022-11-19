@@ -1,4 +1,4 @@
-const BASE_TRAINING = 'https://localhost:7268/api/trainings';
+const BASE_TRAINING = 'https://localhost:7181/api/Trainings';
 
 
 export default BASE_TRAINING;
