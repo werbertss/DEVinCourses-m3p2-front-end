@@ -118,7 +118,6 @@ export class RegistrationComponent implements OnInit {
     };
 
     this.userService.addUser(formValue);
-    this.userService.registroTest(formValue).subscribe();
     this.router.navigateByUrl('');
   }
 
