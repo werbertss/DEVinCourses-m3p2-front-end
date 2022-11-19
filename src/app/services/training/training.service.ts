@@ -2,16 +2,19 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Injectable } from '@angular/core';
 import { catchError, retry, throwError } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
-import BASE_TRAINING from 'src/app/constants/trainings';
+import BASE_REGISTRATIONS from 'src/app/constants/base_registrations';
+import BASE_TRAININGS from 'src/app/constants/base_trainings';
+import BASE_USERS from 'src/app/constants/base_users';
 import { IRegistration } from 'src/app/models/registration';
 import { ITraining } from 'src/app/models/training';
+import { IUser } from 'src/app/models/user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TrainingService {
   token:string | null = localStorage.getItem('token');
-  
+
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -28,33 +31,40 @@ export class TrainingService {
 
   //Métodos Trainings
   getAllTrainings():Observable<ITraining[]>{
-    return this.http.get<ITraining[]>(BASE_TRAINING, this.httpOptions)
+    return this.http.get<ITraining[]>(BASE_TRAININGS, this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError)
       )
   }
   getByCategory(category:string):Observable<ITraining[]>{
-    console.log(`${BASE_TRAINING}?category=${category}`)
-    return this.http.get<ITraining[]>(`${BASE_TRAINING}?category=${category}`, this.httpOptions)
+    return this.http.get<ITraining[]>(`${BASE_TRAININGS}?category=${category}`, this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError)
       )
   }
 
-  getTrainingsByUser(id:number):Observable<ITraining[]>{
-    return this.http.get<ITraining[]>(`https://localhost:7181/api/Users/${id}/Trainings`, this.httpOptions)
+  getTrainingsByUser(id:number| undefined):Observable<ITraining[]>{
+    return this.http.get<ITraining[]>(`${BASE_USERS}/${id}/Trainings`, this.httpOptions)
     .pipe(
       retry(2),
       catchError(this.handleError)
     )
   }
  
+  //metodos Registrations
   getRegistrationByUser(id:number,status:string):Observable<IRegistration[]>{
-    return this.http.get<IRegistration[]>(`https://localhost:7181/api/Users/${id}/Registrations?status=${status}`)
+    return this.http.get<IRegistration[]>(`${BASE_USERS}/${id}/Registrations?status=${status}`)
     .pipe(
       retry(2),
+      catchError(this.handleError)
+    )
+  }
+
+  postRegistration(registration:IRegistration){
+    return this.http.post<IRegistration>(BASE_REGISTRATIONS, registration, this.httpOptions)
+    .pipe(
       catchError(this.handleError)
     )
   }
