@@ -16,7 +16,7 @@ export class ItemTrainingComponent implements OnInit {
     description: '',
     teacher: '',
     duration: 0,
-    status: '',
+    active: true,
     category: '',
     date: new Date(),
     modules:[]

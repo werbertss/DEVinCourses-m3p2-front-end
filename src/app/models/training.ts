@@ -7,7 +7,7 @@ export interface ITraining{
     description:string;
     teacher:string;
     duration:number;
-    status:string;
+    active:boolean;
     category:string;
     date:Date;
     modules:IModules[]
