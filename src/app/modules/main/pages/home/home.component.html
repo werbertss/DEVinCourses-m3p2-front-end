@@ -116,6 +116,9 @@
     <div class="col-1"></div>
     <div class="col-10">
       <div class="d-flex flex-wrap justify-content-center">
+        <div *ngIf="cardSize == 0" class="alert alert-primary my-4" role="alert">
+          <h4>Nenhum item nessa categoria!</h4> 
+        </div>
         <pro-item-training
           [item]="training"
           class="col-md-2 m-2 mt-4"
@@ -127,9 +130,10 @@
   </div>
 </div>
 
-<ngb-pagination *ngIf="filters.length > 20"
+<ngb-pagination
   class="d-flex justify-content-center"
   [(page)]="page"
   [pageSize]="pageSize"
-  [collectionSize]="filters.length">
+  [collectionSize]="cardSize"
+  *ngIf="cardSize > 0">
 </ngb-pagination>
