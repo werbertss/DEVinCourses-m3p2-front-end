@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { catchError, retry, throwError } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
 import BASE_TRAINING from 'src/app/constants/trainings';
+import { IRegistration } from 'src/app/models/registration';
 import { ITraining } from 'src/app/models/training';
 
 @Injectable({
@@ -42,6 +43,21 @@ export class TrainingService {
       )
   }
 
+  getTrainingsByUser(id:number):Observable<ITraining[]>{
+    return this.http.get<ITraining[]>(`https://localhost:7181/api/Users/${id}/Trainings`, this.httpOptions)
+    .pipe(
+      retry(2),
+      catchError(this.handleError)
+    )
+  }
+ 
+  getRegistrationByUser(id:number,status:string):Observable<IRegistration[]>{
+    return this.http.get<IRegistration[]>(`https://localhost:7181/api/Users/${id}/Registrations?status=${status}`)
+    .pipe(
+      retry(2),
+      catchError(this.handleError)
+    )
+  }
 
   handleError(error: HttpErrorResponse) {
     let errorMessage = '';
@@ -55,4 +71,6 @@ export class TrainingService {
     console.log(errorMessage);
     return throwError(errorMessage);
   };
+
+
 }
