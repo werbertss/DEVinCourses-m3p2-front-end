@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { TRAININGBYUSER_MOCK } from 'src/app/mocks/trainingsByUser_mock';
 import { TRAINING_MOCK } from 'src/app/mocks/training_mock';
+import { IRegistration } from 'src/app/models/registration';
 import { ITraining } from 'src/app/models/training';
 import { ITraningByUser } from 'src/app/models/trainingByUser';
+import { TrainingService } from 'src/app/services/training/training.service';
 
 @Component({
   selector: 'pro-training',
@@ -12,27 +14,52 @@ import { ITraningByUser } from 'src/app/models/trainingByUser';
 export class TrainingComponent implements OnInit {
 
   trainings: ITraining[] = TRAINING_MOCK;
-  trainingsByUser: ITraningByUser[] = TRAININGBYUSER_MOCK;
+  trainingsByUser: ITraining[] = [];  //TRAININGBYUSER_MOCK;
 
   status: string = 'todos';
-  filters!: ITraningByUser[];
+  filters: ITraining[] = [];
+  userId!:number;
 
   page = 1;
   pageSize = 20;
 
-  constructor() {}
+  constructor(private trainingService:TrainingService) {
+
+  }
   
   ngOnInit(): void {
-    this.filtrar();
+    this.getMyTrainings(1);
   }
 
+  getMyTrainings(id: number){
+    this.trainingService.getTrainingsByUser(id)
+    .subscribe((trainingsByUser:ITraining[])=>{
+      this.trainingsByUser = trainingsByUser
+      this.userId = id
+      this.filtrar()
+    })
+  }
+
+  getMyTrainingsByStatus(id:number, status:string){
+    this.trainingService.getRegistrationByUser(id,status)
+    .subscribe((registration: IRegistration[])=>{
+      for (let index = 0; index < this.trainingsByUser.length; index++) {
+       if(this.trainingsByUser[index].id == registration[index]?.trainingId)
+       {
+        this.filters.push(this.trainingsByUser[index])
+       }
+      }
+    })
+  }
+
+
   filtrar() {
-    if (this.status != 'todos') {
-      this.filters = this.trainingsByUser.filter(item => item.status == this.status )
+    this.filters = [];
+    if (this.status == 'todos') {
+      this.filters = this.trainingsByUser;
     }
     else {
-
-      this.filters = this.trainingsByUser;
+      this.getMyTrainingsByStatus(this.userId,this.status);
     }
   }
 
