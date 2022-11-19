@@ -27,7 +27,7 @@ const routes: Routes = [
       },
       {
         path: 'register',
-        component: ItemRegisterTrainingComponent,
+        component: RegisterTrainingComponent,
       },
       // Lugar para rotas internas do módulo
     ],

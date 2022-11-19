@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { IModules } from 'src/app/models/modules';
 
 @Component({
   selector: 'pro-item-register-training',
@@ -7,16 +9,20 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./item-register-training.component.scss'],
 })
 export class ItemRegisterTrainingComponent implements OnInit {
+  moduleList: IModules[] = [];
+
   formTraining: FormGroup = new FormGroup({});
-  constructor(private formBuilder: FormBuilder) {
+  //constructor(private http: HttpClient){};
+  constructor(private formBuilder: FormBuilder, http: HttpClient) {
     this.formTraining = formBuilder.group({
-      title: [''],
-      teatcher: [''],
-      duration: [''],
-      classes: [''],
-      url: [''],
-      modules: [''],
-      description: [''],
+      //date:new Date(),
+      //modules:['']
+      title: ['', [Validators.required]],
+      teatcher: ['', [Validators.required]],
+      duration: ['', [Validators.required, Validators.min(8)]],
+      modules: ['', [Validators.required]],
+      category: [''],
+      description: ['', [Validators.required]],
     });
   }
 
