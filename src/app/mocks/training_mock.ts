@@ -9,7 +9,7 @@ export const TRAINING_MOCK: ITraining[] = [
       'Architecto eaque consectetur nostrum impedit earum at harum. Reiciendis suscipit soluta, ab, repellat ad, Architecto eaque consectetur nostrum impedit earum at harum. Architecto eaque consectetur nostrum impedit earum at harum., Architecto eaque consectetur nostrum impedit earum at harum.',
     teacher: 'Carlos Silva',
     duration: 20,
-    status: 'disponivel',
+    active: true,
     category: 'tecnologia',
     date:new Date(),
     modules:[

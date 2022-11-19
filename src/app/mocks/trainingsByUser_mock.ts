@@ -11,7 +11,7 @@ export const TRAININGBYUSER_MOCK: ITraningByUser[] = [
           'Neste curso, os alunos irão obter um conhecimento aprofundado sobre os recursos disponíveis sobre Inlges o basico.',
       teacher: 'Rodrigo Rosa',
       duration: 70,
-      status: 'andamento',
+      active: true,
       category: 'idioma',
       date:new Date(),
       modules:[
@@ -51,7 +51,7 @@ export const TRAININGBYUSER_MOCK: ITraningByUser[] = [
           'Architecto eaque consectetur nostrum impedit earum at harum. Reiciendis suscipit soluta, ab, repellat ad, Reiciendis suscipit soluta, ab, repellat ad',
         teacher: 'Carlos Silva',
         duration: 20,
-        status: 'matriculado',
+        active: true,
         category: 'tecnologia',
         date:new Date(),
         modules:[
@@ -91,7 +91,7 @@ export const TRAININGBYUSER_MOCK: ITraningByUser[] = [
           'Neste curso, os alunos irão obter um conhecimento aprofundado sobre os recursos disponíveis sobre Coaching.',
         teacher: 'Jair souza',
         duration: 16,
-        status: 'finalizado',
+        active: true,
         category: 'psicologia',
         date:new Date(),
         modules:[
@@ -130,7 +130,7 @@ export const TRAININGBYUSER_MOCK: ITraningByUser[] = [
           'Neste curso, os alunos irão obter um conhecimento aprofundado sobre os recursos disponíveis .',
         teacher: 'Maria Eduarda',
         duration: 18,
-        status: 'finalizado',
+        active: true,
         category: 'educacao',
         date:new Date(),
         modules:[
