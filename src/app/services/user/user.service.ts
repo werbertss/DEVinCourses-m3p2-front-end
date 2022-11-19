@@ -9,7 +9,6 @@ import { url } from 'inspector';
   providedIn: 'root',
 })
 export class UserService {
-  private url = 'http://localhost:3000/users';
   constructor(private http: HttpClient) {}
 
   getUserById(id: number): Observable<IUser> {
@@ -26,9 +25,5 @@ export class UserService {
 
   sendEmail(email: string): Observable<string> {
     return this.http.post<string>(SERVER_ROUTE, email);
-  }
-
-  registroTest(user: IUser) {
-    return this.http.post(this.url, user).pipe(take(1));
   }
 }
