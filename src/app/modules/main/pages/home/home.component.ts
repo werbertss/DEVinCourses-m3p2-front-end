@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Observable } from 'rxjs/internal/Observable';
 import { TRAININGBYUSER_MOCK } from 'src/app/mocks/trainingsByUser_mock';
-import { TRAINING_MOCK } from 'src/app/mocks/training_mock';
 import { USER_MOCK } from 'src/app/mocks/user_mock';
 import { ITraining } from 'src/app/models/training';
 import { IUser } from 'src/app/models/user';
@@ -20,11 +18,12 @@ export class HomeComponent implements OnInit {
 
   trainingModel!: ITraining;
 
-  category: string = 'todos';
+  category:string = 'todos';
   filters!: ITraining[];
 
   page = 1;
   pageSize = 20;
+  cardSize = 0;
 
   constructor(
     private config: NgbModalConfig, 
@@ -46,24 +45,31 @@ export class HomeComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.filtrar();
+    this.getTrainings();
   }
 
   getTrainings(){
     this.trainingService.getAllTrainings()
-      .subscribe((result:ITraining[]) => {
-        this.trainings = result
+      .subscribe((trainings:ITraining[]) => {
+        this.trainings = trainings;
+        this.filtrar();
       })
   }
 
-  filtrar(){
+   filtrar(){
     if(this.category == 'todos'){
       this.filters = this.trainings;
-    }
-    else{
+      this.cardSize = this.filters.length;
+      
+    }else{
       this.trainingService.getByCategory(this.category)
       .subscribe((result:ITraining[]) => {
-        this.filters = result;
+        this.filters = result; 
+        this.cardSize = this.filters.length;
+      },
+      (error) => {
+        this.filters = [];
+        this.cardSize = this.filters.length;
       });
       /* this.filters =  this.trainings.filter(item => item.category == this.category) */
     }
