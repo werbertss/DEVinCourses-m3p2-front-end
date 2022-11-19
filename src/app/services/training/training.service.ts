@@ -29,6 +29,11 @@ export class TrainingService {
     return this.training;
   }
 
+  //MetodoUser
+  getUserByToken(token: string | null): Observable<IUser> {
+    return this.http.get<IUser>(`${BASE_USERS}/authenticated`,this.httpOptions);
+  }
+
   //Métodos Trainings
   getAllTrainings():Observable<ITraining[]>{
     return this.http.get<ITraining[]>(BASE_TRAININGS, this.httpOptions)
