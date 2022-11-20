@@ -1,3 +1,3 @@
-const SERVER_ROUTE = 'http://localhost:3000/db';
+const SERVER_ROUTE = 'http://localhost:7181/';
 
 export default SERVER_ROUTE;
