@@ -47,4 +47,8 @@ export class ItemMyTrainingComponent implements OnInit {
   refreshRecentTraining(id: number, dateRefresh: number) {
     this.trainingService.PatchRecentTrainingsByUser(id, dateRefresh);
   }
+
+  formatarDuracao(duracao:number):any{
+    return duracao.toString().replace(':00:00', '')
+  }
 }

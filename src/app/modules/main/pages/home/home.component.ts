@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { TRAININGBYUSER_MOCK } from 'src/app/mocks/trainingsByUser_mock';
 import { USER_MOCK } from 'src/app/mocks/user_mock';
@@ -14,16 +15,16 @@ import { AlertService } from '../../services/alert/alert.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  //users: IUser[] = USER_MOCK;
-  registration:IRegistration = {
+  
+  registration:IRegistration= {
     id:0,
     userId: 0,
     trainingId:0,
     status:0
-  }
+  };
   userActive!:IUser;
 
-  trainings:ITraining[] = []; //TRAINING_MOCK;
+  trainings:ITraining[] = [];
 
   trainingModel!:ITraining;
 
@@ -38,7 +39,8 @@ export class HomeComponent implements OnInit {
     private config: NgbModalConfig, 
     private modalService: NgbModal,
     private trainingService:TrainingService,
-    private alertService:AlertService) {
+    private alertService:AlertService,
+    private serviceTitle:Title) {
     // customize default values of modals used by this component tree
     config.backdrop = 'static';
     config.keyboard = false;
@@ -55,15 +57,17 @@ export class HomeComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.serviceTitle.setTitle('NDD Training - Home');
     this.getUser();
-    this.getTrainings();
+    
   }
 
   getUser(){
     this.trainingService.getUserByToken(this.trainingService.token)
     .subscribe((user:IUser) => {
       this.userActive = user;
-      this.registration.userId = user.id;
+      this.registration.userId = this.userActive.id;
+      this.getTrainings();      
     })
   }
 
@@ -95,16 +99,26 @@ export class HomeComponent implements OnInit {
 
   isRegistered(idTraining:number):void {
     this.registration.trainingId = idTraining;
+
     this.trainingService.getTrainingsByUser(this.userActive?.id)
       .subscribe((training:ITraining[]) => {
+        
         let myTrainings = training.filter(t => t.id == idTraining)
+
         if(myTrainings.length != 0){
           this.alertService.alertUserIsRegistered()
         }else{
-          this.trainingService.postRegistration(this.registration)
-          .subscribe(result => console.log(result))
-          this.alertService.alertRegisterSuccess();
+          this.registerCourse();
         }
       })
   }
+
+  registerCourse(){
+    this.trainingService.postRegistration(this.registration)
+    .subscribe(result => console.log(result));
+
+    this.alertService.alertRegisterSuccess();
+  }
+
+
 }

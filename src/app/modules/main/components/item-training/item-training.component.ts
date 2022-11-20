@@ -21,6 +21,10 @@ export class ItemTrainingComponent implements OnInit {
     date: new Date(),
     modules:[]
   };
+  
+  formatarDuracao(duracao:number):any{
+    return duracao.toString().replace(':00:00', '')
+  }
 
   constructor() {}
 
