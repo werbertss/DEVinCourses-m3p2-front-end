@@ -53,7 +53,7 @@ export class TrainingService {
     return this.http
       .get<IRegistration[]>(
         `https://localhost:7181/api/Users/${1}/Registrations/Recents`,
-        this.httpOptions)
+        {headers: this.headers})
       }
 
   getByCategory(category:string):Observable<ITraining[]>{
@@ -72,11 +72,11 @@ export class TrainingService {
   ): Observable<number> {
     return this.http
       .patch<number>(
-        `https://localhost:7181/api/Users/Registrations/${id}`,
-        refreshDate,
-        this.httpOptions
-      )
-      .pipe(retry(2), catchError(this.handleError));
+        `https://localhost:7181/api/Users/Registrations/${id}`,refreshDate, {headers: this.headers})
+      .pipe(
+        retry(2), 
+        catchError(this.handleError)
+      );
   }
 
 

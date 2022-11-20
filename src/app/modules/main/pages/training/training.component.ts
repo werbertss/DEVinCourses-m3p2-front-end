@@ -27,10 +27,10 @@ export class TrainingComponent implements OnInit {
   pageSize = 20;
 
   constructor(private trainingService:TrainingService,
-    private serviceTitle:Title) {
+    private serviceTitle:Title) {}
 
 
-  ngOnInit(): void {
+  ngOnInit():void {
     this.serviceTitle.setTitle('NDD Training - My Training');
     this.getUserActive();
   }
