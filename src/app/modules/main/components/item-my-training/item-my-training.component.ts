@@ -10,6 +10,8 @@ import { TrainingService } from '../../../../services/training/training.service'
   styleUrls: ['./item-my-training.component.scss'],
 })
 export class ItemMyTrainingComponent implements OnInit {
+  userId!: number;
+
   @Input()
   item: ITraining = {
     id: 0,
@@ -21,12 +23,14 @@ export class ItemMyTrainingComponent implements OnInit {
     active: true,
     category: '',
     date: new Date(),
-    modules:[]
+    modules: [],
   };
 
-  constructor(private alertService: AlertService,
-    private trainingService:TrainingService,
-    private router:Router,) {}
+  constructor(
+    private alertService: AlertService,
+    private trainingService: TrainingService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {}
 
@@ -34,8 +38,13 @@ export class ItemMyTrainingComponent implements OnInit {
     this.alertService.alertDeleteTraining();
   }
 
-  selectTraining(training:ITraining){
+  selectTraining(training: ITraining) {
     this.trainingService.training = training;
     this.router.navigate(['home/video']);
+    this.refreshRecentTraining(1, Date.now());
+  }
+
+  refreshRecentTraining(id: number, dateRefresh: number) {
+    this.trainingService.PatchRecentTrainingsByUser(id, dateRefresh);
   }
 }

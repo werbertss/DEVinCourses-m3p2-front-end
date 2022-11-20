@@ -1,4 +1,8 @@
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpHeaders,
+} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, retry, throwError } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
@@ -10,22 +14,23 @@ import { ITraining } from 'src/app/models/training';
 import { IUser } from 'src/app/models/user';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TrainingService {
-  token:string | null = localStorage.getItem('token');
+
+  token: string | null = localStorage.getItem('token');
 
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-    token: new HttpHeaders({ 'Autorization': 'bearer'+ this.token})
-  }
+    token: new HttpHeaders({ Autorization: 'bearer' + this.token }),
+  };
 
-  training!:ITraining;
+  training!: ITraining;
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  returnTraining(){
+  returnTraining() {
     return this.training;
   }
 
@@ -35,20 +40,46 @@ export class TrainingService {
   }
 
   //Métodos Trainings
+
   getAllTrainings():Observable<ITraining[]>{
     return this.http.get<ITraining[]>(SERVER_TRAININGS, this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError)
       )
+      .pipe(retry(2), catchError(this.handleError));
   }
+
+  getRecentTrainingsByUser(id: number): Observable<IRegistration[]> {
+    return this.http
+      .get<IRegistration[]>(
+        `https://localhost:7181/api/Users/${1}/Registrations/Recents`,
+        this.httpOptions)
+      }
+
   getByCategory(category:string):Observable<ITraining[]>{
     return this.http.get<ITraining[]>(`${SERVER_TRAININGS}?category=${category}`, this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError)
       )
+      .pipe(retry(2), catchError(this.handleError));
   }
+
+
+  PatchRecentTrainingsByUser(
+    id: number,
+    refreshDate: number
+  ): Observable<number> {
+    return this.http
+      .patch<number>(
+        `https://localhost:7181/api/Users/Registrations/${id}`,
+        refreshDate,
+        this.httpOptions
+      )
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
 
   getTrainingsByUser(id:number| undefined):Observable<ITraining[]>{
     return this.http.get<ITraining[]>(`${SERVER_USERS}/${id}/Trainings`, this.httpOptions)
@@ -81,6 +112,7 @@ export class TrainingService {
       retry(2),
       catchError(this.handleError)
     )
+
   }
 
   handleError(error: HttpErrorResponse) {
@@ -90,11 +122,10 @@ export class TrainingService {
       errorMessage = error.error.message;
     } else {
       // Erro ocorreu no lado do servidor
-      errorMessage = `Código do erro: ${error.status}, ` + `menssagem: ${error.message}`;
+      errorMessage =
+        `Código do erro: ${error.status}, ` + `menssagem: ${error.message}`;
     }
     console.log(errorMessage);
     return throwError(errorMessage);
-  };
-
-
+  }
 }
