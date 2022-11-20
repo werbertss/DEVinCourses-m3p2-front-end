@@ -15,6 +15,8 @@ import { FooterComponent } from 'src/app/components/footer/footer.component';
 import { ItemRegisterTrainingComponent } from './components/item-register-training/item-register-training.component';
 import { RegisterTrainingComponent } from './pages/register-training/register-training.component';
 import { ItemRegisterModuleComponent } from './components/item-register-module/item-register-module.component';
+import { ActivitiesComponent } from './pages/activities/activities.component';
+import { ItemActivitieComponent } from './components/item-activitie/item-activitie.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { ItemRegisterModuleComponent } from './components/item-register-module/i
     RegisterTrainingComponent,
     ItemRegisterTrainingComponent,
     ItemRegisterModuleComponent,
+    ActivitiesComponent,
+    ItemActivitieComponent,
   ],
 
   imports: [

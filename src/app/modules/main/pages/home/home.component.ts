@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { TRAININGBYUSER_MOCK } from 'src/app/mocks/trainingsByUser_mock';
-import { TRAINING_MOCK } from 'src/app/mocks/training_mock';
 import { USER_MOCK } from 'src/app/mocks/user_mock';
+import { IRegistration } from 'src/app/models/registration';
 import { ITraining } from 'src/app/models/training';
 import { IUser } from 'src/app/models/user';
+import { TrainingService } from 'src/app/services/training/training.service';
+import { AlertService } from '../../services/alert/alert.service';
 
 // Decralação para visualização do Modal
 declare var window: any;
@@ -16,24 +18,34 @@ declare var window: any;
 })
 
 export class HomeComponent implements OnInit {
-  users: IUser[] = USER_MOCK;
+  //users: IUser[] = USER_MOCK;
+  registration:IRegistration = {
+    id:0,
+    userId: 0,
+    trainingId:0,
+    status:0
+  }
+  userActive!:IUser;
 
-  trainings: ITraining[] = TRAINING_MOCK;
+  trainings:ITraining[] = []; //TRAINING_MOCK;
 
-  trainingModel!: ITraining;
+  trainingModel!:ITraining;
 
-  category: string = 'todos';
-  filters!: ITraining[];
+  category:string = 'todos';
+  filters: ITraining[] = [];
 
   page = 1;
   pageSize = 20;
+  cardSize = 0;
 
   //Elemento para o Modal Detalhes
   element: any;
 
   constructor(
     private config: NgbModalConfig, 
-    private modalService: NgbModal) {
+    private modalService: NgbModal,
+    private trainingService:TrainingService,
+    private alertService:AlertService) {
     // customize default values of modals used by this component tree
     config.backdrop = 'static';
     config.keyboard = false;
@@ -50,27 +62,57 @@ export class HomeComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.filtrar();
+    this.getUser();
+    this.getTrainings();
   }
 
-  filtrar(){
+  getUser(){
+    this.trainingService.getUserByToken(this.trainingService.token)
+    .subscribe((user:IUser) => {
+      this.userActive = user;
+      this.registration.userId = user.id;
+    })
+  }
+
+  getTrainings(){
+    this.trainingService.getAllTrainings()
+      .subscribe((trainings:ITraining[]) => {
+        this.trainings = trainings;
+        this.filtrar();
+      })
+  }
+
+   filtrar(){
     if(this.category == 'todos'){
       this.filters = this.trainings;
-    }
-    else{
-      this.filters =  this.trainings.filter(item => item.category == this.category)
+      this.cardSize = this.filters.length;
+      
+    }else{
+      this.trainingService.getByCategory(this.category)
+      .subscribe((trainings:ITraining[]) => {
+        this.filters = trainings; 
+        this.cardSize = this.filters.length;
+      },
+      (error) => {
+        this.filters = [];
+        this.cardSize = this.filters.length;
+      });
     }
   }
 
-  estaMatriculado(idDoCursoClicado:number):void {
-    
-    //cursos do usuário estático, id : 1
-    var usuario = TRAININGBYUSER_MOCK.find(x => x.userId == 1);
-    
-    if(usuario?.id == idDoCursoClicado){
-      window.alert("Você já está matriculado neste curso.");
-    }
-    
+  isRegistered(idTraining:number):void {
+    this.registration.trainingId = idTraining;
+    this.trainingService.getTrainingsByUser(this.userActive?.id)
+      .subscribe((training:ITraining[]) => {
+        let myTrainings = training.filter(t => t.id == idTraining)
+        if(myTrainings.length != 0){
+          this.alertService.alertUserIsRegistered()
+        }else{
+          this.trainingService.postRegistration(this.registration)
+          .subscribe(result => console.log(result))
+          this.alertService.alertRegisterSuccess();
+        }
+      })
   }
 
   //Metodo para abrir Modal Detalhes

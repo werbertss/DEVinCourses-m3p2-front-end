@@ -1,4 +1,4 @@
-import { IModules } from 'src/app/models/modules'
+import { IModule } from 'src/app/models/modules'
 
 export interface ITraining{
     id:number;
@@ -7,8 +7,8 @@ export interface ITraining{
     description:string;
     teacher:string;
     duration:number;
-    status:string;
+    active:boolean;
     category:string;
     date:Date;
-    modules:IModules[]
+    modules:IModule[]
 }
