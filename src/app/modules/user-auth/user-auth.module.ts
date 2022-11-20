@@ -7,12 +7,14 @@ import { UserAuthRoutingModule } from './user-auth-routing.module';
 import { UserAuthComponent } from './user-auth.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
     UserAuthComponent,
     LoginFormComponent,
     RegistrationComponent,
+    ResetPasswordComponent,
   ],
   imports: [
     CommonModule,
