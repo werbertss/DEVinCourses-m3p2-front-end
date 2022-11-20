@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import SERVER_USERS from '../../constants/server_users';
 import { Observable } from 'rxjs';
 import { IUser } from 'src/app/models/user';
@@ -8,6 +8,8 @@ import { IUser } from 'src/app/models/user';
   providedIn: 'root',
 })
 export class UserService {
+  headers = new HttpHeaders({'Content-Type' : 'application/json'});
+
   constructor(private http: HttpClient) {}
 
   getUser(token: string): Observable<IUser> {
@@ -15,7 +17,7 @@ export class UserService {
   }
 
   addUser(user: IUser): void {
-    this.http.post(SERVER_USERS, user);
+    this.http.post(SERVER_USERS, user, {headers: this.headers});
   }
 
   editUser(id: string, user: IUser): void {
@@ -23,6 +25,6 @@ export class UserService {
   }
 
   sendEmail(email: string): void {
-    this.http.post<string>(`${SERVER_USERS}/reset`, email);
+    this.http.post<string>(`${SERVER_USERS}/reset`, email, {headers: this.headers});
   }
 }
