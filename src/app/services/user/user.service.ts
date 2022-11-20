@@ -21,7 +21,7 @@ export class UserService {
   }
 
   editUser(id: string, user: IUser) {
-    return this.http.put<IUser>(`${SERVER_USERS}/${id}`, user);
+    return this.http.put<IUser>(`${SERVER_USERS}/${id}`, user).subscribe();
   }
 
   sendEmail(email: string){
