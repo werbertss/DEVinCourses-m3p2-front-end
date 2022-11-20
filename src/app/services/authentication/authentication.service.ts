@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import SERVER_ROUTE from 'src/app/constants/server';
+import SERVER_USERS from 'src/app/constants/server_users';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,7 @@ export class AuthenticationService {
     let headers = new HttpHeaders({'Content-Type' : 'application/json'})
 
     return this.http
-      .post<string>(`${SERVER_ROUTE}/api/Authentications/login`, JSON.stringify({ email, password }), {headers: headers})
+      .post<string>(`${SERVER_USERS}/api/Authentications/login`, JSON.stringify({ email, password }), {headers: headers})
       .pipe();
   }
 
