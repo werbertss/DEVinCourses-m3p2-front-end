@@ -18,8 +18,17 @@
   <div class="row">
     <div class="col-1"></div>
     <div class="col-10">
-      <form (change)="filtrar()">
-        <input [(ngModel)]="status" type="radio" name="status" class="btn-check" id="todos" autocomplete="off" value="todos" checked />
+      <form (change)="filterByStatus()">
+        <input
+          [(ngModel)]="status"
+          type="radio"
+          name="status"
+          class="btn-check"
+          id="todos"
+          autocomplete="off"
+          value="todos"
+          checked
+        />
         <label class="btn btn-outline-primary me-2" for="todos">Todos</label>
         <input [(ngModel)]="status" type="radio" name="status" class="btn-check" id="andamento" autocomplete="off" value="Andamento" />
         <label class="btn btn-outline-primary me-2" for="andamento">Andamento</label>

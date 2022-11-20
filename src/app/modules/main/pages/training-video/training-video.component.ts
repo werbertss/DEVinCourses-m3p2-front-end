@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { IModule } from 'src/app/models/modules';
 import { ITraining } from 'src/app/models/training';
@@ -52,12 +53,14 @@ export class TrainingVideoComponent implements OnInit {
   };*/
 
   constructor(private trainingService:TrainingService,
-    private router:Router,) { }
+    private router:Router,
+    private serviceTitle:Title) { }
 
   training!:ITraining | null;
   modules!:IModule[];
   
   ngOnInit(): void {
+    this.serviceTitle.setTitle('NDD Training - Video');
     this.training =  this.trainingService.returnTraining();
     this.getModulesByTrainingId(this.training?.id);
 
