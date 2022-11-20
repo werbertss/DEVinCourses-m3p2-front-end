@@ -10,8 +10,8 @@ import { IUser } from 'src/app/models/user';
 export class UserService {
   constructor(private http: HttpClient) {}
 
-  getUserById(id: number): Observable<IUser> {
-    return this.http.get<IUser>(SERVER_ROUTE + id);
+  getUser(token: string): Observable<IUser> {
+    return this.http.get<IUser>(SERVER_ROUTE + token);
   }
 
   addUser(user: IUser): Observable<IUser> {
