@@ -18,8 +18,8 @@ export class UserService {
     return this.http.post<IUser>(SERVER_ROUTE + 'api/Users', user);
   }
 
-  editUser(id: string, user: IUser): Observable<IUser> {
-    return this.http.put<IUser>(SERVER_ROUTE + 'api/Users/' + id, user);
+  editUser(id: string, user: IUser): void {
+    this.http.put<IUser>(SERVER_ROUTE + 'api/Users/' + id, user);
   }
 
   sendEmail(email: string): Observable<string> {
