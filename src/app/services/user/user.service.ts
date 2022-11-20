@@ -17,12 +17,7 @@ export class UserService {
   }
 
   addUser(user: IUser){
-   return this.http.post(SERVER_USERS, user, {headers: this.headers}).subscribe(
-    resultado =>{
-      console.log(resultado)
-      
-    }
-  );
+   return this.http.post(SERVER_USERS, user, {headers: this.headers}).subscribe();
   }
 
   editUser(id: string, user: IUser): void {
@@ -31,10 +26,6 @@ export class UserService {
 
   sendEmail(email: string){
     var emailJSON = JSON.stringify(email);   
-    return this.http.post(`${SERVER_USERS}/reset`, emailJSON,{headers: this.headers}).subscribe(
-      resultado =>{
-        console.log(resultado)
-      }
-    );
+    return this.http.post(`${SERVER_USERS}/reset`, emailJSON,{headers: this.headers}).subscribe();
   }
 }
