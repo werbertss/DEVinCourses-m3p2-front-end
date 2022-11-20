@@ -7,6 +7,7 @@ import { MainComponent } from './main.component';
 import { HomeComponent } from './pages/home/home.component';
 import { RegisterTrainingComponent } from './pages/register-training/register-training.component';
 import { ItemRegisterTrainingComponent } from './components/item-register-training/item-register-training.component';
+import { ActivitiesComponent } from './pages/activities/activities.component';
 
 const routes: Routes = [
   {
@@ -29,6 +30,10 @@ const routes: Routes = [
         path: 'register',
         component: RegisterTrainingComponent,
       },
+      {
+        path: 'activities',
+        component: ActivitiesComponent,
+      }
       // Lugar para rotas internas do módulo
     ],
   },
