@@ -38,4 +38,8 @@ export class ItemMyTrainingComponent implements OnInit {
     this.trainingService.training = training;
     this.router.navigate(['home/video']);
   }
+
+  formatarDuracao(duracao:number):any{
+    return duracao.toString().replace(':00:00', '')
+  }
 }
