@@ -4,6 +4,7 @@ import { LoginGuard } from 'src/app/guards/login.guard';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { UserAuthComponent } from './user-auth.component';
+import {ResetPasswordComponent}from './reset-password/reset-password.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
       {
         path: 'cadastro',
         component: RegistrationComponent,
+      },
+      {
+        path: 'reset',
+        component: ResetPasswordComponent,
       }
     ]
   },

@@ -11,7 +11,7 @@ import { TrainingService } from 'src/app/services/training/training.service';
 @Component({
   selector: 'pro-training',
   templateUrl: './training.component.html',
-  styleUrls: ['./training.component.scss']
+  styleUrls: ['./training.component.scss'],
 })
 export class TrainingComponent implements OnInit {
 
@@ -21,14 +21,15 @@ export class TrainingComponent implements OnInit {
   status: string = 'todos';
   filters: ITraining[] = [];
 
+  userId!: number;
+
   page = 1;
   pageSize = 20;
 
   constructor(private trainingService:TrainingService,
     private serviceTitle:Title) {
 
-  }
-  
+
   ngOnInit(): void {
     this.serviceTitle.setTitle('NDD Training - My Training');
     this.getUserActive();
@@ -61,20 +62,31 @@ export class TrainingComponent implements OnInit {
         })
       }
     })
+
   }
 
+  getRecentTrainingsByUser(id: number) {
+    this.trainingService
+      .getRecentTrainingsByUser(id)
+      .subscribe((registration: IRegistration[]) => {
+        for (let i = 0; i < registration.length; i++) {
+          this.trainingsByUser.forEach((item) => {
+            if (item.id == registration[i].trainingId) {
+              this.filters.push(item);
+            }
+          });
+        }
+      });
+  }
 
   filterByStatus() {
     this.filters = [];
     if (this.status == 'todos') {
       this.filters = this.trainingsByUser;
-    }
-    else {
-      this.getMyTrainingsByStatus(this.UserActive?.id,this.status);
+    } else if (this.status === 'Recentes') {
+      this.getRecentTrainingsByUser(this.userId);
+    } else {
+      this.getMyTrainingsByStatus(this.userId, this.status);
     }
   }
 }
-
-
-
-  
