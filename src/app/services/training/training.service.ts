@@ -60,7 +60,7 @@ export class TrainingService {
  
   //metodos Registrations
   getRegistrationByUser(id:number,status:string):Observable<IRegistration[]>{
-    return this.http.get<IRegistration[]>(`${BASE_USERS}/${id}/Registrations?status=${status}`)
+    return this.http.get<IRegistration[]>(`${BASE_USERS}/${id}/Registrations?status=${status}`, this.httpOptions)
     .pipe(
       retry(2),
       catchError(this.handleError)
@@ -70,6 +70,15 @@ export class TrainingService {
   postRegistration(registration:IRegistration){
     return this.http.post<IRegistration>(BASE_REGISTRATIONS, registration, this.httpOptions)
     .pipe(
+      catchError(this.handleError)
+    )
+  }
+
+  //metodos Modulos
+  getModulesByTrainingId(id:number):Observable<any[]>{
+    return this.http.get<any[]>(`https://localhost:7181/api/Trainings/${id}/modules`, this.httpOptions)
+    .pipe(
+      retry(2),
       catchError(this.handleError)
     )
   }

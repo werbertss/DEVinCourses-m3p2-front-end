@@ -6,7 +6,7 @@
                 <ol class="breadcrumb w-100">
                   <li class="breadcrumb-item"><a routerLink="/home">Home</a></li>
                   <li class="breadcrumb-item"><a routerLink="/home/trainings">Meus Cursos</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">{{ training.title }}</li>
+                  <li class="breadcrumb-item active" aria-current="page">{{ training?.title }}</li>
                 </ol>
             </nav>
         </div>
@@ -15,7 +15,7 @@
 <div class="container">
     <div class="row">
         <div class="col-12 m-2">
-            <h4>{{ training.title }}</h4>
+            <h4>{{ training?.title }}</h4>
         </div>
     </div>
 </div>
@@ -28,25 +28,25 @@
        </div>
        <div class="col-md-5 col-sm-12">
             <div class="container">
-                <h6>Módulos: {{ training.modules.length }}</h6>
+                <h6>Módulos: {{ training?.modules?.length }}</h6>
                 <div class="list-group container modules">
                     <a class="list-group-item list-group-item-action bg-secondary">
-                        <div *ngFor="let module of training.modules" class="card m-2 card-video" (click)="callVideo(module)">
+                        <div *ngFor="let module of modules" class="card m-2 card-video" (click)="callVideo(module)">
                             <div class="row g-0">
                                 <div class="col-md-4">
                                    
-                                    <img src="{{ module.img }}" class="img-fluid rounded py-2 ms-1" alt="...">
+                                    <img loading="lazy" [src]="module.image" class="img-fluid rounded py-2 ms-1" alt="...">
                                 </div>
                                 <div class="col-md-8">
-                                    <div *ngIf="module.statusModule == 'finalizado'" id="tag">
+                                    <div id="tag">
                                         <img id='imgFinalizado' src="https://img.icons8.com/color/48/000000/approval--v1.png"/>
                                       
                                     </div>
                                     <div class="card-body p-2">
-                                        <span class="card-title">{{ module.titleModule }}</span><br>
-                                        <p class="card-text fs-6">{{ module.descriptionModule }}</p>
-                                        <div class="progress" id="{{module.link}}">
-                                            <div id="{{module.moduleId}}"class="progress-bar progress-bar-striped progress-bar-animated"  role="progressbar" aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                        <span class="card-title">{{ module?.titleModule }}</span><br>
+                                        <p class="card-text fs-6">{{ module?.descriptionModule }}</p>
+                                        <div class="progress" id="{{module?.link}}">
+                                            <div loading="lazy" id="{{ module?.id }}"class="progress-bar progress-bar-striped progress-bar-animated"  role="progressbar" aria-label="Animated striped example" aria-valuemin="0" aria-valuemax="94"></div>
                                         </div>
                                     </div>
                                 </div>
