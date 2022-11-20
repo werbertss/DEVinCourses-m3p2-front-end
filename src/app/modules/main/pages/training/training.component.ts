@@ -9,62 +9,71 @@ import { TrainingService } from 'src/app/services/training/training.service';
 @Component({
   selector: 'pro-training',
   templateUrl: './training.component.html',
-  styleUrls: ['./training.component.scss']
+  styleUrls: ['./training.component.scss'],
 })
 export class TrainingComponent implements OnInit {
-
   trainings: ITraining[] = TRAINING_MOCK;
-  trainingsByUser: ITraining[] = [];  //TRAININGBYUSER_MOCK;
+  trainingsByUser: ITraining[] = []; //TRAININGBYUSER_MOCK;
 
   status: string = 'todos';
   filters: ITraining[] = [];
-  userId!:number;
+  userId!: number;
 
   page = 1;
   pageSize = 20;
 
-  constructor(private trainingService:TrainingService) {
+  constructor(private trainingService: TrainingService) {}
 
-  }
-  
   ngOnInit(): void {
     this.getMyTrainings(1);
   }
 
-  getMyTrainings(id: number){
-    this.trainingService.getTrainingsByUser(id)
-    .subscribe((trainingsByUser:ITraining[])=>{
-      this.trainingsByUser = trainingsByUser
-      this.userId = id
-      this.filtrar()
-    })
+  getMyTrainings(id: number) {
+    this.trainingService
+      .getTrainingsByUser(id)
+      .subscribe((trainingsByUser: ITraining[]) => {
+        this.trainingsByUser = trainingsByUser;
+        this.userId = id;
+        this.filtrar();
+      });
   }
 
-  getMyTrainingsByStatus(id:number, status:string){
-    this.trainingService.getRegistrationByUser(id,status)
-    .subscribe((registration: IRegistration[])=>{
-      for (let index = 0; index < this.trainingsByUser.length; index++) {
-       if(this.trainingsByUser[index].id == registration[index]?.trainingId)
-       {
-        this.filters.push(this.trainingsByUser[index])
-       }
-      }
-    })
+  getMyTrainingsByStatus(id: number, status: string) {
+    this.trainingService
+      .getRegistrationByUser(id, status)
+      .subscribe((registration: IRegistration[]) => {
+        for (let index = 0; index < this.trainingsByUser.length; index++) {
+          if (
+            this.trainingsByUser[index].id == registration[index]?.trainingId
+          ) {
+            this.filters.push(this.trainingsByUser[index]);
+          }
+        }
+      });
   }
 
+  getRecentTrainingsByUser(id: number, refreshDate: number) {
+    this.trainingService
+      .getRecentTrainingsByUser(id, refreshDate)
+      .subscribe((registration: IRegistration[]) => {
+        for (let index = 0; index < this.trainingsByUser.length; index++) {
+          if (
+            this.trainingsByUser[index].id == registration[index]?.trainingId
+          ) {
+            this.filters.push(this.trainingsByUser[index]);
+          }
+        }
+      });
+  }
 
   filtrar() {
     this.filters = [];
     if (this.status == 'todos') {
       this.filters = this.trainingsByUser;
-    }
-    else {
-      this.getMyTrainingsByStatus(this.userId,this.status);
+    } else if (this.status == 'Recentes') {
+      this.getRecentTrainingsByUser(this.userId, Date.now());
+    } else {
+      this.getMyTrainingsByStatus(this.userId, this.status);
     }
   }
-
 }
-
-
-
-  

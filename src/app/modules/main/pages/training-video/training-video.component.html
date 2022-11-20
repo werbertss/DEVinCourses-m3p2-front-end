@@ -4,9 +4,9 @@
             <nav aria-label="breadcrumb">
                 <p class="text-end"><a routerLink="/home/trainings">&#171; voltar</a></p>
                 <ol class="breadcrumb w-100">
-                  <li class="breadcrumb-item"><a routerLink="/home">Home</a></li>
-                  <li class="breadcrumb-item"><a routerLink="/home/trainings">Meus Cursos</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">{{ training.title }}</li>
+                    <li class="breadcrumb-item"><a routerLink="/home">Home</a></li>
+                    <li class="breadcrumb-item"><a routerLink="/home/trainings">Meus Cursos</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ training.title }}</li>
                 </ol>
             </nav>
         </div>
@@ -21,12 +21,12 @@
 </div>
 <div class="container">
     <div class="row">
-       <div class="col-md-7 col-sm-12">
+        <div class="col-md-7 col-sm-12">
             <div class="container text-center">
                 <div class="w-100" id="player"></div>
             </div>
-       </div>
-       <div class="col-md-5 col-sm-12">
+        </div>
+        <div class="col-md-5 col-sm-12">
             <div class="container">
                 <h6>Módulos: {{ training.modules.length }}</h6>
                 <div class="list-group container modules">
@@ -34,20 +34,23 @@
                         <div *ngFor="let module of training.modules" class="card m-2 card-video" (click)="callVideo(module)">
                             <div class="row g-0">
                                 <div class="col-md-4">
-                                   
+
                                     <img src="{{ module.img }}" class="img-fluid rounded py-2 ms-1" alt="...">
                                 </div>
                                 <div class="col-md-8">
                                     <div *ngIf="module.statusModule == 'finalizado'" id="tag">
-                                        <img id='imgFinalizado' src="https://img.icons8.com/color/48/000000/approval--v1.png"/>
-                                      
+                                        <img id='imgFinalizado' src="https://img.icons8.com/color/48/000000/approval--v1.png" />
+
                                     </div>
                                     <div class="card-body p-2">
                                         <span class="card-title">{{ module.titleModule }}</span><br>
                                         <p class="card-text fs-6">{{ module.descriptionModule }}</p>
                                         <div class="progress" id="{{module.link}}">
-                                            <div id="{{module.moduleId}}"class="progress-bar progress-bar-striped progress-bar-animated"  role="progressbar" aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                            <div id="{{module.moduleId}}" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
+                                        <!-- <div class="form-check checkbox checkboxModules">
+                                            <input class="form-check-input" type="checkbox" value='false' [id]="module.moduleId+100" onclick="verifyCheck()">
+                                        </div> -->
                                     </div>
                                 </div>
                             </div>
@@ -55,6 +58,6 @@
                     </a>
                 </div>
             </div>
-       </div>
+        </div>
     </div>
 </div>
