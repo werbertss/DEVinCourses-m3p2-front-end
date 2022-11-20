@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'pro-login-form',
@@ -13,10 +14,14 @@ export class LoginFormComponent {
 
   form = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required, Validators.pattern(this.regexPassword)]),
+    password: new FormControl('', [Validators.required, Validators.minLength(8), Validators.pattern(this.regexPassword)]),
   });
 
-  constructor(private authService: AuthenticationService,private route: Router) {}
+  userEmails = new FormGroup({
+    ResetEmail: new FormControl('',[Validators.required,Validators.email])
+  });
+
+  constructor(private authService: AuthenticationService,private route: Router, private userService:  UserService) {}
 
   submitLogin() {
     if (this.form.invalid) {
@@ -28,7 +33,7 @@ export class LoginFormComponent {
 
     this.authService.verifyLogin(email, password).subscribe({
       next: (token) => {
-        localStorage.setItem('token', token);
+        this.authService.saveLocalStorage(token);
         this.authService.userAuthorized = true;
         this.route.navigateByUrl('home');
       },
@@ -36,5 +41,19 @@ export class LoginFormComponent {
         console.log(err);
       },
     });
+  }
+
+  submitToken() {
+    if (!this.userEmails.valid) {
+      return;
+    }
+
+    let ResetEmail = this.userEmails.controls['ResetEmail'].value;
+
+    this.userService.sendEmail(ResetEmail);
+
+    this.userEmails.reset();
+    alert('Token Enviado');
+
   }
 }

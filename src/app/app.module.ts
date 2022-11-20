@@ -9,6 +9,7 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 import { HttpClientModule } from '@angular/common/http';
 import { ForbiddenComponent } from './pages/forbidden/forbidden.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
