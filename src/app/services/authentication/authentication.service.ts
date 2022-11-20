@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import SERVER_USERS from 'src/app/constants/server_users';
+import SERVER_AUTHENTICATIONS from 'src/app/constants/server_authentications';
 
 @Injectable({
   providedIn: 'root'
@@ -11,11 +11,13 @@ export class AuthenticationService {
 
   constructor(private http: HttpClient) { }
 
-  verifyLogin(email: string, password: string): Observable<string> {
-    let headers = new HttpHeaders({'Content-Type' : 'application/json'})
+  verifyLogin(email: string, password: string): Observable<any> {
+    let headers = new HttpHeaders()
+      .set('Content-Type', 'application/json')
+      .set('Reponse-Type', 'Text');
 
     return this.http
-      .post<string>(`${SERVER_USERS}/api/Authentications/login`, JSON.stringify({ email, password }), {headers: headers})
+      .post(`${SERVER_AUTHENTICATIONS}/login`, { email, password }, { responseType: 'text' })
       .pipe();
   }
 

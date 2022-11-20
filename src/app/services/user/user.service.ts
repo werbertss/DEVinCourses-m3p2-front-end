@@ -20,12 +20,12 @@ export class UserService {
    return this.http.post(SERVER_USERS, user, {headers: this.headers}).subscribe();
   }
 
-  editUser(id: string, user: IUser): void {
-    this.http.put<IUser>(`${SERVER_USERS}/${id}`, user);
+  editUser(id: string, user: IUser) {
+    return this.http.put<IUser>(`${SERVER_USERS}/${id}`, user).subscribe();
   }
 
   sendEmail(email: string){
-    var emailJSON = JSON.stringify(email);   
+    var emailJSON = JSON.stringify(email);
     return this.http.post(`${SERVER_USERS}/reset`, emailJSON,{headers: this.headers}).subscribe();
   }
 }
