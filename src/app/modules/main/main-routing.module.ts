@@ -5,6 +5,7 @@ import { TrainingVideoComponent } from './pages/training-video/training-video.co
 import { TrainingComponent } from './pages/training/training.component';
 import { MainComponent } from './main.component';
 import { HomeComponent } from './pages/home/home.component';
+import { EditUserComponent } from './pages/edit-user/edit-user.component';
 
 const routes: Routes = [
   {
@@ -23,7 +24,10 @@ const routes: Routes = [
         path: 'video',
         component: TrainingVideoComponent,
       },
-      // Lugar para rotas internas do módulo
+      {
+        path: 'profile',
+        component: EditUserComponent
+      }
     ],
   },
 ];
