@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import SERVER_ROUTE from '../../constants/server';
-import { Observable, take } from 'rxjs';
+import { Observable } from 'rxjs';
 import { IUser } from 'src/app/models/user';
-import { url } from 'inspector';
 
 @Injectable({
   providedIn: 'root',
@@ -11,19 +10,19 @@ import { url } from 'inspector';
 export class UserService {
   constructor(private http: HttpClient) {}
 
-  getUserById(id: number): Observable<IUser> {
-    return this.http.get<IUser>(SERVER_ROUTE + id);
+  getUser(token: string): Observable<IUser> {
+    return this.http.get<IUser>(SERVER_ROUTE + token);
   }
 
-  addUser(user: IUser): Observable<IUser> {
-    return this.http.post<IUser>(SERVER_ROUTE, user);
+  addUser(user: IUser): void {
+    this.http.post(SERVER_ROUTE + 'api/Users', user);
   }
 
-  editUser(id: string, user: IUser): Observable<IUser> {
-    return this.http.put<IUser>(SERVER_ROUTE + id, user);
+  editUser(id: string, user: IUser): void {
+    this.http.put<IUser>(SERVER_ROUTE + 'api/Users/' + id, user);
   }
 
-  sendEmail(email: string): Observable<string> {
-    return this.http.post<string>(SERVER_ROUTE, email);
+  sendEmail(email: string): void {
+    this.http.post<string>(SERVER_ROUTE + 'api/Users/reset', email);
   }
 }

@@ -13,7 +13,7 @@ export class AuthenticationService {
 
   verifyLogin(email: string, password: string): Observable<string> {
     return this.http
-      .post<string>(SERVER_ROUTE, { email, password })
+      .post<string>(SERVER_ROUTE + 'api/Authentications/login', { email, password })
       .pipe();
   }
 }

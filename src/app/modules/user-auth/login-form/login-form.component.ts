@@ -38,7 +38,7 @@ export class LoginFormComponent {
         this.route.navigateByUrl('home');
       },
       error: (err) => {
-        console.log(err);
+        alert(err);
       },
     });
   }

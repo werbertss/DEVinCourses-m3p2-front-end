@@ -209,7 +209,12 @@ export class RegistrationComponent implements OnInit {
   }
 
   getUserForm(User: IUser) {
-    this.userService.getUserById(User.id as number).subscribe((r) => {
+    let token: string | null = localStorage.getItem('token');
+
+    if (token == null)
+      return;
+
+    this.userService.getUser(token).subscribe((r) => {
       this.User = r;
       this.createForm(this.User);
     });
