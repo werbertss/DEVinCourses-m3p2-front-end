@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { IActivitie } from 'src/app/models/activitie';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
   selector: 'pro-item-activitie',
@@ -23,8 +24,8 @@ export class ItemActivitieComponent implements OnInit {
   constructor(config: NgbModalConfig, private modalService: NgbModal) {
 		config.backdrop = 'static';
 		config.keyboard = false;
-	}
+  	}
+
   ngOnInit(): void {
   }
-
 }

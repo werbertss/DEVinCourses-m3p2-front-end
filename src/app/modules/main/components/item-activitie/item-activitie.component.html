@@ -1,19 +1,34 @@
 <ng-template #content let-c="close" let-d="dismiss">
-	<div class="modal-header">
-		<h4 class="modal-title" id="modal-basic-title">Hi there!</h4>
-		<button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
-	</div>
-	<div class="modal-body">
-		<p>Hello, World!</p>
-	</div>
-	<div class="modal-footer">
-		<button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Save</button>
-	</div>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">{{ item.title }}</h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="d('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <div class="mb-3">
+      <h6>Descrição</h6>
+      <p>{{ item.description }}</p>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="c('Save click')">
+      Fechar
+    </button>
+  </div>
 </ng-template>
 
-<li class="list-group-item rounded mb-1 d-flex ">
-  <p class="p-0 m-0" style="width: 96%;" (click)="open(content)">{{ item.title }}</p>
-  <button class="btn btn-danger float-end px-2 py-0 m-0" style="width: 1.625 rem">
+<li class="list-group-item rounded mb-1 d-flex">
+  <p class="p-0 m-0" style="width: 96%" (click)="open(content)">
+    {{ item.title }}
+  </p>
+  <button
+    class="btn btn-danger float-end px-2 py-0 m-0"
+    style="width: 1.625 rem"
+  >
     <p class="p-0 m-0">X</p>
   </button>
 </li>
