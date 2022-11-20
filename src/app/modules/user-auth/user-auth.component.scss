@@ -82,6 +82,10 @@ main {
       color: $azul-escuro;
       opacity: 0.2;
     }
+
+    &[disabled] {
+      cursor: not-allowed;
+    }
   }
 }
 
