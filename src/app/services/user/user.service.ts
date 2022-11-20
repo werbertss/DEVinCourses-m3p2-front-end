@@ -16,15 +16,15 @@ export class UserService {
     return this.http.get<IUser>(`${SERVER_USERS}/${token}`);
   }
 
-  addUser(user: IUser): void {
-    this.http.post(SERVER_USERS, user, {headers: this.headers});
+  addUser(user: IUser) {
+    return this.http.post(SERVER_USERS, user, {headers: this.headers});
   }
 
-  editUser(id: string, user: IUser): void {
-    this.http.put<IUser>(`${SERVER_USERS}/${id}`, user);
+  editUser(id: string, user: IUser) {
+    return this.http.put<IUser>(`${SERVER_USERS}/${id}`, user);
   }
 
-  sendEmail(email: string): void {
-    this.http.post<string>(`${SERVER_USERS}/reset`, email, {headers: this.headers});
+  sendEmail(email: string) {
+    return this.http.post<string>(`${SERVER_USERS}/reset`, email, {headers: this.headers});
   }
 }
