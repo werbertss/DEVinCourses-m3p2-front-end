@@ -1,7 +1,7 @@
 export interface IRegistration{
-    id: number;
-    userId: number;
-    trainingId: number;
-    status : string;
+    id: number | undefined;
+    userId: number | undefined;
+    trainingId: number | undefined;
+    status : number | undefined;
 
 }

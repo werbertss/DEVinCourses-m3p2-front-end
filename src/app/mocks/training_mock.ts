@@ -14,26 +14,29 @@ export const TRAINING_MOCK: ITraining[] = [
     date:new Date(),
     modules:[
       {
-        moduleId: 1,
+        id: 1,
+        trainingId:1,
         titleModule:'Módulo 1',
         link: 'vbs7jKRMuiA',
-        img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjOUpolyASUyrLMSV2vqIvQQZ8_--ddMSsJF_xvxZ3tEwPPtZrc57tShVksL8y8JZ8QIk&usqp=CAU',
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjOUpolyASUyrLMSV2vqIvQQZ8_--ddMSsJF_xvxZ3tEwPPtZrc57tShVksL8y8JZ8QIk&usqp=CAU',
         descriptionModule: 'Lorem ipsum dolor sit amet consectetur.',
         statusModule: 'finalizado'
       },
       {
-        moduleId: 2,
+        id: 2,
+        trainingId:1,
         titleModule:'Módulo 2',
         link: '3CC_YtyD7Po',
-        img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjOUpolyASUyrLMSV2vqIvQQZ8_--ddMSsJF_xvxZ3tEwPPtZrc57tShVksL8y8JZ8QIk&usqp=CAU',
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjOUpolyASUyrLMSV2vqIvQQZ8_--ddMSsJF_xvxZ3tEwPPtZrc57tShVksL8y8JZ8QIk&usqp=CAU',
         descriptionModule: 'Incidunt reiciendis vel asperiores.',
         statusModule: 'disponivel'
       },
       {
-        moduleId: 3,
+        id: 3,
+        trainingId:1,
         titleModule:'Módulo 3',
         link: 'TxxkFWty09g',
-        img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjOUpolyASUyrLMSV2vqIvQQZ8_--ddMSsJF_xvxZ3tEwPPtZrc57tShVksL8y8JZ8QIk&usqp=CAU',
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjOUpolyASUyrLMSV2vqIvQQZ8_--ddMSsJF_xvxZ3tEwPPtZrc57tShVksL8y8JZ8QIk&usqp=CAU',
         descriptionModule: 'Ullam, quisquam? Culpa doloremque.',
         statusModule: 'disponivel'
       },

@@ -12,8 +12,9 @@ import { TrainingService } from 'src/app/services/training/training.service';
   styleUrls: ['./training.component.scss'],
 })
 export class TrainingComponent implements OnInit {
-  trainings: ITraining[] = TRAINING_MOCK;
-  trainingsByUser: ITraining[] = []; //TRAININGBYUSER_MOCK;
+
+  //trainings: ITraining[] = TRAINING_MOCK;
+  trainingsByUser: ITraining[] = [];  //TRAININGBYUSER_MOCK;
 
   status: string = 'todos';
   filters: ITraining[] = [];
@@ -28,28 +29,28 @@ export class TrainingComponent implements OnInit {
     this.getMyTrainings(1);
   }
 
-  getMyTrainings(id: number) {
-    this.trainingService
-      .getTrainingsByUser(id)
-      .subscribe((trainingsByUser: ITraining[]) => {
-        this.trainingsByUser = trainingsByUser;
-        this.userId = id;
-        this.filtrar();
-      });
+  getMyTrainings(id: number){
+    this.trainingService.getTrainingsByUser(id)
+    .subscribe((trainingsByUser:ITraining[])=>{
+      this.trainingsByUser = trainingsByUser
+      this.userId = id
+      this.filtrar()
+      console.log(trainingsByUser)
+    })
   }
 
-  getMyTrainingsByStatus(id: number, status: string) {
-    this.trainingService
-      .getRegistrationByUser(id, status)
-      .subscribe((registration: IRegistration[]) => {
-        for (let index = 0; index < this.trainingsByUser.length; index++) {
-          if (
-            this.trainingsByUser[index].id == registration[index]?.trainingId
-          ) {
-            this.filters.push(this.trainingsByUser[index]);
+  getMyTrainingsByStatus(id:number, status:string){
+    this.trainingService.getRegistrationByUser(id,status)
+    .subscribe((registration: IRegistration[])=>{
+      for (let i = 0; i < registration.length; i++) {
+        this.trainingsByUser.forEach(item => {
+          if(item.id == registration[i].trainingId){
+            this.filters.push(item)
           }
-        }
-      });
+        })
+      }
+    })
+
   }
 
   getRecentTrainingsByUser(id: number) {

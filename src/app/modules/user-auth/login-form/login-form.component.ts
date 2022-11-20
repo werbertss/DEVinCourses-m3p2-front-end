@@ -33,7 +33,7 @@ export class LoginFormComponent {
 
     this.authService.verifyLogin(email, password).subscribe({
       next: (token) => {
-        localStorage.setItem('token', token);
+        this.authService.saveLocalStorage(token);
         this.authService.userAuthorized = true;
         this.route.navigateByUrl('home');
       },

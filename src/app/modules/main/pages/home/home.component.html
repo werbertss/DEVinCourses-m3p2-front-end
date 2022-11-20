@@ -20,7 +20,7 @@
     <button
       type="button"
       class="btn btn-success"
-      (click)="estaMatriculado(trainingModel.id)"
+      (click)="isRegistered(trainingModel.id)"
     >
       Quero fazer este curso
     </button>
@@ -131,7 +131,7 @@
 </div>
 
 <ngb-pagination
-  class="d-flex justify-content-center"
+  class="d-flex justify-content-center mt-5"
   [(page)]="page"
   [pageSize]="pageSize"
   [collectionSize]="cardSize"

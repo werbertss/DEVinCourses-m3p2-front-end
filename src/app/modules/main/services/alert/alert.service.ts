@@ -22,4 +22,23 @@ export class AlertService {
         Swal.fire('Não excluido', '', 'info')
       }
     })}
+
+  alertUserIsRegistered(){
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Você já está matriculado neste curso.',
+      footer: '<small>© 2022 Devin[NDD] Team</small>'
+    })
+  }
+
+  alertRegisterSuccess(){
+    Swal.fire({
+      icon: 'success',
+      title: 'Matricula efetuada com sucesso!',
+      footer: '<small>© 2022 Devin[NDD] Team</small>',
+      showConfirmButton: false,
+      timer: 2500
+    })
+  }
 }
