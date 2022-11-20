@@ -54,7 +54,8 @@ export class TrainingService {
     return this.http
       .get<IRegistration[]>(
         `https://localhost:7181/api/Users/${1}/Registrations/Recents`,
-        this.httpOptions
+        this.httpOptions)
+      }
 
   getByCategory(category:string):Observable<ITraining[]>{
     return this.http.get<ITraining[]>(`${SERVER_TRAININGS}?category=${category}`, this.httpOptions)
