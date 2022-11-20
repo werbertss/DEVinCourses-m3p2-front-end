@@ -2,9 +2,11 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Injectable } from '@angular/core';
 import { catchError, retry, throwError } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
+import SERVER_ACTIVITIES from 'src/app/constants/server_activities';
 import SERVER_REGISTRATIONS from 'src/app/constants/server_registrations';
 import SERVER_TRAININGS from 'src/app/constants/server_trainings';
 import SERVER_USERS from 'src/app/constants/server_users';
+import { IActivitie } from 'src/app/models/activitie';
 import { IRegistration } from 'src/app/models/registration';
 import { ITraining } from 'src/app/models/training';
 import { IUser } from 'src/app/models/user';
@@ -57,7 +59,7 @@ export class TrainingService {
       catchError(this.handleError)
     )
   }
- 
+
   //metodos Registrations
   getRegistrationByUser(id:number,status:string):Observable<IRegistration[]>{
     return this.http.get<IRegistration[]>(`${SERVER_USERS}/${id}/Registrations?status=${status}`)
@@ -96,5 +98,10 @@ export class TrainingService {
     return throwError(errorMessage);
   };
 
-
+  postActivitie(body: IActivitie){
+    return this.http.post<IActivitie>(SERVER_ACTIVITIES, body, this.httpOptions)
+    .pipe(
+      catchError(this.handleError)
+    )
+  }
 }
