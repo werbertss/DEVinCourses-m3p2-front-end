@@ -1,20 +1,25 @@
-import { Component} from '@angular/core';
+import { Component,OnInit} from '@angular/core';
 import { FormControl, FormGroup, Validators, AbstractControl,ValidatorFn } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router,ActivatedRoute,Routes } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
 import { UserService } from 'src/app/services/user/user.service';
+
+
 
 @Component({
   selector: 'pro-reset-password',
   templateUrl: './reset-password.component.html',
   styleUrls: ['./reset-password.component.scss']
 })
-export class ResetPasswordComponent {
+export class ResetPasswordComponent implements OnInit {
+
+  name:string ="";
+  tex:string="";
 
   regexPassword: RegExp = /[^!@#$ %^&*()_+\-=\[\]{};':"\\|,.<>\/?]$/;
 
   form = new FormGroup({
-
+    token: new FormControl(''),
     password: new FormControl('', [Validators.required, Validators.minLength(8), Validators.pattern(this.regexPassword)]),
     confirm: new FormControl('', [Validators.required, Validators.minLength(8), Validators.pattern(this.regexPassword)]),
 
@@ -29,7 +34,10 @@ export class ResetPasswordComponent {
     ResetEmail: new FormControl('',[Validators.required,Validators.email])
   });
 
-  constructor(private authService: AuthenticationService,private route: Router, private userService:  UserService) {}
+  constructor(private authService: AuthenticationService,private route: Router, private userService:  UserService, private authenticationService: AuthenticationService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private routes: ActivatedRoute) {}
 
   submitLogin() {
     if (this.form.invalid) {
@@ -52,17 +60,19 @@ export class ResetPasswordComponent {
   }
 
   submitToken() {
-    if (!this.userEmails.valid) {
+    if (this.userEmails.valid) {
       return;
     }
+  
+    let token = this.tex+"=="
+    let password = this.form.controls['password'].value;
+    console.log(token)
 
-    let ResetEmail = this.userEmails.controls['ResetEmail'].value;
+    this.userService.sendToken(token,password);
 
-    this.userService.sendEmail(ResetEmail);
-
-    this.userEmails.reset();
-    alert('Token Enviado');
-
+    this.form.reset();
+    alert('Senha Resetada');
+    this.route.navigateByUrl('home');
   }
 
   // Função de verificação de igualdade senha X confirmação de senha
@@ -83,6 +93,15 @@ export class ResetPasswordComponent {
     };
   }
   // Função de verificação de igualdade senha X confirmação de senha
+  ngOnInit() {
 
+     this.activatedRoute.params.subscribe(params => {
+      const teste = Object.values(params);
+      const te= JSON.stringify(teste)
+		  var er = /[^a-z0-9]/gi;
+		  this.tex = te.replace(er, "");
+
+     });
+  }
 
 }
