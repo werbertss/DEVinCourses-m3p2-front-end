@@ -13,7 +13,7 @@ import { TrainingService } from 'src/app/services/training/training.service';
 })
 export class TrainingComponent implements OnInit {
 
-  trainings: ITraining[] = TRAINING_MOCK;
+  //trainings: ITraining[] = TRAINING_MOCK;
   trainingsByUser: ITraining[] = [];  //TRAININGBYUSER_MOCK;
 
   status: string = 'todos';
@@ -37,17 +37,19 @@ export class TrainingComponent implements OnInit {
       this.trainingsByUser = trainingsByUser
       this.userId = id
       this.filtrar()
+      console.log(trainingsByUser)
     })
   }
 
   getMyTrainingsByStatus(id:number, status:string){
     this.trainingService.getRegistrationByUser(id,status)
     .subscribe((registration: IRegistration[])=>{
-      for (let index = 0; index < this.trainingsByUser.length; index++) {
-       if(this.trainingsByUser[index].id == registration[index]?.trainingId)
-       {
-        this.filters.push(this.trainingsByUser[index])
-       }
+      for (let i = 0; i < registration.length; i++) {
+        this.trainingsByUser.forEach(item => {
+          if(item.id == registration[i].trainingId){
+            this.filters.push(item)
+          }
+        })
       }
     })
   }
@@ -62,7 +64,6 @@ export class TrainingComponent implements OnInit {
       this.getMyTrainingsByStatus(this.userId,this.status);
     }
   }
-
 }
 
 
