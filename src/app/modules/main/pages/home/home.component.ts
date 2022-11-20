@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
   pageSize = 20;
 
   //Elemento para o Modal Detalhes
-  elemento: any;
+  element: any;
 
   constructor(
     private config: NgbModalConfig, 
@@ -75,8 +75,8 @@ export class HomeComponent implements OnInit {
 
   //Metodo para abrir Modal Detalhes
   OpenDetails(){
-    this.elemento = document.getElementById('exampleModalToggle');
-    let modal = new window.bootstrap.Modal(this.elemento);
+    this.element = document.getElementById('IdModelDetalhes');
+    let modal = new window.bootstrap.Modal(this.element);
     modal.show();
   } 
 
