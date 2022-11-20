@@ -6,14 +6,15 @@ import { USER_MOCK } from 'src/app/mocks/user_mock';
 import { ITraining } from 'src/app/models/training';
 import { IUser } from 'src/app/models/user';
 
-import * as bootstrap from 'bootstrap';
-import { Modal } from 'bootstrap';
+// Decralação para visualização do Modal
+declare var window: any;
 
 @Component({
   selector: 'pro-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
+
 export class HomeComponent implements OnInit {
   users: IUser[] = USER_MOCK;
 
@@ -27,8 +28,8 @@ export class HomeComponent implements OnInit {
   page = 1;
   pageSize = 20;
 
-  element: any;
-  testModal: Modal | undefined;
+  //Elemento para o Modal Detalhes
+  elemento: any;
 
   constructor(
     private config: NgbModalConfig, 
@@ -72,9 +73,10 @@ export class HomeComponent implements OnInit {
     
   }
 
+  //Metodo para abrir Modal Detalhes
   OpenDetails(){
-    this.element = document.getElementById('trainingDetails');
-    let modal = new bootstrap.Modal(this.element);
+    this.elemento = document.getElementById('exampleModalToggle');
+    let modal = new window.bootstrap.Modal(this.elemento);
     modal.show();
   } 
 
