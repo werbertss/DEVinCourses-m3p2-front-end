@@ -1,8 +1,9 @@
-export interface IModules{
-    moduleId: number;
+export interface IModule{
+    id: number;
+    trainingId: number;
     titleModule:string;
     link: string;
-    img: string;
+    image: string;
     descriptionModule: string;
     statusModule: string;
 }

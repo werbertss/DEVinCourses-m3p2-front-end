@@ -1,73 +1,67 @@
 <ng-template (ngModel)="(trainingModel)" #content let-c="close" let-d="dismiss">
 
   <!--Modal Detalhes-->
-  <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
-    tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
+  <div class="container">
 
-        <!--Titulo do Modal Detalhes-->
-        <div class="text-center">
+    <div class="modal" tabindex="-1" role="dialog" id="IdModelDetalhes">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
           <div class="title">
+
+            <!--Titulo do Modal-->
             <h5 class="text-center" id="TitleModal">Acessar Treinamento</h5>
           </div>
-        </div>
+          <div class="modal-body text-center">
 
-        <!--Corpo do Modal Detalhes-->
-        <div class="modal-body text-center">
+            <div class="container">
 
-          <div class="container">
-
-            <div class="row g-3" id="centralizar">
-              <div class="col-sm-12">
-                <h4 id="segundoTitulo">Total de Alunos</h4>
+              <!--Body do modal-->
+              <div class="row g-3" id="centralizar">
+                <div class="col-sm-12">
+                  <h4 id="segundoTitulo">Total de Alunos</h4>
+                </div>
               </div>
+
+              <div class="row g-3" id="centralizar">
+
+                <div class="col-sm-4">
+                  <div id="colordefundo">
+                    <p id="formatacao"> Cadastrados </p>
+                    <p id="formatacao"> 00 </p>
+                  </div>
+                </div>
+
+                <div class="col-sm-4">
+                  <div id="colordefundo">
+                    <p id="formatacao"> Em curso </p>
+                    <p id="formatacao"> 00 </p>
+                  </div>
+                </div>
+
+                <div class="col-sm-4">
+                  <div id="colordefundo">
+                    <p id="formatacao"> Concluintes </p>
+                    <p id="formatacao"> 00 </p>
+                  </div>
+                </div>
+              </div>
+
             </div>
-
-            <div class="row g-3" id="centralizar">
-
-              <div class="col-sm-4">
-                <div id="colordefundo">
-                  <p id="formatacao"> Cadastrados </p>
-                  <p id="formatacao"> 00 </p>
-                </div>
-              </div>
-
-              <div class="col-sm-4">
-                <div id="colordefundo">
-                  <p id="formatacao"> Em curso </p>
-                  <p id="formatacao"> 00 </p>
-                </div>
-              </div>
-
-              <div class="col-sm-4">
-                <div id="colordefundo">
-                  <p id="formatacao"> Concluintes </p>
-                  <p id="formatacao"> 0 </p>
-                </div>
-              </div>
-
-            </div>
-
           </div>
 
+          <!--Botões Suspender e Fechar-->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" id="suspender">Suspender</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+          </div>
         </div>
-
-        <div class="modal-footer">
-          <!--Chama o Modal Suspender-->
-          <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal"
-            data-bs-dismiss="modal" id="suspender">Suspender</button>
-            <!--Fecha o Modal Detalhes-->
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-        </div>
-
       </div>
 
     </div>
+
   </div>
 
 
-  <!-- Modal Suspender -->
 
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">
@@ -82,16 +76,15 @@
     </div>
   </div>
   <div class="modal-footer">
-
-    <button type="button" class="btn btn-secondary" (click)="OpenDetails()">
-      Detalhes
-    </button>
-
-
-    <button type="button" class="btn btn-success" (click)="estaMatriculado(trainingModel.id)">
+    <button
+      type="button"
+      class="btn btn-success"
+      (click)="isRegistered(trainingModel.id)"
+    >
       Quero fazer este curso
     </button>
   </div>
+
 </ng-template>
 
 <div class="container">
@@ -99,7 +92,7 @@
     <div class="col-1"></div>
     <div class="col-10">
       <nav aria-label="breadcrumb">
-        <p class="text-end"><a href="">&#171; voltar</a></p>
+        <p class="text-end"><a routerLink="/login">&#171; voltar</a></p>
         <ol class="breadcrumb w-100">
           <li class="breadcrumb-item active" aria-current="page">Home</li>
         </ol>
@@ -141,7 +134,12 @@
     <div class="col-1"></div>
     <div class="col-10">
       <div class="d-flex flex-wrap justify-content-center">
-        <pro-item-training [item]="training" class="col-md-2 m-2 mt-4"
+        <div *ngIf="cardSize == 0" class="alert alert-primary my-4" role="alert">
+          <h4>Nenhum item nessa categoria!</h4> 
+        </div>
+        <pro-item-training
+          [item]="training"
+          class="col-md-2 m-2 mt-4"
           *ngFor="let training of filters | slice:(page-1) * pageSize : page * pageSize"
           (click)="openXl(content, training)"></pro-item-training>
       </div>
@@ -149,6 +147,7 @@
   </div>
 </div>
 
-<ngb-pagination *ngIf="filters.length > 20" class="d-flex justify-content-center" [(page)]="page" [pageSize]="pageSize"
-  [collectionSize]="filters.length">
+<ngb-pagination class="d-flex justify-content-center" [(page)]="page" [pageSize]="pageSize"
+  [collectionSize]="cardSize"
+  *ngIf="cardSize > 0">
 </ngb-pagination>

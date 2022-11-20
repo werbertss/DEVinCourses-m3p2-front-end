@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ITraining } from 'src/app/models/training';
 import { AlertService } from '../../services/alert/alert.service';
-import { TrainingService } from '../../services/training/training.service';
+import { TrainingService } from '../../../../services/training/training.service';
 
 @Component({
   selector: 'pro-item-my-training',
@@ -18,7 +18,7 @@ export class ItemMyTrainingComponent implements OnInit {
     description: '',
     teacher: '',
     duration: 0,
-    status: '',
+    active: true,
     category: '',
     date: new Date(),
     modules:[]
@@ -36,6 +36,6 @@ export class ItemMyTrainingComponent implements OnInit {
 
   selectTraining(training:ITraining){
     this.trainingService.training = training;
-    this.router.navigate(['main/video']);
+    this.router.navigate(['home/video']);
   }
 }
