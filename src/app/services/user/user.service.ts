@@ -14,15 +14,15 @@ export class UserService {
     return this.http.get<IUser>(SERVER_ROUTE + token);
   }
 
-  addUser(user: IUser): Observable<IUser> {
-    return this.http.post<IUser>(SERVER_ROUTE + 'api/Users', user);
+  addUser(user: IUser): void {
+    this.http.post(SERVER_ROUTE + 'api/Users', user);
   }
 
   editUser(id: string, user: IUser): void {
     this.http.put<IUser>(SERVER_ROUTE + 'api/Users/' + id, user);
   }
 
-  sendEmail(email: string): Observable<string> {
-    return this.http.post<string>(SERVER_ROUTE + 'api/Users/reset', email);
+  sendEmail(email: string): void {
+    this.http.post<string>(SERVER_ROUTE + 'api/Users/reset', email);
   }
 }
