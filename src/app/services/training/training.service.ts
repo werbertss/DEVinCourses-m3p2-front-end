@@ -15,11 +15,9 @@ import { IUser } from 'src/app/models/user';
 export class TrainingService {
   token:string | null = localStorage.getItem('token');
 
-
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-    token: new HttpHeaders({ 'Autorization': 'bearer'+ this.token})
-  }
+  headers = new HttpHeaders()
+  .set('Content-Type', 'application/json')
+  .set('Autorization', `Bearer ${this.token}`)
 
   training!:ITraining;
 
@@ -31,19 +29,19 @@ export class TrainingService {
 
   //MetodoUser
   getUserByToken(token: string | null): Observable<IUser> {
-    return this.http.get<IUser>(`${SERVER_USERS}/authenticated`,this.httpOptions);
+    return this.http.get<IUser>(`${SERVER_USERS}`, {headers: this.headers});
   }
 
   //Métodos Trainings
   getAllTrainings():Observable<ITraining[]>{
-    return this.http.get<ITraining[]>(SERVER_TRAININGS, this.httpOptions)
+    return this.http.get<ITraining[]>(SERVER_TRAININGS, {headers: this.headers})
       .pipe(
         retry(2),
         catchError(this.handleError)
       )
   }
   getByCategory(category:string):Observable<ITraining[]>{
-    return this.http.get<ITraining[]>(`${SERVER_TRAININGS}?category=${category}`, this.httpOptions)
+    return this.http.get<ITraining[]>(`${SERVER_TRAININGS}?category=${category}`, {headers: this.headers})
       .pipe(
         retry(2),
         catchError(this.handleError)
@@ -51,7 +49,7 @@ export class TrainingService {
   }
 
   getTrainingsByUser(id:number| undefined):Observable<ITraining[]>{
-    return this.http.get<ITraining[]>(`${SERVER_USERS}/${id}/Trainings`, this.httpOptions)
+    return this.http.get<ITraining[]>(`${SERVER_USERS}/${id}/Trainings`, {headers: this.headers})
     .pipe(
       retry(2),
       catchError(this.handleError)
@@ -59,8 +57,8 @@ export class TrainingService {
   }
  
   //metodos Registrations
-  getRegistrationByUser(id:number,status:string):Observable<IRegistration[]>{
-    return this.http.get<IRegistration[]>(`${SERVER_USERS}/${id}/Registrations?status=${status}`)
+  getRegistrationByUser(id:number | undefined, status:string):Observable<IRegistration[]>{
+    return this.http.get<IRegistration[]>(`${SERVER_USERS}/${id}/Registrations?status=${status}`, {headers: this.headers})
     .pipe(
       retry(2),
       catchError(this.handleError)
@@ -68,7 +66,7 @@ export class TrainingService {
   }
 
   postRegistration(registration:IRegistration){
-    return this.http.post<IRegistration>(SERVER_REGISTRATIONS, registration, this.httpOptions)
+    return this.http.post<IRegistration>(SERVER_REGISTRATIONS, registration, {headers: this.headers})
     .pipe(
       catchError(this.handleError)
     )
@@ -76,7 +74,7 @@ export class TrainingService {
 
   //metodos Modulos
   getModulesByTrainingId(id:number):Observable<any[]>{
-    return this.http.get<any[]>(`${SERVER_TRAININGS}/${id}/modules`, this.httpOptions)
+    return this.http.get<any[]>(`${SERVER_TRAININGS}/${id}/modules`, {headers: this.headers})
     .pipe(
       retry(2),
       catchError(this.handleError)
@@ -92,7 +90,7 @@ export class TrainingService {
       // Erro ocorreu no lado do servidor
       errorMessage = `Código do erro: ${error.status}, ` + `menssagem: ${error.message}`;
     }
-    console.log(errorMessage);
+    console.error(errorMessage);
     return throwError(errorMessage);
   };
 
