@@ -21,6 +21,9 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
     UserAuthRoutingModule,
     ReactiveFormsModule,
     FormsModule
+  ],
+  exports: [
+    RegistrationComponent
   ]
 })
 export class UserAuthModule { }
