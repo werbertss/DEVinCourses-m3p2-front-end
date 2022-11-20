@@ -48,19 +48,29 @@ export class TrainingService {
   getTrainingsByUser(id: number): Observable<ITraining[]> {
     return this.http
       .get<ITraining[]>(
-        `https://localhost:7181/api/Users/${id}/Trainings`,
+        `https://localhost:7181/api/Users/${1}/Trainings`,
         this.httpOptions
       )
       .pipe(retry(2), catchError(this.handleError));
   }
 
-  getRecentTrainingsByUser(
-    id: number,
-    refreshDate: number
-  ): Observable<IRegistration[]> {
+  getRecentTrainingsByUser(id: number): Observable<IRegistration[]> {
     return this.http
       .get<IRegistration[]>(
-        `https://localhost:7181/api/Users/${id}/Registrations/Recents?refreshDate=${refreshDate}`,
+        `https://localhost:7181/api/Users/${1}/Registrations/Recents`,
+        this.httpOptions
+      )
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
+  PatchRecentTrainingsByUser(
+    id: number,
+    refreshDate: number
+  ): Observable<number> {
+    return this.http
+      .patch<number>(
+        `https://localhost:7181/api/Users/Registrations/${id}`,
+        refreshDate,
         this.httpOptions
       )
       .pipe(retry(2), catchError(this.handleError));
@@ -72,7 +82,7 @@ export class TrainingService {
   ): Observable<IRegistration[]> {
     return this.http
       .get<IRegistration[]>(
-        `https://localhost:7181/api/Users/${id}/Registrations?status=${status}`
+        `https://localhost:7181/api/Users/${1}/Registrations?status=${status}`
       )
       .pipe(retry(2), catchError(this.handleError));
   }

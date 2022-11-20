@@ -52,16 +52,16 @@ export class TrainingComponent implements OnInit {
       });
   }
 
-  getRecentTrainingsByUser(id: number, refreshDate: number) {
+  getRecentTrainingsByUser(id: number) {
     this.trainingService
-      .getRecentTrainingsByUser(id, refreshDate)
+      .getRecentTrainingsByUser(id)
       .subscribe((registration: IRegistration[]) => {
-        for (let index = 0; index < this.trainingsByUser.length; index++) {
-          if (
-            this.trainingsByUser[index].id == registration[index]?.trainingId
-          ) {
-            this.filters.push(this.trainingsByUser[index]);
-          }
+        for (let i = 0; i < registration.length; i++) {
+          this.trainingsByUser.forEach((item) => {
+            if (item.id == registration[i].trainingId) {
+              this.filters.push(item);
+            }
+          });
         }
       });
   }
@@ -70,8 +70,8 @@ export class TrainingComponent implements OnInit {
     this.filters = [];
     if (this.status == 'todos') {
       this.filters = this.trainingsByUser;
-    } else if (this.status == 'Recentes') {
-      this.getRecentTrainingsByUser(this.userId, Date.now());
+    } else if (this.status === 'Recentes') {
+      this.getRecentTrainingsByUser(this.userId);
     } else {
       this.getMyTrainingsByStatus(this.userId, this.status);
     }
