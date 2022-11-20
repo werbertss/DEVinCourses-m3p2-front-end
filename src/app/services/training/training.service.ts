@@ -2,9 +2,9 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Injectable } from '@angular/core';
 import { catchError, retry, throwError } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
-import BASE_REGISTRATIONS from 'src/app/constants/base_registrations';
-import BASE_TRAININGS from 'src/app/constants/base_trainings';
-import BASE_USERS from 'src/app/constants/base_users';
+import SERVER_REGISTRATIONS from 'src/app/constants/server_registrations';
+import SERVER_TRAININGS from 'src/app/constants/server_trainings';
+import SERVER_USERS from 'src/app/constants/server_users';
 import { IRegistration } from 'src/app/models/registration';
 import { ITraining } from 'src/app/models/training';
 import { IUser } from 'src/app/models/user';
@@ -31,19 +31,19 @@ export class TrainingService {
 
   //MetodoUser
   getUserByToken(token: string | null): Observable<IUser> {
-    return this.http.get<IUser>(`${BASE_USERS}/authenticated`,this.httpOptions);
+    return this.http.get<IUser>(`${SERVER_USERS}/authenticated`,this.httpOptions);
   }
 
   //Métodos Trainings
   getAllTrainings():Observable<ITraining[]>{
-    return this.http.get<ITraining[]>(BASE_TRAININGS, this.httpOptions)
+    return this.http.get<ITraining[]>(SERVER_TRAININGS, this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError)
       )
   }
   getByCategory(category:string):Observable<ITraining[]>{
-    return this.http.get<ITraining[]>(`${BASE_TRAININGS}?category=${category}`, this.httpOptions)
+    return this.http.get<ITraining[]>(`${SERVER_TRAININGS}?category=${category}`, this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError)
@@ -51,7 +51,7 @@ export class TrainingService {
   }
 
   getTrainingsByUser(id:number| undefined):Observable<ITraining[]>{
-    return this.http.get<ITraining[]>(`${BASE_USERS}/${id}/Trainings`, this.httpOptions)
+    return this.http.get<ITraining[]>(`${SERVER_USERS}/${id}/Trainings`, this.httpOptions)
     .pipe(
       retry(2),
       catchError(this.handleError)
@@ -60,7 +60,7 @@ export class TrainingService {
  
   //metodos Registrations
   getRegistrationByUser(id:number,status:string):Observable<IRegistration[]>{
-    return this.http.get<IRegistration[]>(`${BASE_USERS}/${id}/Registrations?status=${status}`)
+    return this.http.get<IRegistration[]>(`${SERVER_USERS}/${id}/Registrations?status=${status}`)
     .pipe(
       retry(2),
       catchError(this.handleError)
@@ -68,7 +68,7 @@ export class TrainingService {
   }
 
   postRegistration(registration:IRegistration){
-    return this.http.post<IRegistration>(BASE_REGISTRATIONS, registration, this.httpOptions)
+    return this.http.post<IRegistration>(SERVER_REGISTRATIONS, registration, this.httpOptions)
     .pipe(
       catchError(this.handleError)
     )
