@@ -74,6 +74,15 @@ export class TrainingService {
     )
   }
 
+  //metodos Modulos
+  getModulesByTrainingId(id:number):Observable<any[]>{
+    return this.http.get<any[]>(`${SERVER_TRAININGS}/${id}/modules`, this.httpOptions)
+    .pipe(
+      retry(2),
+      catchError(this.handleError)
+    )
+  }
+
   handleError(error: HttpErrorResponse) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {
