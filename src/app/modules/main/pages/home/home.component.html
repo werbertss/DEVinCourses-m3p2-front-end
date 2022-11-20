@@ -1,4 +1,81 @@
+
+
+
+
 <ng-template (ngModel)="(trainingModel)" #content let-c="close" let-d="dismiss">
+
+  <div class="container">
+
+    <div class="modal" tabindex="-1" role="dialog" id="trainingDetails">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="title">
+            <h5 class="text-center" id="TitleModal">Acessar Treinamento</h5>
+        </div>
+          <div class="modal-body text-center">
+  
+            <div class="container">
+  
+              <div class="row g-3" id="centralizar">
+                <div class="col-sm-12">
+                  <h4 id="segundoTitulo">Total de Alunos</h4>
+                </div>
+              </div>
+  
+              <div class="row g-3" id="centralizar">
+  
+                <div class="col-sm-4">
+                  <div id="colordefundo">
+                    <p id="formatacao">
+                      Cadastrados
+                    </p>
+                    <p id="formatacao">
+                      00
+                    </p>
+                  </div>
+                </div>
+  
+                <div class="col-sm-4">
+                  <div id="colordefundo">
+                    <p id="formatacao">
+                      Em curso
+                    </p>
+                    <p id="formatacao">
+                      00
+                    </p>
+                    
+                  </div> 
+                </div>
+  
+                <div class="col-sm-4">
+                  <div id="colordefundo">
+                    <p id="formatacao">
+                      Concluintes
+                    </p> 
+                    <p id="formatacao">
+                      00
+                    </p>
+                  </div> 
+                </div>
+  
+              </div>
+  
+            </div>
+  
+  
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="suspender">Suspender</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  </div>
+
+
+
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">
       {{ trainingModel.title }}
@@ -17,6 +94,16 @@
     </div>
   </div>
   <div class="modal-footer">
+
+    <button
+      type="button"
+      class="btn btn-secondary"
+      (click)="OpenDetails()"
+    >
+      Detalhes
+    </button>
+
+
     <button
       type="button"
       class="btn btn-success"
