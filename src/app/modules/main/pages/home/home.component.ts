@@ -80,8 +80,10 @@ export class HomeComponent implements OnInit {
     modal.show();
   } 
 
-  Suspender(){
-
+  suspendShow(){
+    this.element = document.getElementById('modalSuspend');
+    let modal = new window.bootstrap.Modal(this.element);
+    modal.show();
   }
 
 }
