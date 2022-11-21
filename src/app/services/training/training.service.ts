@@ -1,5 +1,6 @@
-import {HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse, } from '@angular/common/http';
+import {HttpClient, HttpErrorResponse, HttpEvent, HttpHeaders, HttpResponse, } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Server } from 'http';
 import { catchError, retry, tap, throwError } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
 import SERVER_REGISTRATIONS from 'src/app/constants/server_registrations';
@@ -7,6 +8,7 @@ import SERVER_TRAININGS from 'src/app/constants/server_trainings';
 import SERVER_USERS from 'src/app/constants/server_users';
 import { IRegistration } from 'src/app/models/registration';
 import { ITraining } from 'src/app/models/training';
+import { ItrainingDetails } from 'src/app/models/trainingDetails';
 import { IUser } from 'src/app/models/user';
 
 @Injectable({
@@ -90,7 +92,7 @@ export class TrainingService {
       catchError(this.handleError)
     )
   }
- 
+
   //metodos Registrations
   getRegistrationByUser(id:number | undefined, status:string):Observable<IRegistration[]>{
     return this.http.get<IRegistration[]>(`${SERVER_USERS}/${id}/Registrations?status=${status}`, {headers: this.headers})
@@ -129,5 +131,8 @@ export class TrainingService {
     }
     console.error(errorMessage);
     return throwError(errorMessage);
+  }  
+  GetDetalhesTraining(id: number):Observable<ItrainingDetails>{
+    return this.http.get<ItrainingDetails>(`${SERVER_TRAININGS}/${id}/usersDetails`, {headers: this.headers})
   }
 }

@@ -14,6 +14,11 @@ import { ItemMyTrainingComponent } from './components/item-my-training/item-my-t
 import { FooterComponent } from 'src/app/components/footer/footer.component';
 import { EditUserComponent } from './pages/edit-user/edit-user.component';
 import { UserAuthModule } from '../user-auth/user-auth.module';
+import { ItemRegisterTrainingComponent } from './components/item-register-training/item-register-training.component';
+import { RegisterTrainingComponent } from './pages/register-training/register-training.component';
+import { ItemRegisterModuleComponent } from './components/item-register-module/item-register-module.component';
+import { ActivitiesComponent } from './pages/activities/activities.component';
+import { ItemActivitieComponent } from './components/item-activitie/item-activitie.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +31,11 @@ import { UserAuthModule } from '../user-auth/user-auth.module';
     ItemMyTrainingComponent,
     FooterComponent,
     EditUserComponent,
+    RegisterTrainingComponent,
+    ItemRegisterTrainingComponent,
+    ItemRegisterModuleComponent,
+    ActivitiesComponent,
+    ItemActivitieComponent,
   ],
 
   imports: [

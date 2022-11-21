@@ -6,6 +6,9 @@ import { TrainingComponent } from './pages/training/training.component';
 import { MainComponent } from './main.component';
 import { HomeComponent } from './pages/home/home.component';
 import { EditUserComponent } from './pages/edit-user/edit-user.component';
+import { RegisterTrainingComponent } from './pages/register-training/register-training.component';
+import { ItemRegisterTrainingComponent } from './components/item-register-training/item-register-training.component';
+import { ActivitiesComponent } from './pages/activities/activities.component';
 
 const routes: Routes = [
   {
@@ -25,8 +28,16 @@ const routes: Routes = [
         component: TrainingVideoComponent,
       },
       {
+        path: 'register',
+        component: RegisterTrainingComponent,
+      },
+      {
+        path: 'activities',
+        component: ActivitiesComponent,
+      },
+      {
         path: 'profile',
-        component: EditUserComponent
+        component: EditUserComponent,
       }
     ],
   },
