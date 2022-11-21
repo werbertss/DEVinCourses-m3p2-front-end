@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, throwError } from 'rxjs';
+import { catchError, Observable, retry, throwError } from 'rxjs';
 import SERVER_ACTIVITIES from 'src/app/constants/server_activities';
 import { IActivitie } from 'src/app/models/activitie';
 
@@ -50,5 +50,13 @@ export class ActivitiesService {
     .pipe(
       catchError(this.handleError)
     )
+  }
+
+  getAllActivities():Observable<IActivitie[]>{
+    return this.http.get<IActivitie[]>(`${SERVER_ACTIVITIES}/getAll`, this.httpOptions)
+    .pipe(
+      retry(2),
+      catchError(this.handleError)
+    );
   }
 }

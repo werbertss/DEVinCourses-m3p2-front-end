@@ -12,7 +12,7 @@ import { ActivitiesService } from 'src/app/services/activities/activities.servic
 })
 export class ActivitiesComponent implements OnInit {
 
-  activities: IActivitie[] = ACTIVITIES_MOCK;
+  activities: IActivitie[] = []; //ACTIVITIES_MOCK
   formActivitie: FormGroup = new FormGroup({});
 
   page = 1;
@@ -33,6 +33,7 @@ export class ActivitiesComponent implements OnInit {
 	}
 
   ngOnInit(): void {
+    this.getAllActivities();
   }
 
   open(content: any) {
@@ -45,5 +46,12 @@ export class ActivitiesComponent implements OnInit {
     // Chama função na service para executar o post
     this.activitiesService.postActivitie(this.newActivitie);
     this.modalService.dismissAll();
+  }
+
+  getAllActivities(){
+    this.activitiesService.getAllActivities()
+    .subscribe((activities: IActivitie[]) => {
+      this.activities = activities
+    });
   }
 }
