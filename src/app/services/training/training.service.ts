@@ -1,8 +1,4 @@
-import {
-  HttpClient,
-  HttpErrorResponse,
-  HttpHeaders,
-} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse, HttpHeaders, } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, retry, throwError } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
@@ -23,7 +19,7 @@ export class TrainingService {
 
   headers = new HttpHeaders()
   .set('Content-Type', 'application/json')
-  .set('Autorization', `Bearer ${this.token}`)
+  .set('Authorization', `Bearer ${this.token}`)
 
   training!: ITraining;
 
