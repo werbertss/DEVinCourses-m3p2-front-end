@@ -24,7 +24,7 @@ export class UserService {
    return this.http.post(SERVER_USERS, user, {headers: this.headers}).subscribe();
   }
 
-  editUser(id: string, user: IUser) {
+  editUser(user: IUser, id?: number) {
     return this.http.put<IUser>(`${SERVER_USERS}/${id}`, user).subscribe();
   }
 
@@ -34,8 +34,6 @@ export class UserService {
   }
 
   sendToken(token: string, password:string ){
-    
-    // var password = JSON.stringify(password);
     return this.http.post(`${SERVER_USERS}/token`, {token,password},{headers: this.headers}).subscribe();
   }
 }

@@ -117,11 +117,11 @@ export class RegistrationComponent implements OnInit {
       image: this.myImage,
     };
 
-    // if (this.isEditingUser){
-    //    this.userService.editUser(id,user);}
-    //   else
-    //     {this.userService.addUser(formValue);}
-   
+    if (this.isEditingUser) {
+      this.userService.editUser(this.User, this.User.id);
+    } else {
+      this.userService.addUser(formValue);
+    }
   }
 
   onReset(): void {
@@ -214,8 +214,7 @@ export class RegistrationComponent implements OnInit {
   getUserForm(User: IUser) {
     let token: string | null = localStorage.getItem('token');
 
-    if (token == null)
-      return;
+    if (token == null) return;
 
     this.userService.getUser(token).subscribe((r) => {
       this.User = r;
