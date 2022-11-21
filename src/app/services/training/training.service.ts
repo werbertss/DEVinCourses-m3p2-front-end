@@ -1,5 +1,6 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Server } from 'http';
 import { catchError, retry, throwError } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
 import SERVER_REGISTRATIONS from 'src/app/constants/server_registrations';
@@ -7,6 +8,7 @@ import SERVER_TRAININGS from 'src/app/constants/server_trainings';
 import SERVER_USERS from 'src/app/constants/server_users';
 import { IRegistration } from 'src/app/models/registration';
 import { ITraining } from 'src/app/models/training';
+import { ItrainingDetails } from 'src/app/models/trainingDetails';
 import { IUser } from 'src/app/models/user';
 
 @Injectable({
@@ -95,6 +97,10 @@ export class TrainingService {
     console.log(errorMessage);
     return throwError(errorMessage);
   };
+
+  GetDetalhesTraining(id: number):Observable<ItrainingDetails>{
+    return this.http.get<ItrainingDetails>(`${SERVER_TRAININGS}/${id}/usersDetails`, this.httpOptions)
+  }
 
 
 }

@@ -4,6 +4,7 @@ import { TRAININGBYUSER_MOCK } from 'src/app/mocks/trainingsByUser_mock';
 import { USER_MOCK } from 'src/app/mocks/user_mock';
 import { IRegistration } from 'src/app/models/registration';
 import { ITraining } from 'src/app/models/training';
+import { ItrainingDetails } from 'src/app/models/trainingDetails';
 import { IUser } from 'src/app/models/user';
 import { TrainingService } from 'src/app/services/training/training.service';
 import { AlertService } from '../../services/alert/alert.service';
@@ -41,6 +42,20 @@ export class HomeComponent implements OnInit {
   //Elemento para o Modal Detalhes
   element: any;
 
+  Details: ItrainingDetails = {
+    TrainingId: 0,
+    RegistredUsers: [],
+    NRegistredUsers: 0,
+    ProgressUsers: [],
+    NProgressUsers: 0,
+    FinishedUsers: [],
+    NFinishedUsers : 0
+  };
+
+  registredUsers: number = 0;
+  progressUsers: number = 0;
+  finishedUsers: number = 0;
+
   constructor(
     private config: NgbModalConfig, 
     private modalService: NgbModal,
@@ -64,6 +79,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.getUser();
     this.getTrainings();
+    this. RecebeDetalhes();
   }
 
   getUser(){
@@ -113,6 +129,15 @@ export class HomeComponent implements OnInit {
           this.alertService.alertRegisterSuccess();
         }
       })
+  }
+
+
+  //Metodo para interpolação dos dados de Registro de Detalhes no HTML
+  RecebeDetalhes(){
+    this.trainingService.GetDetalhesTraining(this.trainingModel.id).subscribe(t => this.Details = t);
+    this.registredUsers = this.Details.NRegistredUsers;
+    this.progressUsers = this.Details.NProgressUsers;
+    this.finishedUsers = this.Details.NFinishedUsers;
   }
 
   //Metodo para abrir Modal Detalhes
