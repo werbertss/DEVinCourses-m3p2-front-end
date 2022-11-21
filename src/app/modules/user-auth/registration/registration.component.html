@@ -94,7 +94,7 @@
 
     <div class="row gap-3">
       <div class="col-sm p-0 container-anchor">
-        <label for="password">Senha</label>
+        <label for="passwordInput">Senha</label>
         <br />
         <input
           formControlName="passwordInput"
@@ -102,7 +102,7 @@
           required="true"
           type="password"
           class="form-control mb-3"
-          id="password"
+          id="passwordInput"
           placeholder="Sua senha"
         />
         <div *ngIf="!(formRegistration.controls['passwordInput'].pristine || formRegistration.controls['passwordInput'].valid)" class="container-absolute">
@@ -118,7 +118,7 @@
         </div>
       </div>
       <div class="col-sm p-0 container-anchor">
-        <label for="confirm">Confirmar senha</label>
+        <label for="confirmInput">Confirmar senha</label>
         <br />
         <input
           formControlName="confirmInput"
@@ -126,7 +126,7 @@
           required="true"
           type="password"
           class="form-control mb-3"
-          id="confirm-password"
+          id="confirmInput"
           placeholder="Confirme a senha"
         />
         <div *ngIf="formRegistration.controls['confirmInput'].invalid" class="container-absolute">

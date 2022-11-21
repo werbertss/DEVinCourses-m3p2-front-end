@@ -21,11 +21,25 @@ export class UserService {
   }
 
   addUser(user: IUser){
-   return this.http.post(SERVER_USERS, user, {headers: this.headers}).subscribe();
+   return this.http.post(SERVER_USERS, user, {headers: this.headers}).subscribe({
+    next: (res) => {
+      alert('Usuário criado com sucesso');
+    },
+    error: (err) => {
+      alert(err.message);
+    },
+  });
   }
 
-  editUser(id: string, user: IUser) {
-    return this.http.put<IUser>(`${SERVER_USERS}/${id}`, user).subscribe();
+  editUser(user: IUser, id?: number) {
+    return this.http.put<IUser>(`${SERVER_USERS}/${id}`, user).subscribe({
+      next: (res) => {
+        alert('Perfil editado com sucesso');
+      },
+      error: (err) => {
+        alert(err.message);
+      },
+    });
   }
 
   sendEmail(email: string){
@@ -34,8 +48,6 @@ export class UserService {
   }
 
   sendToken(token: string, password:string ){
-    
-    // var password = JSON.stringify(password);
     return this.http.post(`${SERVER_USERS}/token`, {token,password},{headers: this.headers}).subscribe();
   }
 }
