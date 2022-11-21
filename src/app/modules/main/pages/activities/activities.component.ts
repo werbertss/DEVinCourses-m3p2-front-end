@@ -3,7 +3,7 @@ import { IActivitie } from 'src/app/models/activitie';
 import { ACTIVITIES_MOCK } from 'src/app/mocks/activities_mock';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { TrainingService } from 'src/app/services/training/training.service';
+import { ActivitiesService } from 'src/app/services/activities/activities.service';
 
 @Component({
   selector: 'pro-activities',
@@ -22,7 +22,7 @@ export class ActivitiesComponent implements OnInit {
       description: ""
   }
 
-  constructor(config: NgbModalConfig, private modalService: NgbModal, private formBuilder: FormBuilder, private trainingService:TrainingService) {
+  constructor(config: NgbModalConfig, private modalService: NgbModal, private formBuilder: FormBuilder, private activitiesService: ActivitiesService) {
 		config.backdrop = 'static';
 		config.keyboard = false;
 
@@ -43,8 +43,7 @@ export class ActivitiesComponent implements OnInit {
     this.newActivitie.title = this.formActivitie.value.title
     this.newActivitie.description = this.formActivitie.value.description
     // Chama função na service para executar o post
-    this.trainingService.postActivitie(this.newActivitie);
-    console.log(this.formActivitie);
+    this.activitiesService.postActivitie(this.newActivitie);
     this.modalService.dismissAll();
   }
 }
