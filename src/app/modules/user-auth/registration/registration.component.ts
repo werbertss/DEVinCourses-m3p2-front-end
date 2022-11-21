@@ -118,7 +118,7 @@ export class RegistrationComponent implements OnInit {
     };
 
     if (this.isEditingUser) {
-      this.userService.editUser(this.User, this.User.id);
+      this.userService.editUser(formValue, this.User.id);
     } else {
       this.userService.addUser(formValue);
     }
