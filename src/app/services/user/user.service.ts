@@ -21,11 +21,25 @@ export class UserService {
   }
 
   addUser(user: IUser){
-   return this.http.post(SERVER_USERS, user, {headers: this.headers}).subscribe();
+   return this.http.post(SERVER_USERS, user, {headers: this.headers}).subscribe({
+    next: (res) => {
+      alert('Usuário criado com sucesso');
+    },
+    error: (err) => {
+      alert(err.message);
+    },
+  });
   }
 
   editUser(user: IUser, id?: number) {
-    return this.http.put<IUser>(`${SERVER_USERS}/${id}`, user).subscribe();
+    return this.http.put<IUser>(`${SERVER_USERS}/${id}`, user).subscribe({
+      next: (res) => {
+        alert('Perfil editado com sucesso');
+      },
+      error: (err) => {
+        alert(err.message);
+      },
+    });
   }
 
   sendEmail(email: string){

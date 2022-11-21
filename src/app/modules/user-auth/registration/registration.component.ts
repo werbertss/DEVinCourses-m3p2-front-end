@@ -119,10 +119,8 @@ export class RegistrationComponent implements OnInit {
 
     if (this.isEditingUser) {
       this.userService.editUser(formValue, this.User.id);
-      alert('Perfil editado com sucesso.');
     } else {
       this.userService.addUser(formValue);
-      alert('Usuário criado');
       this.router.navigateByUrl('');
     }
   }
