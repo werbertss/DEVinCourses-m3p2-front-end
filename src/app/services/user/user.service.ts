@@ -16,7 +16,7 @@ export class UserService {
 
   constructor(private http: HttpClient) {}
 
-  getUser(token: string): Observable<IUser> {
+  getUser(): Observable<IUser> {
     return this.http.get<IUser>(`${SERVER_USERS}`, {headers: this.tokenHeader});
   }
 
