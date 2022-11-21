@@ -15,9 +15,9 @@ export class UserService {
   getUser(token: string): Observable<IUser> {
     let header = new HttpHeaders()
       .set('Content-Type', 'application/json')
-      .set('Autorization', `bearer ${token}`);
+      .set('Authorization', `Bearer ${token}`);
 
-    return this.http.get<IUser>(`${SERVER_USERS}/${token}`, {headers: header});
+    return this.http.get<IUser>(`${SERVER_USERS}`, {headers: header});
   }
 
   addUser(user: IUser){
