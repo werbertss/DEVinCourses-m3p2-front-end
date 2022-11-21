@@ -10,7 +10,7 @@ const routes: Routes = [
       import('./modules/user-auth/user-auth.module').then((m) => m.UserAuthModule),
   },
   {
-    path: 'desautorizado',
+    path: 'nao-autorizado',
     component: ForbiddenComponent,
   },
   {
