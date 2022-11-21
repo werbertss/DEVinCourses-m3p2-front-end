@@ -1,6 +1,6 @@
-import {HttpClient, HttpErrorResponse, HttpHeaders, } from '@angular/common/http';
+import {HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse, } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, retry, throwError } from 'rxjs';
+import { catchError, retry, tap, throwError } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
 import SERVER_REGISTRATIONS from 'src/app/constants/server_registrations';
 import SERVER_TRAININGS from 'src/app/constants/server_trainings';
@@ -16,7 +16,8 @@ export class TrainingService {
 
   token: string | null = localStorage.getItem('token');
 
-
+  totalTrainings!:number | null;
+  
   headers = new HttpHeaders()
   .set('Content-Type', 'application/json')
   .set('Authorization', `Bearer ${this.token}`)
@@ -37,12 +38,11 @@ export class TrainingService {
   //Métodos Trainings
 
   getAllTrainings():Observable<ITraining[]>{
-    return this.http.get<ITraining[]>(SERVER_TRAININGS, {headers: this.headers})
+    return this.http.get<ITraining[]>(`${SERVER_TRAININGS}?skip=0&take=${this.totalTrainings}`, {headers: this.headers})
       .pipe(
         retry(2),
         catchError(this.handleError)
       )
-      .pipe(retry(2), catchError(this.handleError));
   }
 
   getRecentTrainingsByUser(id: number): Observable<IRegistration[]> {
@@ -58,7 +58,6 @@ export class TrainingService {
         retry(2),
         catchError(this.handleError)
       )
-      .pipe(retry(2), catchError(this.handleError));
   }
 
 
@@ -80,6 +79,14 @@ export class TrainingService {
     return this.http.get<ITraining[]>(`${SERVER_USERS}/${id}/Trainings`, {headers: this.headers})
     .pipe(
       retry(2),
+      catchError(this.handleError)
+    )
+  }
+
+  getTotalRegisters():Observable<number>{
+    return this.http.get<number>(`${SERVER_TRAININGS}/totalRegisters`, {headers: this.headers})
+    .pipe(
+      retry(1),
       catchError(this.handleError)
     )
   }

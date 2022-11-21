@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { tap } from 'rxjs';
 import { TRAININGBYUSER_MOCK } from 'src/app/mocks/trainingsByUser_mock';
 import { USER_MOCK } from 'src/app/mocks/user_mock';
 import { IRegistration } from 'src/app/models/registration';
@@ -59,15 +60,14 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.serviceTitle.setTitle('NDD Training - Home');
     this.getUser();
-    
+    this.getTotalRegisters()
   }
 
   getUser(){
     this.trainingService.getUserByToken(this.trainingService.token)
     .subscribe((user:IUser) => {
       this.userActive = user;
-      this.registration.userId = this.userActive.id;
-      this.getTrainings();      
+      this.registration.userId = this.userActive.id;      
     })
   }
 
@@ -120,5 +120,12 @@ export class HomeComponent implements OnInit {
     this.alertService.alertRegisterSuccess();
   }
 
-
+  getTotalRegisters(){
+    this.trainingService.getTotalRegisters()
+    .subscribe((result) => {
+      this.cardSize = result;
+      this.trainingService.totalTrainings = result;
+      this.getTrainings();
+    })
+  }
 }
