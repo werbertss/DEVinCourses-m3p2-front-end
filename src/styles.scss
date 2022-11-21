@@ -1,13 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
-$azul-claro: #DBEDFF;
-$azul-escuro: #0069D1;
-$verde: #04932C;
-$vermelho: #BA4040;
+$azul-claro: #dbedff;
+$azul-escuro: #0069d1;
+$verde: #04932c;
+$vermelho: #ba4040;
 $branco: white;
 
-$NDD-roxo: #5600FE;
-$NDD-rosa: #EB008B;
-$NDD-ciano: #1EE9CC;
+$NDD-roxo: #5600fe;
+$NDD-rosa: #eb008b;
+$NDD-ciano: #1ee9cc;
 
 html,
 body {
@@ -17,5 +17,4 @@ body {
 }
 
 /* Importing Bootstrap SCSS file. */
-@import '~bootstrap/scss/bootstrap';
-
+@import "~bootstrap/scss/bootstrap";

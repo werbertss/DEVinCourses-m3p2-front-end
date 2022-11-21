@@ -38,7 +38,7 @@ export class RegistrationComponent implements OnInit {
 
   ngOnInit(): void {
     this.createFormValidation();
-    if (this.isEditingUser) this.getUserForm(this.User);
+    if (this.isEditingUser) this.getUserForm();
   }
 
   createForm(User: IUser) {
@@ -117,8 +117,12 @@ export class RegistrationComponent implements OnInit {
       image: this.myImage,
     };
 
-    this.userService.addUser(formValue);
-    this.router.navigateByUrl('');
+    if (this.isEditingUser) {
+      this.userService.editUser(formValue, this.User.id);
+    } else {
+      this.userService.addUser(formValue);
+      this.router.navigateByUrl('');
+    }
   }
 
   onReset(): void {
@@ -208,13 +212,8 @@ export class RegistrationComponent implements OnInit {
     };
   }
 
-  getUserForm(User: IUser) {
-    let token: string | null = localStorage.getItem('token');
-
-    if (token == null)
-      return;
-
-    this.userService.getUser(token).subscribe((r) => {
+  getUserForm() {
+    this.userService.getUser().subscribe((r) => {
       this.User = r;
       this.createForm(this.User);
     });

@@ -12,6 +12,8 @@ import { TrainingComponent } from './pages/training/training.component';
 import { TrainingVideoComponent } from './pages/training-video/training-video.component';
 import { ItemMyTrainingComponent } from './components/item-my-training/item-my-training.component';
 import { FooterComponent } from 'src/app/components/footer/footer.component';
+import { EditUserComponent } from './pages/edit-user/edit-user.component';
+import { UserAuthModule } from '../user-auth/user-auth.module';
 import { ItemRegisterTrainingComponent } from './components/item-register-training/item-register-training.component';
 import { RegisterTrainingComponent } from './pages/register-training/register-training.component';
 import { ItemRegisterModuleComponent } from './components/item-register-module/item-register-module.component';
@@ -28,6 +30,7 @@ import { ItemActivitieComponent } from './components/item-activitie/item-activit
     TrainingVideoComponent,
     ItemMyTrainingComponent,
     FooterComponent,
+    EditUserComponent,
     RegisterTrainingComponent,
     ItemRegisterTrainingComponent,
     ItemRegisterModuleComponent,
@@ -41,6 +44,7 @@ import { ItemActivitieComponent } from './components/item-activitie/item-activit
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
+    UserAuthModule
   ],
 })
 export class MainModule {}

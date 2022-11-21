@@ -30,6 +30,6 @@ export class LoginGuard implements CanActivate {
     if (this.authService.userAuthorized)
       return true
 
-    return this.route.parseUrl('');
+    return this.route.parseUrl('nao-autorizado');
   }
 }
