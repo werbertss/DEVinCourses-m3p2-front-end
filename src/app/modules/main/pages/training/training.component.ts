@@ -86,7 +86,7 @@ export class TrainingComponent implements OnInit {
     } else if (this.status === 'Recentes') {
       this.getRecentTrainingsByUser(this.userId);
     } else {
-      this.getMyTrainingsByStatus(this.userId, this.status);
+      this.getMyTrainingsByStatus(this.UserActive.id, this.status);
     }
   }
 }
