@@ -12,6 +12,8 @@ import { TrainingComponent } from './pages/training/training.component';
 import { TrainingVideoComponent } from './pages/training-video/training-video.component';
 import { ItemMyTrainingComponent } from './components/item-my-training/item-my-training.component';
 import { FooterComponent } from 'src/app/components/footer/footer.component';
+import { EditUserComponent } from './pages/edit-user/edit-user.component';
+import { UserAuthModule } from '../user-auth/user-auth.module';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import { FooterComponent } from 'src/app/components/footer/footer.component';
     TrainingVideoComponent,
     ItemMyTrainingComponent,
     FooterComponent,
+    EditUserComponent,
   ],
 
   imports: [
@@ -31,6 +34,7 @@ import { FooterComponent } from 'src/app/components/footer/footer.component';
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
+    UserAuthModule
   ],
 })
 export class MainModule {}

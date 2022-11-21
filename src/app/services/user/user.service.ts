@@ -13,7 +13,11 @@ export class UserService {
   constructor(private http: HttpClient) {}
 
   getUser(token: string): Observable<IUser> {
-    return this.http.get<IUser>(`${SERVER_USERS}/${token}`);
+    let header = new HttpHeaders()
+      .set('Content-Type', 'application/json')
+      .set('Authorization', `Bearer ${token}`);
+
+    return this.http.get<IUser>(`${SERVER_USERS}`, {headers: header});
   }
 
   addUser(user: IUser){

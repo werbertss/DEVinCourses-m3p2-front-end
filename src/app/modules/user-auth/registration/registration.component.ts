@@ -117,8 +117,11 @@ export class RegistrationComponent implements OnInit {
       image: this.myImage,
     };
 
-    this.userService.addUser(formValue);
-    this.router.navigateByUrl('');
+    // if (this.isEditingUser){
+    //    this.userService.editUser(id,user);}
+    //   else
+    //     {this.userService.addUser(formValue);}
+   
   }
 
   onReset(): void {
