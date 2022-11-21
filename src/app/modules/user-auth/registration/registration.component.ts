@@ -38,7 +38,7 @@ export class RegistrationComponent implements OnInit {
 
   ngOnInit(): void {
     this.createFormValidation();
-    if (this.isEditingUser) this.getUserForm(this.User);
+    if (this.isEditingUser) this.getUserForm();
   }
 
   createForm(User: IUser) {
@@ -212,7 +212,7 @@ export class RegistrationComponent implements OnInit {
     };
   }
 
-  getUserForm(User: IUser) {
+  getUserForm() {
     let token: string | null = localStorage.getItem('token');
 
     if (token == null) return;
