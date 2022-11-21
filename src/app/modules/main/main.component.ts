@@ -10,19 +10,19 @@ import { TrainingService } from 'src/app/services/training/training.service';
 })
 export class MainComponent implements OnInit {
 
-  userActive:IUser = USER_MOCK[0];
+  userActive!:IUser;// = USER_MOCK[0];
 
   constructor(private trainingService:TrainingService) { }
 
   ngOnInit(): void {
-    //this.getUser();
+    this.getUser();
   }
 
-  /* getUser(){
+  getUser(){
     this.trainingService.getUserByToken(this.trainingService.token)
     .subscribe((user:IUser) => {
       this.userActive = user;
     })
-  } */
+  }
 
 }

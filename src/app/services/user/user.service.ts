@@ -32,4 +32,10 @@ export class UserService {
     var emailJSON = JSON.stringify(email);
     return this.http.post(`${SERVER_USERS}/reset`, emailJSON,{headers: this.headers}).subscribe();
   }
+
+  sendToken(token: string, password:string ){
+    
+    // var password = JSON.stringify(password);
+    return this.http.post(`${SERVER_USERS}/token`, {token,password},{headers: this.headers}).subscribe();
+  }
 }
