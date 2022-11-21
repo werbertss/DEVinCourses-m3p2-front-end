@@ -8,16 +8,16 @@ import { IUser } from 'src/app/models/user';
   providedIn: 'root',
 })
 export class UserService {
+  token = localStorage.getItem('token');
   headers = new HttpHeaders({'Content-Type' : 'application/json'});
+  tokenHeader = new HttpHeaders()
+    .set('Content-Type', 'application/json')
+    .set('Authorization', `Bearer ${this.token}`);
 
   constructor(private http: HttpClient) {}
 
-  getUser(token: string): Observable<IUser> {
-    let header = new HttpHeaders()
-      .set('Content-Type', 'application/json')
-      .set('Authorization', `Bearer ${token}`);
-
-    return this.http.get<IUser>(`${SERVER_USERS}`, {headers: header});
+  getUser(): Observable<IUser> {
+    return this.http.get<IUser>(`${SERVER_USERS}`, {headers: this.tokenHeader});
   }
 
   addUser(user: IUser){
@@ -32,7 +32,7 @@ export class UserService {
   }
 
   editUser(user: IUser, id?: number) {
-    return this.http.put<IUser>(`${SERVER_USERS}/${id}`, user).subscribe({
+    return this.http.put<IUser>(`${SERVER_USERS}/${id}`, user, {headers: this.tokenHeader}).subscribe({
       next: (res) => {
         alert('Perfil editado com sucesso');
       },
