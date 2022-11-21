@@ -23,7 +23,7 @@
     "@popperjs/core": "^2.10.2",
     "@sweetalert2/ngx-sweetalert2": "^11.0.0",
     "bootstrap": "^5.1.3",
-    "node-modules": "^1.0.1",
+    "node-modules": "^0.0.1",
     "rxjs": "~7.5.0",
     "sweetalert2": "^11.6.8",
     "tslib": "^2.3.0",

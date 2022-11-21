@@ -1,4 +1,4 @@
-import {HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse, } from '@angular/common/http';
+import {HttpClient, HttpErrorResponse, HttpEvent, HttpHeaders, HttpResponse, } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Server } from 'http';
 import { catchError, retry, tap, throwError } from 'rxjs';
@@ -131,9 +131,8 @@ export class TrainingService {
     }
     console.error(errorMessage);
     return throwError(errorMessage);
-  }  GetDetalhesTraining(id: number):Observable<ItrainingDetails>{
-    return this.http.get<ItrainingDetails>(`${SERVER_TRAININGS}/${id}/usersDetails`, this.httpOptions)
+  }  
+  GetDetalhesTraining(id: number):Observable<ItrainingDetails>{
+    return this.http.get<ItrainingDetails>(`${SERVER_TRAININGS}/${id}/usersDetails`, {headers: this.headers})
   }
-
-
 }

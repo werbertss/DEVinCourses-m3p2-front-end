@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { IModules } from 'src/app/models/modules';
 
 @Component({
   selector: 'pro-item-register-training',
@@ -9,7 +8,6 @@ import { IModules } from 'src/app/models/modules';
   styleUrls: ['./item-register-training.component.scss'],
 })
 export class ItemRegisterTrainingComponent implements OnInit {
-  moduleList: IModules[] = [];
 
   formTraining: FormGroup = new FormGroup({});
   //constructor(private http: HttpClient){};

@@ -28,16 +28,16 @@ const routes: Routes = [
         component: TrainingVideoComponent,
       },
       {
-      {
         path: 'register',
         component: RegisterTrainingComponent,
       },
       {
         path: 'activities',
         component: ActivitiesComponent,
-      }
+      },
+      {
         path: 'profile',
-        component: EditUserComponent
+        component: EditUserComponent,
       }
     ],
   },
