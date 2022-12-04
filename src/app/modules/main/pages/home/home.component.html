@@ -1,66 +1,5 @@
 <ng-template (ngModel)="(trainingModel)" #content let-c="close" let-d="dismiss">
 
-  <!--Modal Detalhes-->
-  <div class="container">
-
-    <div class="modal" tabindex="-1" role="dialog" id="IdModelDetalhes">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="title">
-
-            <!--Titulo do Modal-->
-            <h5 class="text-center" id="TitleModal">Acessar Treinamento</h5>
-          </div>
-          <div class="modal-body text-center">
-
-            <div class="container">
-
-              <!--Body do modal-->
-              <div class="row g-3" id="centralizar">
-                <div class="col-sm-12">
-                  <h4 id="segundoTitulo">Total de Alunos</h4>
-                </div>
-              </div>
-
-              <div class="row g-3" id="centralizar">
-
-                <div class="col-sm-4">
-                  <div id="colordefundo">
-                    <p id="formatacao"> Cadastrados </p>
-                    <p id="formatacao"> {{registredUsers}} </p>
-                  </div>
-                </div>
-
-                <div class="col-sm-4">
-                  <div id="colordefundo">
-                    <p id="formatacao"> Em curso </p>
-                    <p id="formatacao"> {{progressUsers}} </p>
-                  </div>
-                </div>
-
-                <div class="col-sm-4">
-                  <div id="colordefundo">
-                    <p id="formatacao"> Concluintes </p>
-                    <p id="formatacao"> {{finishedUsers}} </p>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
-          <!--Botões Suspender e Fechar-->
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary" id="suspend" (click)="suspendShow()">Suspender</button>
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-
   <!--Inicio modal suspensão -->
 
   <div class="modal fade" id="modalSuspend" aria-labelledby="suspend" tabindex="-1">
@@ -108,23 +47,64 @@
     <div class="text-center">
 
       <div>
-
         <img id="EspacamentoTopImage" class="w-50" src="{{ trainingModel.url }}" alt="" />
         <p id="EspacamentoTopDescription">{{ trainingModel.description }}</p>
-
       </div>
       
     </div>
   </div>
+
+  <hr class="hr02">
+
+<div class="text-center">
+
+  <div id="Inline">
+
+        <div class="formatacao01">
+          <p>
+            Cadastrados
+          </p>
+          <p class="espacamentoLeft">
+            00
+          </p>
+        </div>
+    
+    
+        <div class="formatacao02">
+          <p>
+            Em Curso
+          </p>
+          <p class="espacamentoLeft">
+            00
+          </p>
+        </div>
+
+
+        <div class="formatacao02">
+          <p>
+            Concluintes
+          </p>
+          <p class="espacamentoLeft">
+            00
+          </p>
+        </div>
+        
+  </div>
+
+</div>
+
+<hr class="hr02">
+
   <div class="modal-footer">
 
-    <button
-      type="button"
-      class="btn btn-secondary"
-      (click)="OpenDetails()"
+    <button 
+    type="button" 
+    class="btn btn-primary" 
+    id="suspender"
+    (click)="suspendShow()"
     >
-      Detalhes
-    </button>
+    Suspender
+  </button>
 
 
     <button
