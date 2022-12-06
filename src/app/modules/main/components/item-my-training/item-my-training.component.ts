@@ -34,6 +34,10 @@ export class ItemMyTrainingComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  suspendTraining() {
+    this.alertService.alertSuspendTraining();
+  }
+
   removeTraining() {
     this.alertService.alertDeleteTraining();
   }
@@ -51,4 +55,5 @@ export class ItemMyTrainingComponent implements OnInit {
   formatarDuracao(duracao:number):any{
     return duracao.toString().replace(':00:00', '')
   }
+
 }
