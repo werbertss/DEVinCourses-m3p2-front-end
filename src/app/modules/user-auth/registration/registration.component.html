@@ -19,10 +19,10 @@
         />
         <div *ngIf="!(formRegistration.controls['nameInput'].pristine || formRegistration.controls['nameInput'].valid)" class="container-absolute">
           <div *ngIf="formRegistration.controls['nameInput'].errors?.['required']" class="alert alert-danger">
-            O nome deve ser preenchido.
+            O nome deve ser preenchido. Favor digitar o nome desejado.
           </div>
           <div *ngIf="formRegistration.controls['nameInput'].invalid" class="alert alert-danger">
-            O nome deve conter mínimo três letras.
+            O nome deve conter no mínimo três letras, caso contrário, dará erro.
           </div>
         </div>
       </div>
@@ -41,10 +41,10 @@
         />
         <div *ngIf="!(formRegistration.controls['emailInput'].pristine || formRegistration.controls['emailInput'].valid)" class="container-absolute">
           <div *ngIf="formRegistration.controls['emailInput'].errors?.['required']" class="alert alert-danger">
-            O email deve ser preenchido.
+            O email deve ser preenchido. Informação necessária para prosseguir.
           </div>
           <div *ngIf="formRegistration.controls['emailInput'].invalid" class="alert alert-danger">
-            O email está no formato inválido.
+            O email está no formato inválido. Favor certificar o formato válido.
           </div>
         </div>
       </div>
@@ -63,10 +63,10 @@
         />
         <div *ngIf="!(formRegistration.controls['ageInput'].pristine || formRegistration.controls['ageInput'].valid)" class="container-absolute">
           <div *ngIf="formRegistration.controls['ageInput'].invalid" class="alert alert-danger">
-            A idade deve ser entre os numero 18 e 110.
+            A idade digitada deve ser entre os numero 18 e 110.
           </div>
           <div *ngIf="formRegistration.controls['ageInput'].errors?.['required']" class="alert alert-danger">
-            A idade deve ser preenchida.
+            A idade deve ser preenchida para prosseguir.
           </div>
         </div>
       </div>
@@ -83,10 +83,10 @@
         />
         <div *ngIf="!(formRegistration.controls['cpfInput'].pristine || formRegistration.controls['cpfInput'].valid)" class="container-absolute">
           <div *ngIf="formRegistration.controls['cpfInput'].invalid" class="alert alert-danger">
-            O CPF esta no formato inválido.
+            O CPF esta no formato inválido. Digitar dentro do formato correto.
           </div>
           <div *ngIf="formRegistration.controls['cpfInput'].errors?.['required']" class="alert alert-danger">
-            O CPF deve ser preenchido.
+            O CPF deve ser preenchido. Sem o CPF não é possivel prosseguir.
           </div>
         </div>
       </div>
@@ -107,13 +107,13 @@
         />
         <div *ngIf="!(formRegistration.controls['passwordInput'].pristine || formRegistration.controls['passwordInput'].valid)" class="container-absolute">
           <div *ngIf="formRegistration.controls['passwordInput'].errors?.['minlength']" class="alert alert-danger">
-            A senha deve conter no mínimo 8 caracteres.
+            A senha deve conter no mínimo 8 caracteres para o êxito.
           </div>
           <div *ngIf="formRegistration.controls['passwordInput'].errors?.['checkChars']" class="alert alert-danger">
-            A senha deve conter somente letras e números.
+            A senha deve conter somente letras e números. Não permitido caracters.
           </div>
           <div *ngIf="formRegistration.controls['passwordInput'].errors?.['required']" class="alert alert-danger">
-            A senha deve ser preenchida.
+            A senha deve ser preenchida, para prosseguir.
           </div>
         </div>
       </div>
@@ -131,7 +131,7 @@
         />
         <div *ngIf="formRegistration.controls['confirmInput'].invalid" class="container-absolute">
           <div *ngIf="formRegistration.controls['confirmInput'].errors?.['matching']" class="alert alert-danger">
-            As senhas devem ser iguais.
+            As senhas digitadas devem ser iguais.
           </div>
         </div>
       </div>
