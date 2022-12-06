@@ -10,12 +10,21 @@ main {
 
   h1 {
     padding: 2rem;
-    width: min-content;
-    white-space: nowrap;
 
-    border-radius: 15px;
+    border-radius: 0;
 
-    background-color: $azul-escuro;
+    background-color: $vermelho;
     color: white;
   }
+
+  #VoltarTelaLogin{
+    padding: 0.7rem;
+    margin-top: 70px;
+    background-color: #0069D1;
+    border: 0;
+    border-radius: 7px;
+    color: white;
+    font-size: 25px;
+  }
+
 }
