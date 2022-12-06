@@ -9,6 +9,10 @@
     display: inline-flex;
 }
 
+#marginTest{
+    margin-top: 50px;
+}
+
 #TitleModal{
     color: #0069D1;
     font-size: 30px;
@@ -21,6 +25,13 @@
 
 #colordefundo{
     background-color: #DBEDFF;
+}
+
+#allStudents{
+    margin-top: 20px;
+    font-size: 27px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(61, 58, 58);
 }
 
 .formatacao01{
@@ -59,17 +70,16 @@
     border-width: 1px;
 }
 
-.hr02{
-    display: block;
-    margin-top: 0.2em;
-    margin-left: auto;
-    margin-right: auto;
-    border-style: inset;
-    border-width: 3px;
+
+#EspacamentoTitulo{
+    font-size: 27px;
+    margin-bottom: 30px;
+    color: #0069D1;
 }
 
 #EspacamentoTopDescription{
     margin-top: 30px;
+    margin-bottom: 50px;
 }
 
 #EspacamentoTopImage{
