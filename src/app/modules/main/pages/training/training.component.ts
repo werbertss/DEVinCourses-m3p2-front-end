@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { TRAININGBYUSER_MOCK } from 'src/app/mocks/trainingsByUser_mock';
-import { TRAINING_MOCK } from 'src/app/mocks/training_mock';
 import { IRegistration } from 'src/app/models/registration';
 import { ITraining } from 'src/app/models/training';
-import { ITraningByUser } from 'src/app/models/trainingByUser';
 import { IUser } from 'src/app/models/user';
 import { TrainingService } from 'src/app/services/training/training.service';
 

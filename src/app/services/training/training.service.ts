@@ -1,6 +1,5 @@
 import {HttpClient, HttpErrorResponse, HttpEvent, HttpHeaders, HttpResponse, } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Server } from 'http';
 import { catchError, retry, tap, throwError } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
 import SERVER_REGISTRATIONS from 'src/app/constants/server_registrations';

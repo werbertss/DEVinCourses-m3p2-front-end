@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { IActivitie } from 'src/app/models/activitie';
-import { ACTIVITIES_MOCK } from 'src/app/mocks/activities_mock';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivitiesService } from 'src/app/services/activities/activities.service';

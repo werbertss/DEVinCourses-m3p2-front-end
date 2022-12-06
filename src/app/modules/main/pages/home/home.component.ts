@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { tap } from 'rxjs';
-import { TRAININGBYUSER_MOCK } from 'src/app/mocks/trainingsByUser_mock';
-import { USER_MOCK } from 'src/app/mocks/user_mock';
 import { IRegistration } from 'src/app/models/registration';
 import { ITraining } from 'src/app/models/training';
 import { ItrainingDetails } from 'src/app/models/trainingDetails';
