@@ -161,17 +161,4 @@ export class HomeComponent implements OnInit {
     this.finishedUsers = this.Details.NFinishedUsers;
   }
 
-  //Metodo para abrir Modal Detalhes
-  OpenDetails(){
-    this.element = document.getElementById('IdModelDetalhes');
-    let modal = new window.bootstrap.Modal(this.element);
-    modal.show();
-  } 
-
-  suspendShow(){
-    this.element = document.getElementById('modalSuspend');
-    let modal = new window.bootstrap.Modal(this.element);
-    modal.show();
-  }
-
 }
