@@ -17,7 +17,7 @@ export class AlertService {
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
-        Swal.fire('Excluido!', '', 'success')
+        Swal.fire('Excluido! O mesmo não está mais disponivel', '', 'success')
       } else if (result.isDenied) {
         Swal.fire('Não excluido', '', 'info')
       }
@@ -32,9 +32,9 @@ export class AlertService {
       }).then((result) => {
         /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
-          Swal.fire('Suspendido!', '', 'success')
+          Swal.fire('Suspendido! O curso não está mais disponivel', '', 'success')
         } else if (result.isDenied) {
-          Swal.fire('Não suspendido', '', 'info')
+          Swal.fire('Não suspendido.', '', 'info')
         }
       })}
 
@@ -43,7 +43,7 @@ export class AlertService {
     Swal.fire({
       icon: 'error',
       title: 'Oops...',
-      text: 'Você já está matriculado neste curso.',
+      text: 'Você já está matriculado neste curso. Não é possivel se cadastrar novamente',
       footer: '<small>© 2022 Devin[NDD] Team</small>'
     })
   }

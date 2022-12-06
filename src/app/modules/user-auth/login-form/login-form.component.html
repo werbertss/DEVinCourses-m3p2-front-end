@@ -19,13 +19,13 @@
             *ngIf="form.controls['email'].errors?.['required']"
             class="alert alert-danger"
           >
-            Email obrigatório.
+            Email obrigatório. Não é possivel prosseguir sem informar o Email.
           </div>
           <div
             *ngIf="form.controls['email'].invalid"
             class="alert alert-danger"
           >
-            Email inválido.
+            Email inválido. Verifique se o Email foi digitado corretamente.
           </div>
         </div>
       </div>
@@ -47,19 +47,19 @@
             *ngIf="form.controls['password'].errors?.['required']"
             class="alert alert-danger"
           >
-            Senha obrigatória.
+            Senha obrigatória. Favor, digitar a senha.
           </div>
           <div
             *ngIf="form.controls['password'].errors?.['minlength']"
             class="alert alert-danger"
           >
-            Mínimo 8 caracteres.
+            A senha deve possuir no mínimo 8 caracteres. 
           </div>
           <div
             *ngIf="form.controls['password'].errors?.['pattern']"
             class="alert alert-danger"
           >
-            Senha somente letras e/ou números.
+            A Senha deve possuir somente letras e/ou números;
           </div>
         </div>
       </div>
@@ -74,7 +74,7 @@
           data-bs-target="#exampleModal"
           data-bs-whatever="@mdo"
         >
-          Esqueci minha senha
+          Esqueci minha senha (Opção para redefinição de senha).
         </a>
       </p>
 
@@ -106,13 +106,13 @@
         <form [formGroup]="userEmails">
           <div class="text-center mt-3">
             <h1 class="modal-title fs-3" id="exampleModalLabel">
-              Esqueci minha senha
+              Esqueci a minha senha
             </h1>
           </div>
           <div class="modal-body text-start">
             <p>
               Será enviado um token para redefinição de senha para o email
-              digitado abaixo.
+              digitado abaixo. Caso não encontre na caixa principal, verificar no spam.
             </p>
             <div class="mb-1 input-container container-anchor">
               <label for="forgetEmail" class="col-form-label">Digite seu email</label>
@@ -137,7 +137,7 @@
                   *ngIf="userEmails.controls['ResetEmail'].errors?.['email']"
                   class="alert alert-danger"
                 >
-                  Email inválido.
+                  O Email digitado está inválido.
                 </div>
               </div>
             </div>
