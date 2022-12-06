@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { USER_MOCK } from 'src/app/mocks/user_mock';
 import { IUser } from 'src/app/models/user';
 import { TrainingService } from 'src/app/services/training/training.service';
 

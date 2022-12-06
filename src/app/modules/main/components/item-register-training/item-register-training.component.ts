@@ -24,6 +24,5 @@ export class ItemRegisterTrainingComponent implements OnInit {
   ngOnInit(): void {}
   ShowData() {
     console.log(this.formTraining);
-    debugger;
   }
 }

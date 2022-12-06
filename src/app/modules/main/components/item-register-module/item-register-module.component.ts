@@ -24,7 +24,6 @@ export class ItemRegisterModuleComponent implements OnInit {
   ngOnInit(): void {}
   ShowData() {
     console.log(this.formModule);
-    debugger;
     this.formModule.reset();
   }
   ResetForm() {
