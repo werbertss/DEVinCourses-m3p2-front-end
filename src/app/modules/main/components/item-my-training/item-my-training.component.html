@@ -20,6 +20,9 @@
   </div>
 <!--Fim modal suspensão -->
 
+<div *ngIf="item.active == true">
+
+
 <div class="card shadow cardTraining">
     <div (click)="selectTraining(item)">
         <img src="{{ item.url }}" class="card-img-top imgCard" alt="...">
@@ -37,4 +40,6 @@
         <button type="button" class="btn btn-outline-danger btn-sm" (click)="suspendTraining()">Suspender</button>
         <button type="button" class="btn btn-outline-danger btn-sm" (click)="removeTraining()">Remover</button>
     </div>
+</div>
+
 </div>
