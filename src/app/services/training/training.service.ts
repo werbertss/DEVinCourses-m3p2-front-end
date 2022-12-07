@@ -1,6 +1,6 @@
-import {HttpClient, HttpErrorResponse, HttpEvent, HttpHeaders, HttpResponse, } from '@angular/common/http';
+import {HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, retry, tap, throwError } from 'rxjs';
+import { catchError, retry, throwError } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
 import SERVER_REGISTRATIONS from 'src/app/constants/server_registrations';
 import SERVER_TRAININGS from 'src/app/constants/server_trainings';

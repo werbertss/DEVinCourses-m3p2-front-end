@@ -84,11 +84,8 @@ export class TrainingVideoComponent implements OnInit {
 
       if(porcent > 94){
        idDinamico.style.visibility= 'hidden'
-       //postCompletedModule()
       }
       if(porcent > 96){
-       //getCompletedModuleByModuleId()
-
       }
     });
 
