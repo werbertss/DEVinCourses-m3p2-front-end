@@ -35,10 +35,12 @@ export class ItemMyTrainingComponent implements OnInit {
   ngOnInit(): void {}
 
   suspendTraining() {
+    this.item.active == false;
     this.alertService.alertSuspendTraining();
   }
 
   removeTraining() {
+    this.item.active == false;
     this.alertService.alertDeleteTraining();
   }
 
