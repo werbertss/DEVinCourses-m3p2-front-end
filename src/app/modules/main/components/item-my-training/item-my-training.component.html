@@ -1,27 +1,4 @@
-<!--Inicio modal suspensão -->
-<div class="modal fade" id="modalSuspend" aria-labelledby="suspend" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="modalSuspend_">Atenção!</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          Você esta prestes a suspender este curso. Deseja continuar mesmo assim?
-        </div>
-        <div class="modal-footer">
-          <button class="btn btn-primary" data-bs-target="#modal" data-bs-toggle="modal" data-bs-dismiss="modal"
-            aria-label="Cancel">Cancelar</button>
-          <button class="btn btn-danger" data-bs-target="#modal" data-bs-toggle="modal" data-bs-dismiss="modal"
-            aria-label="Confirm">Sim</button>
-        </div>
-      </div>
-    </div>
-  </div>
-<!--Fim modal suspensão -->
-
 <div *ngIf="item.active == true">
-
 
 <div class="card shadow cardTraining">
     <div (click)="selectTraining(item)">
